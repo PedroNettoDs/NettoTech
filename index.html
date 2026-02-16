@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pedro Henrique Netto | Analista de Infraestrutura</title>
+    <title>Pedro Netto | Analista de Infraestrutura</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -87,6 +87,18 @@
         width: 2px;
         background: linear-gradient(#1e293b, #2563eb);
       }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .floaty {
+        animation: floaty 6s ease-in-out infinite;
+      }
+      @keyframes floaty {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .floaty { animation: none; }
+      }
     </style>
   </head>
   <body class="font-sans antialiased">
@@ -114,39 +126,27 @@
     <main>
       <section id="sobre" class="pt-36 pb-24 relative overflow-hidden">
         <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Henrique Netto</h1>
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Microsoft 365 | Python</h2>
-            <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">
-              Profissional de infraestrutura com foco em estabilidade, automação e governança de ambientes corporativos. Experiência com Active Directory, Microsoft 365, firewall, monitoramento e scripts para otimização de processos.
-            </p>
-            <p class="text-slate-400 italic mb-9">Infraestrutura sólida não aparece. Ela simplesmente funciona.</p>
-            <div class="flex flex-wrap gap-4">
-              <a href="#experiencia" class="soft-glow rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold">Ver Experiência</a>
-              <a href="#contatos" class="soft-glow rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 text-slate-100 px-7 py-3 font-semibold">Falar Comigo</a>
-            </div>
-          </div>
+          <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Netto</h1>
+              <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
+              <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">Desde cedo a tecnologia é uma parte da minha vida.<br>
+  Meu pai sempre disse que o computador seria o meu futuro, e essa é minha missão.<br>
+  Entender de tecnologia é, para mim, é honrar essas palavras.<br>
+  Tenho direcionado minha evolução para Python e desenvolvimento de automações e sistemas.<br>
+  Para mim, tecnologia não é apenas profissão — é propósito.</p>
+              <p class="text-slate-400 italic mb-9">Infraestrutura sólida não aparece. Ela simplesmente funciona.</p>
+              <div class="flex flex-wrap gap-4">
+                <a href="#experiencia" class="soft-glow rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold">Ver Experiência</a>
+                <a href="#contatos" class="soft-glow rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 text-slate-100 px-7 py-3 font-semibold">Falar Comigo</a>
+              </div>
 
-          <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
-            <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Painel Operacional</p>
-            <div class="space-y-4">
-              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
-                <p class="text-sm text-slate-400">Áreas de atuação</p>
-                <p class="text-xl text-white font-semibold">Infraestrutura, Suporte N1/N2 e Governança</p>
-              </div>
-              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
-                <p class="text-sm text-slate-400">Foco técnico</p>
-                <p class="text-xl text-blue-300 font-semibold">Linux, AD, Microsoft 365, Firewall e Monitoramento</p>
-              </div>
-              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
-                <p class="text-sm text-slate-400">Evolução</p>
-                <p class="text-xl text-slate-100 font-semibold">Automação com PowerShell e Python</p>
-              </div>
             </div>
-          </aside>
-        </div>
-      </section>
+            <div> 
+              <img src="img/profile.jpeg" alt="Foto de perfil de Pedro Netto" class="w-full max-w-sm rounded-2xl border border-slate-700 bg-graphite/40 shadow-glow floaty" loading="lazy" decoding="async" />
+            
+          </div>
+	      </section>
 
       <section id="experiencia" class="py-24 border-y border-slate-800/70 bg-deep/50">
         <div class="max-w-7xl mx-auto px-6">
@@ -246,6 +246,52 @@
           </div>
         </div>
       </section>
+      <section id="storys" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+		          <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
+		            <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Pequenos storys de trajetória</p>
+		            <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                      <button type="button" data-stories-prev class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Stories anteriores">
+                          <span class="material-icons text-[20px]">chevron_left</span>
+		                      </button>
+		                      <button type="button" data-stories-next class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Próximas stories">
+		                        <span class="material-icons text-[20px]">chevron_right</span>
+		                      </button>
+		                    </div>
+		                <div class="space-y-3 overflow-hidden">
+		                  <div class="flex items-center justify-between gap-4">
+		                  </div>
+
+			                  <div data-stories-rail class="no-scrollbar flex items-stretch gap-4 overflow-x-auto py-3 snap-x snap-mandatory scroll-smooth w-full max-w-full pr-10"></div>
+			                </div>
+			              </div>
+
+			              <div data-stories-modal class="fixed inset-0 z-[60] hidden items-center justify-center px-6" aria-hidden="true">
+			                <button type="button" data-stories-close class="absolute inset-0 w-full h-full bg-black/70 backdrop-blur-sm" aria-label="Fechar story"></button>
+			                <div class="relative w-full max-w-5xl rounded-2xl border border-electric/35 bg-deep/90 p-5 shadow-glow">
+			                  <div data-stories-header class="flex items-start justify-between gap-4">
+			                    <div data-stories-meta>
+			                      <p data-stories-title class="text-white font-semibold text-lg leading-snug"></p>
+			                      <p class="text-xs text-slate-400">Clique fora ou pressione Esc para fechar</p>
+			                    </div>
+			                    <button type="button" data-stories-close class="soft-glow inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Fechar">
+			                      <span class="material-icons text-[20px]">close</span>
+			                    </button>
+			                  </div>
+			                  <div class="mt-4 rounded-xl overflow-hidden border border-slate-800 bg-graphite/35">
+			                    <img data-stories-img alt="" class="w-full max-h-[78vh] object-contain bg-deep/40" loading="lazy" decoding="async" />
+			                  </div>
+			                  <p data-stories-body class="mt-4 text-sm text-slate-300 leading-relaxed"></p>
+			                </div>
+			              </div>
+	            </div>
+	          </aside>
+	        </div>
+      
+      
+        </section>
+
 
       <section id="contatos" class="py-24">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
@@ -283,5 +329,219 @@
     <footer class="py-10 border-t border-slate-800 text-center text-slate-400">
       <p class="italic">Infraestrutura estável é resultado de disciplina técnica, monitoramento e melhoria contínua.</p>
     </footer>
+
+	    <script>
+	      (() => {
+	        const rail = document.querySelector('[data-stories-rail]');
+	        if (!rail) return;
+
+	        const prevBtn = document.querySelector('[data-stories-prev]');
+	        const nextBtn = document.querySelector('[data-stories-next]');
+	        const modal = document.querySelector('[data-stories-modal]');
+	        const titleEl = document.querySelector('[data-stories-title]');
+	        const bodyEl = document.querySelector('[data-stories-body]');
+	        const imgEl = document.querySelector('[data-stories-img]');
+	        const closeEls = document.querySelectorAll('[data-stories-close]');
+
+	        const stories = [
+	          { id: 1, coverUrl: 'img/storys1.png', href: '#' },
+	          { id: 2, coverUrl: 'img/storys2.png', href: '#' },
+	          { id: 3, coverUrl: 'img/storys3.png', href: '#' },
+	          { id: 4, coverUrl: 'img/storys4.png', href: '#' },
+	          { id: 5, coverUrl: 'img/storys5.png', href: '#' },
+	          { id: 6, coverUrl: 'img/storys6.png', href: '#' },
+	          { id: 7, coverUrl: 'img/storys7.png', href: '#' },
+	          { id: 8, coverUrl: 'img/storys8.png', href: '#' },
+	          { id: 9, coverUrl: 'img/storys9.png', href: '#' },
+	          { id: 10, coverUrl: 'img/storys10.png', href: '#' },
+	          { id: 11, coverUrl: 'img/storys11.png', href: '#' },
+	          { id: 12, coverUrl: 'img/storys12.png', href: '#' },
+	          { id: 13, coverUrl: 'img/storys13.png', href: '#' },
+	          { id: 14, coverUrl: 'img/storys14.png', href: '#' },
+	          { id: 15, coverUrl: 'img/storys15.png', href: '#' },
+
+	        ];
+
+	        const baseCardClass =
+	          'group snap-center shrink-0 w-[68vw] sm:w-[220px] lg:w-[170px] aspect-[9/16] rounded-2xl overflow-hidden border bg-graphite/35 transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70';
+
+	        rail.innerHTML = stories
+	          .map(
+	            (story) => `
+	              <a
+	                href="${story.href}"
+	                data-story
+	                data-story-card
+	                data-title="Story ${String(story.id).padStart(2, '0')}"
+	                data-body=""
+	                data-img="${story.coverUrl}"
+	                class="${baseCardClass} border-slate-800 opacity-70 scale-[0.92]"
+	                aria-label="Abrir story ${String(story.id).padStart(2, '0')}"
+	              >
+	                <div class="relative w-full h-full">
+	                  <img src="${story.coverUrl}" alt="Story ${String(story.id).padStart(2, '0')}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+	                  <div class="absolute inset-0 bg-gradient-to-t from-deep/70 via-transparent to-transparent opacity-80"></div>
+	                </div>
+	              </a>
+	            `
+	          )
+	          .join('');
+
+	        const cards = Array.from(rail.querySelectorAll('[data-story-card]'));
+	        let activeIndex = 0;
+	        let rafPending = false;
+
+	        const scrollByAmount = () => Math.max(220, Math.min(rail.clientWidth * 0.85, 520));
+
+	        const setCenterMode = (nextIndex) => {
+	          activeIndex = nextIndex;
+	          // Center mode (Steam-style):
+	          // - Active card (closest to the rail center) gets more scale/opacity + glow.
+	          // - Side cards stay slightly smaller and dimmer, hinting continuity.
+	          cards.forEach((card, index) => {
+	            const isActive = index === activeIndex;
+
+	            card.classList.toggle('opacity-70', !isActive);
+	            card.classList.toggle('scale-[0.92]', !isActive);
+	            card.classList.toggle('border-slate-800', !isActive);
+	            card.classList.toggle('shadow-none', !isActive);
+
+	            card.classList.toggle('opacity-100', isActive);
+	            card.classList.toggle('scale-100', isActive);
+	            card.classList.toggle('border-electric/60', isActive);
+	            card.classList.toggle('shadow-glow', isActive);
+	          });
+	        };
+
+	        const updateCenterFromScroll = () => {
+	          if (!cards.length) return;
+
+	          const railRect = rail.getBoundingClientRect();
+	          const railCenterX = railRect.left + railRect.width / 2;
+	          let bestIndex = 0;
+	          let bestDistance = Infinity;
+
+	          cards.forEach((card, index) => {
+	            const rect = card.getBoundingClientRect();
+	            const centerX = rect.left + rect.width / 2;
+	            const distance = Math.abs(centerX - railCenterX);
+
+	            if (distance < bestDistance) {
+	              bestDistance = distance;
+	              bestIndex = index;
+	            }
+	          });
+
+	          if (bestIndex !== activeIndex) setCenterMode(bestIndex);
+	        };
+
+	        const scrollToIndex = (nextIndex, behavior = 'smooth') => {
+	          if (!cards.length) return;
+	          const normalized = (nextIndex + cards.length) % cards.length;
+	          const card = cards[normalized];
+	          // Important: avoid `element.scrollIntoView()` here because it can also scroll the page
+	          // vertically to bring the element into view (causing the "puxa a tela" effect).
+	          // We only want to scroll INSIDE the horizontal rail.
+	          const targetLeft = card.offsetLeft - (rail.clientWidth - card.clientWidth) / 2;
+	          rail.scrollTo({ left: targetLeft, behavior });
+	          setCenterMode(normalized);
+	        };
+
+	        const closeModal = () => {
+	          if (!modal) return;
+	          modal.classList.add('hidden');
+	          modal.classList.remove('flex');
+	          modal.setAttribute('aria-hidden', 'true');
+	        };
+
+	        const metaEl = document.querySelector('[data-stories-meta]');
+
+	        const openModal = (storyEl) => {
+	          if (!modal || !titleEl || !bodyEl || !imgEl) return;
+	          const isImageOnly = storyEl.dataset.modal === 'image-only';
+
+	          metaEl?.classList.toggle('hidden', isImageOnly);
+
+	          titleEl.classList.remove('hidden');
+	          bodyEl.classList.remove('hidden');
+
+	          titleEl.textContent = isImageOnly ? '' : storyEl.dataset.title || 'Story';
+	          bodyEl.textContent = isImageOnly ? '' : storyEl.dataset.body || '';
+
+	          if (isImageOnly) titleEl.classList.add('hidden');
+	          if (isImageOnly) bodyEl.classList.add('hidden');
+
+	          imgEl.src = storyEl.dataset.img || '';
+	          imgEl.alt = storyEl.dataset.title || 'Story';
+
+	          modal.classList.remove('hidden');
+	          modal.classList.add('flex');
+	          modal.setAttribute('aria-hidden', 'false');
+	        };
+
+	        prevBtn?.addEventListener('click', () => (cards.length ? scrollToIndex(activeIndex - 1) : rail.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' })));
+	        nextBtn?.addEventListener('click', () => (cards.length ? scrollToIndex(activeIndex + 1) : rail.scrollBy({ left: scrollByAmount(), behavior: 'smooth' })));
+
+	        document.addEventListener('click', (event) => {
+	          const storyEl = event.target.closest('[data-story]');
+	          if (!storyEl) return;
+
+	          if (storyEl.tagName === 'A') {
+	            const allowNavigation = event.metaKey || event.ctrlKey || event.shiftKey || event.button === 1;
+	            if (!allowNavigation) event.preventDefault();
+	          }
+
+	          openModal(storyEl);
+	        });
+
+	        closeEls.forEach((el) => el.addEventListener('click', closeModal));
+	        document.addEventListener('keydown', (event) => {
+	          if (event.key === 'Escape') closeModal();
+	        });
+
+	        scrollToIndex(0, 'auto');
+	        requestAnimationFrame(updateCenterFromScroll);
+
+	        rail.addEventListener('scroll', () => {
+	          if (rafPending) return;
+	          rafPending = true;
+	          requestAnimationFrame(() => {
+	            rafPending = false;
+	            updateCenterFromScroll();
+	          });
+	        });
+	        window.addEventListener('resize', updateCenterFromScroll);
+
+	        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+	        if (!prefersReducedMotion) {
+	          let autoTimer = null;
+	          const start = () => {
+	            if (autoTimer) return;
+	            autoTimer = window.setInterval(() => {
+	              // Loop infinito: avança o foco central e volta ao início ao chegar no fim.
+	              if (cards.length) scrollToIndex(activeIndex + 1);
+	              else {
+	                const atEnd = Math.ceil(rail.scrollLeft + rail.clientWidth) >= rail.scrollWidth;
+	                rail.scrollTo({ left: atEnd ? 0 : rail.scrollLeft + scrollByAmount(), behavior: 'smooth' });
+	              }
+	            }, 3200);
+	          };
+
+	          const stop = () => {
+	            if (!autoTimer) return;
+	            window.clearInterval(autoTimer);
+	            autoTimer = null;
+	          };
+
+	          start();
+	          rail.addEventListener('pointerenter', stop);
+	          rail.addEventListener('pointerleave', start);
+	          rail.addEventListener('focusin', stop);
+	          rail.addEventListener('focusout', start);
+	          prevBtn?.addEventListener('pointerdown', stop);
+	          nextBtn?.addEventListener('pointerdown', stop);
+	        }
+	      })();
+	    </script>
   </body>
 </html>

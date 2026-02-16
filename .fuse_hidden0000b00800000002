@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedro Henrique Netto | Analista de Infraestrutura</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              deep: '#0b0f19',
+              slateBlue: '#1e293b',
+              electric: '#2563eb',
+              graphite: '#1f2937',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              glow: '0 0 0 1px rgba(37,99,235,.42), 0 0 24px rgba(37,99,235,.22)',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body {
+        background:
+          linear-gradient(145deg, rgba(11,15,25,.96), rgba(30,41,59,.86) 44%, rgba(31,41,55,.88)),
+          radial-gradient(circle at 90% 14%, rgba(37,99,235,.15), transparent 45%),
+          radial-gradient(circle at 8% 70%, rgba(37,99,235,.1), transparent 40%),
+          #0b0f19;
+        color: #e2e8f0;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: .15;
+        background:
+          linear-gradient(transparent 97%, rgba(37,99,235,.16) 100%),
+          linear-gradient(90deg, transparent 97%, rgba(37,99,235,.14) 100%);
+        background-size: 36px 36px;
+      }
+      .glass {
+        background: rgba(11, 15, 25, 0.75);
+        border-bottom: 1px solid rgba(37, 99, 235, 0.23);
+        backdrop-filter: blur(12px);
+      }
+      .neon-link { position: relative; }
+      .neon-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -.35rem;
+        width: 0;
+        height: 2px;
+        transition: width .28s ease;
+        background: linear-gradient(90deg, #2563eb, #60a5fa);
+        box-shadow: 0 0 11px rgba(37,99,235,.65);
+      }
+      .neon-link:hover::after,
+      .neon-link:focus-visible::after { width: 100%; }
+      .soft-glow {
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+      .soft-glow:hover {
+        transform: translateY(-3px);
+        border-color: rgba(37,99,235,.66);
+        box-shadow: 0 0 0 1px rgba(37,99,235,.38), 0 0 22px rgba(37,99,235,.22);
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0.95rem;
+        top: .55rem;
+        bottom: .55rem;
+        width: 2px;
+        background: linear-gradient(#1e293b, #2563eb);
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <header class="fixed inset-x-0 top-0 z-50 glass">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg border border-electric/50 bg-graphite/60 flex items-center justify-center shadow-glow">
+            <span class="material-icons text-blue-300">shield</span>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Pedro Netto</p>
+            <p class="text-white font-semibold">Infraestrutura & Automação</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300 font-medium">
+          <a class="neon-link hover:text-blue-300" href="#sobre">Sobre</a>
+          <a class="neon-link hover:text-blue-300" href="#experiencia">Experiência</a>
+          <a class="neon-link hover:text-blue-300" href="#certificados">Certificados</a>
+          <a class="neon-link hover:text-blue-300" href="#documentacoes">Projetos</a>
+          <a class="neon-link hover:text-blue-300" href="#contatos">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="sobre" class="pt-36 pb-24 relative overflow-hidden">
+        <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Netto</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
+            <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">
+              Profissional de infraestrutura com foco em estabilidade, automação e governança de ambientes corporativos. <br>Experiência com Active Directory, Microsoft 365, firewall, monitoramento e scripts para otimização de processos.
+            </p>
+            <p class="text-slate-400 italic mb-9">Infraestrutura sólida não aparece. Ela simplesmente funciona.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#experiencia" class="soft-glow rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold">Ver Experiência</a>
+              <a href="#contatos" class="soft-glow rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 text-slate-100 px-7 py-3 font-semibold">Falar Comigo</a>
+            </div>
+            </div>
+
+            <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Painel Operacional</p>
+              <div class="space-y-4">
+                <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4 flex items-center gap-4">
+                  <img src="Exemple1.png" alt="Foto de Pedro Netto" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover border border-electric/50 shadow-glow" />
+                  <div>
+                    <p class="text-sm text-slate-400">Foto</p>
+                    <p class="text-lg text-white font-semibold">Pedro Netto</p>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
+                  <p class="text-sm text-slate-400">Áreas de atuação</p>
+                  <p class="text-xl text-white font-semibold">Infraestrutura, Suporte N1/N2 e Governança</p>
+                </div>
+                <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
+                  <p class="text-sm text-slate-400">Foco técnico</p>
+                  <p class="text-xl text-blue-300 font-semibold">Linux, AD, Microsoft 365, Firewall e Monitoramento</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+      <section id="experiencia" class="py-24 border-y border-slate-800/70 bg-deep/50">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-12">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Experiência Profissional</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+
+          <div class="relative timeline pl-10 space-y-6">
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura II</h4>
+              <p class="text-slate-300 mt-2">Responsável por gestão de incidentes, administração de Active Directory, Microsoft 365, políticas de firewall FortiGate e monitoramento de ambientes corporativos via Grafana e Elastic.</p>
+              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                <li>Administração de usuários, grupos e GPOs.</li>
+                <li>Gerenciamento de serviços Microsoft 365.</li>
+                <li>Acompanhamento de métricas e logs para prevenção de falhas.</li>
+              </ul>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura</h4>
+              <p class="text-slate-300 mt-2">Atuação em rotinas de sustentação, suporte técnico de infraestrutura e automações para ganho de eficiência operacional.</p>
+              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                <li>Suporte N1/N2 em incidentes e requisições.</li>
+                <li>Execução de scripts PowerShell para padronização de tarefas.</li>
+                <li>Gestão de ativos e documentação técnica do ambiente.</li>
+              </ul>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">KS2 – Analista de TI</h4>
+              <p class="text-slate-300 mt-2">Suporte e administração de serviços de TI com foco em disponibilidade dos recursos de rede, sistemas e usuários.</p>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Linx – Analista de Suporte</h4>
+              <p class="text-slate-300 mt-2">Atendimento técnico e resolução de chamados, contribuindo para continuidade operacional e qualidade do suporte.</p>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Attano Tech – Fundador</h4>
+              <p class="text-slate-300 mt-2">Iniciativas em soluções técnicas e projetos de tecnologia, com foco em aprendizado prático, organização e entrega consistente.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="certificados" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-12">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Certificados</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">CCNA Enterprise Networking</h4>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">CCNA Switching, Routing and Wireless Essentials</h4>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">Santander Tech+ BackEnd</h4>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="documentacoes" class="py-24 border-y border-slate-800/70 bg-deep/45">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-4">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Projetos & Estudos Técnicos</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+          <p class="text-slate-400 mb-10 max-w-3xl">Projetos práticos e materiais técnicos que reforçam evolução contínua em infraestrutura, automação e arquitetura de ambientes corporativos.</p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Scripts PowerShell</h4>
+              <p class="text-slate-400">Automação de rotinas administrativas, padronização de tarefas e suporte operacional.</p>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Projetos em Python</h4>
+              <p class="text-slate-400">Ferramentas para otimização de processos, validação de dados e apoio ao monitoramento.</p>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Laboratórios de Redes</h4>
+              <p class="text-slate-400">Estudos práticos de switching, roteamento e segmentação para cenários corporativos.</p>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Estudos de Arquitetura & Attano Tech</h4>
+              <p class="text-slate-400">Documentações e protótipos técnicos orientados à estabilidade e organização da infraestrutura.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contatos" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
+          <div>
+            <h3 class="text-3xl md:text-4xl text-white font-bold mb-4">Vamos fortalecer sua infraestrutura?</h3>
+            <p class="text-lg text-slate-300 mb-8">Aberto a novos desafios, oportunidades em infraestrutura e projetos de automação.</p>
+            <div class="space-y-4 text-slate-300">
+              <p><strong>Email:</strong> contato@pedronetto.dev</p>
+              <p><strong>LinkedIn:</strong> /in/pedro-henrique-netto</p>
+              <p><strong>GitHub:</strong> /pedrohenriquenetto</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-700 bg-graphite/45 p-7 shadow-glow">
+            <form class="space-y-4">
+              <div>
+                <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Nome</label>
+                <input type="text" placeholder="Seu nome" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric" />
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Email</label>
+                <input type="email" placeholder="seu@email.com" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric" />
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Mensagem</label>
+                <textarea rows="4" placeholder="Como posso ajudar seu ambiente?" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric"></textarea>
+              </div>
+              <button type="submit" class="w-full soft-glow rounded-lg border border-electric/60 bg-electric/90 py-3 text-white font-semibold">Enviar Mensagem</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 border-t border-slate-800 text-center text-slate-400">
+      <p class="italic">Infraestrutura estável é resultado de disciplina técnica, monitoramento e melhoria contínua.</p>
+    </footer>
+  </body>
+</html>
