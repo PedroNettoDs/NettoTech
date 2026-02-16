@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pedro Netto | Guardian of Cloud Infrastructure</title>
+    <title>Pedro Henrique Netto | Analista de Infraestrutura</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,18 +16,16 @@
           extend: {
             colors: {
               deep: '#0b0f19',
-              electric: '#1e3a8a',
-              neon: '#3b82f6',
-              violet: '#4c1d95',
+              slateBlue: '#1e293b',
+              electric: '#2563eb',
               graphite: '#1f2937',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
             },
             boxShadow: {
-              glow: '0 0 0 1px rgba(59,130,246,.4), 0 0 24px rgba(59,130,246,.25)',
-              pulse: '0 0 30px rgba(59,130,246,.35)',
-            }
+              glow: '0 0 0 1px rgba(37,99,235,.42), 0 0 24px rgba(37,99,235,.22)',
+            },
           },
         },
       };
@@ -36,162 +34,114 @@
       html { scroll-behavior: smooth; }
       body {
         background:
-          linear-gradient(135deg, rgba(11,15,25,.95), rgba(31,41,55,.82) 45%, rgba(76,29,149,.45)),
-          radial-gradient(circle at 85% 10%, rgba(59,130,246,.16), transparent 45%),
-          radial-gradient(circle at 10% 80%, rgba(30,58,138,.18), transparent 38%),
+          linear-gradient(145deg, rgba(11,15,25,.96), rgba(30,41,59,.86) 44%, rgba(31,41,55,.88)),
+          radial-gradient(circle at 90% 14%, rgba(37,99,235,.15), transparent 45%),
+          radial-gradient(circle at 8% 70%, rgba(37,99,235,.1), transparent 40%),
           #0b0f19;
-        color: #e5e7eb;
-        position: relative;
+        color: #e2e8f0;
       }
       body::before {
         content: '';
         position: fixed;
         inset: 0;
         pointer-events: none;
-        opacity: .14;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+        opacity: .15;
+        background:
+          linear-gradient(transparent 97%, rgba(37,99,235,.16) 100%),
+          linear-gradient(90deg, transparent 97%, rgba(37,99,235,.14) 100%);
+        background-size: 36px 36px;
       }
       .glass {
-        background: rgba(11, 15, 25, 0.72);
-        border: 1px solid rgba(59, 130, 246, 0.2);
+        background: rgba(11, 15, 25, 0.75);
+        border-bottom: 1px solid rgba(37, 99, 235, 0.23);
         backdrop-filter: blur(12px);
       }
-      .neon-link {
-        position: relative;
-      }
+      .neon-link { position: relative; }
       .neon-link::after {
         content: '';
         position: absolute;
         left: 0;
-        bottom: -0.35rem;
+        bottom: -.35rem;
         width: 0;
         height: 2px;
-        background: linear-gradient(90deg, #3b82f6, #60a5fa);
-        transition: width .3s ease;
-        box-shadow: 0 0 12px rgba(59,130,246,.7);
+        transition: width .28s ease;
+        background: linear-gradient(90deg, #2563eb, #60a5fa);
+        box-shadow: 0 0 11px rgba(37,99,235,.65);
       }
       .neon-link:hover::after,
       .neon-link:focus-visible::after { width: 100%; }
-      .energy-pulse {
+      .soft-glow {
         transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       }
-      .energy-pulse:hover {
+      .soft-glow:hover {
         transform: translateY(-3px);
-        box-shadow: 0 0 0 1px rgba(59,130,246,.35), 0 0 24px rgba(59,130,246,.24);
-        border-color: rgba(59,130,246,.6);
+        border-color: rgba(37,99,235,.66);
+        box-shadow: 0 0 0 1px rgba(37,99,235,.38), 0 0 22px rgba(37,99,235,.22);
       }
-      .circuit {
-        position: absolute;
-        inset: 0;
-        border-radius: 1rem;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .circuit::before,
-      .circuit::after {
-        content: '';
-        position: absolute;
-        background: linear-gradient(90deg, transparent, rgba(59,130,246,.35), transparent);
-        height: 1px;
-        width: 100%;
-        animation: circuitFlow 5s linear infinite;
-      }
-      .circuit::after {
-        top: 65%;
-        animation-delay: -2s;
-      }
-      @keyframes circuitFlow {
-        0% { transform: translateX(-60%); }
-        100% { transform: translateX(60%); }
-      }
-      @keyframes badgeGlow {
-        0%, 100% { box-shadow: 0 0 0 rgba(59,130,246,0); }
-        50% { box-shadow: 0 0 20px rgba(59,130,246,.45); }
-      }
-      .badge-shine { animation: badgeGlow 2.6s ease-in-out infinite; }
       .timeline::before {
         content: '';
         position: absolute;
-        left: 1rem;
-        top: .5rem;
-        bottom: .5rem;
+        left: 0.95rem;
+        top: .55rem;
+        bottom: .55rem;
         width: 2px;
-        background: linear-gradient(#1e3a8a, #3b82f6, #4c1d95);
-      }
-      .submit-loading {
-        animation: submitPulse .8s ease infinite alternate;
-      }
-      @keyframes submitPulse {
-        from { box-shadow: 0 0 0 rgba(59,130,246,0); }
-        to { box-shadow: 0 0 18px rgba(59,130,246,.55); }
+        background: linear-gradient(#1e293b, #2563eb);
       }
     </style>
   </head>
-  <body class="font-sans antialiased text-slate-200">
+  <body class="font-sans antialiased">
     <header class="fixed inset-x-0 top-0 z-50 glass">
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg border border-neon/40 bg-graphite/50 flex items-center justify-center shadow-glow">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2L20 6V12C20 17 16.8 21.6 12 23C7.2 21.6 4 17 4 12V6L12 2Z" stroke="#3b82f6" stroke-width="1.5"/>
-              <path d="M7 13C9.6 10.8 14.2 10.8 17 13" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+          <div class="w-10 h-10 rounded-lg border border-electric/50 bg-graphite/60 flex items-center justify-center shadow-glow">
+            <span class="material-icons text-blue-300">shield</span>
           </div>
           <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Netto Protocol</p>
-            <p class="font-semibold text-white">Cloud Sentinel</p>
+            <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Pedro Netto</p>
+            <p class="text-white font-semibold">Infraestrutura & Automação</p>
           </div>
         </div>
-
-        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-          <a href="#sobre" class="neon-link hover:text-neon">Sobre</a>
-          <a href="#experiencia" class="neon-link hover:text-neon">Missões</a>
-          <a href="#certificados" class="neon-link hover:text-neon">Credenciais</a>
-          <a href="#documentacoes" class="neon-link hover:text-neon">Arquivos</a>
-          <a href="#contatos" class="neon-link hover:text-neon">Canal Seguro</a>
+        <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300 font-medium">
+          <a class="neon-link hover:text-blue-300" href="#sobre">Sobre</a>
+          <a class="neon-link hover:text-blue-300" href="#experiencia">Experiência</a>
+          <a class="neon-link hover:text-blue-300" href="#certificados">Certificados</a>
+          <a class="neon-link hover:text-blue-300" href="#documentacoes">Projetos</a>
+          <a class="neon-link hover:text-blue-300" href="#contatos">Contato</a>
         </nav>
       </div>
     </header>
 
     <main>
       <section id="sobre" class="pt-36 pb-24 relative overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-neon/20 blur-3xl"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
+        <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neon mb-5">
-              <span class="w-2 h-2 rounded-full bg-neon shadow-pulse"></span> Modo Operacional Ativo
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Henrique Netto</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Microsoft 365 | Python</h2>
+            <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">
+              Profissional de infraestrutura com foco em estabilidade, automação e governança de ambientes corporativos. Experiência com Active Directory, Microsoft 365, firewall, monitoramento e scripts para otimização de processos.
             </p>
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white mb-3">Pedro Netto</h1>
-            <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-neon via-blue-300 to-violet bg-clip-text text-transparent mb-6">
-              Guardian of Cloud Infrastructure
-            </h2>
-            <p class="text-lg text-slate-300 leading-relaxed max-w-xl mb-4">
-              Construindo ambientes resilientes nas sombras da complexidade.
-            </p>
-            <p class="text-slate-400 leading-relaxed max-w-2xl mb-9">
-              Especialista em arquiteturas escaláveis, automação invisível e infraestrutura que nunca dorme. Onde há instabilidade, há monitoramento. Onde há falha, há redundância.
-            </p>
+            <p class="text-slate-400 italic mb-9">Infraestrutura sólida não aparece. Ela simplesmente funciona.</p>
             <div class="flex flex-wrap gap-4">
-              <a href="#experiencia" class="energy-pulse border border-neon/50 bg-electric/80 hover:bg-electric text-white px-7 py-3 rounded-lg font-semibold">Ver Operações</a>
-              <a href="#contatos" class="energy-pulse border border-slate-600 hover:border-neon/60 bg-graphite/60 text-slate-100 px-7 py-3 rounded-lg font-semibold">Iniciar Contato</a>
+              <a href="#experiencia" class="soft-glow rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold">Ver Experiência</a>
+              <a href="#contatos" class="soft-glow rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 text-slate-100 px-7 py-3 font-semibold">Falar Comigo</a>
             </div>
           </div>
 
-          <aside class="relative rounded-2xl border border-neon/30 bg-deep/70 p-8 shadow-glow min-h-[320px]">
-            <div class="circuit"></div>
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-5">Painel Tático</p>
-            <div class="space-y-5 relative">
-              <div class="p-4 rounded-xl border border-slate-700 bg-graphite/40">
-                <p class="text-sm text-slate-400">Status de ambientes críticos</p>
-                <p class="text-2xl font-bold text-emerald-400">99.98% estável</p>
+          <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Painel Operacional</p>
+            <div class="space-y-4">
+              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
+                <p class="text-sm text-slate-400">Áreas de atuação</p>
+                <p class="text-xl text-white font-semibold">Infraestrutura, Suporte N1/N2 e Governança</p>
               </div>
-              <div class="p-4 rounded-xl border border-slate-700 bg-graphite/40">
-                <p class="text-sm text-slate-400">Pipeline de automação</p>
-                <p class="text-2xl font-bold text-neon">+180 execuções/dia</p>
+              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
+                <p class="text-sm text-slate-400">Foco técnico</p>
+                <p class="text-xl text-blue-300 font-semibold">Linux, AD, Microsoft 365, Firewall e Monitoramento</p>
               </div>
-              <div class="p-4 rounded-xl border border-slate-700 bg-graphite/40">
-                <p class="text-sm text-slate-400">Cobertura observável</p>
-                <p class="text-2xl font-bold text-blue-300">Monitoramento 24/7</p>
+              <div class="rounded-xl border border-slate-700 bg-graphite/45 p-4">
+                <p class="text-sm text-slate-400">Evolução</p>
+                <p class="text-xl text-slate-100 font-semibold">Automação com PowerShell e Python</p>
               </div>
             </div>
           </aside>
@@ -201,27 +151,44 @@
       <section id="experiencia" class="py-24 border-y border-slate-800/70 bg-deep/50">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-12">
-            <h3 class="text-3xl md:text-4xl font-bold text-white">Missões Executadas</h3>
-            <div class="h-px flex-1 bg-gradient-to-r from-neon/60 to-transparent"></div>
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Experiência Profissional</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
-          <div class="relative timeline pl-10 space-y-7">
-            <article class="energy-pulse rounded-xl border border-slate-700 bg-graphite/35 p-6">
-              <p class="text-neon font-semibold mb-2">Operação: Migração BlackSky</p>
-              <p class="text-slate-300"><strong>Objetivo:</strong> Transição completa para AWS com arquitetura resiliente multi-AZ.</p>
-              <p class="text-slate-300"><strong>Impacto:</strong> Redução de custos em 35% e aumento de confiabilidade operacional.</p>
-              <p class="text-slate-400"><strong>Arsenal utilizado:</strong> AWS, Terraform, Kubernetes, Python.</p>
+
+          <div class="relative timeline pl-10 space-y-6">
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura II</h4>
+              <p class="text-slate-300 mt-2">Responsável por gestão de incidentes, administração de Active Directory, Microsoft 365, políticas de firewall FortiGate e monitoramento de ambientes corporativos via Grafana e Elastic.</p>
+              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                <li>Administração de usuários, grupos e GPOs.</li>
+                <li>Gerenciamento de serviços Microsoft 365.</li>
+                <li>Acompanhamento de métricas e logs para prevenção de falhas.</li>
+              </ul>
             </article>
-            <article class="energy-pulse rounded-xl border border-slate-700 bg-graphite/35 p-6">
-              <p class="text-neon font-semibold mb-2">Operação: Sentinel Monitoring Grid</p>
-              <p class="text-slate-300"><strong>Objetivo:</strong> Implantar observabilidade unificada para workloads críticos.</p>
-              <p class="text-slate-300"><strong>Impacto:</strong> Diminuição de 48% no MTTR e alertas preditivos em produção.</p>
-              <p class="text-slate-400"><strong>Arsenal utilizado:</strong> Prometheus, Grafana, CloudWatch, Python.</p>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura</h4>
+              <p class="text-slate-300 mt-2">Atuação em rotinas de sustentação, suporte técnico de infraestrutura e automações para ganho de eficiência operacional.</p>
+              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                <li>Suporte N1/N2 em incidentes e requisições.</li>
+                <li>Execução de scripts PowerShell para padronização de tarefas.</li>
+                <li>Gestão de ativos e documentação técnica do ambiente.</li>
+              </ul>
             </article>
-            <article class="energy-pulse rounded-xl border border-slate-700 bg-graphite/35 p-6">
-              <p class="text-neon font-semibold mb-2">Operação: NightShift Automation</p>
-              <p class="text-slate-300"><strong>Objetivo:</strong> Automatizar rotinas de hardening e resposta a incidentes.</p>
-              <p class="text-slate-300"><strong>Impacto:</strong> Ganho de produtividade de 40% na equipe de operações.</p>
-              <p class="text-slate-400"><strong>Arsenal utilizado:</strong> Ansible, GitHub Actions, Lambda, Python.</p>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">KS2 – Analista de TI</h4>
+              <p class="text-slate-300 mt-2">Suporte e administração de serviços de TI com foco em disponibilidade dos recursos de rede, sistemas e usuários.</p>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Linx – Analista de Suporte</h4>
+              <p class="text-slate-300 mt-2">Atendimento técnico e resolução de chamados, contribuindo para continuidade operacional e qualidade do suporte.</p>
+            </article>
+
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold text-lg">Attano Tech – Fundador</h4>
+              <p class="text-slate-300 mt-2">Iniciativas em soluções técnicas e projetos de tecnologia, com foco em aprendizado prático, organização e entrega consistente.</p>
             </article>
           </div>
         </div>
@@ -230,53 +197,51 @@
       <section id="certificados" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-12">
-            <h3 class="text-3xl md:text-4xl font-bold text-white">Credenciais de Elite</h3>
-            <div class="h-px flex-1 bg-gradient-to-r from-neon/60 to-transparent"></div>
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Certificados</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="energy-pulse rounded-xl border border-slate-700 bg-graphite/45 p-6 text-center">
-              <span class="badge-shine inline-flex w-14 h-14 items-center justify-center rounded-full border border-neon/60 text-neon mb-4"><span class="material-icons">verified</span></span>
-              <p class="font-semibold text-white">AWS Solutions Architect</p>
-              <p class="text-sm text-slate-400">Amazon Web Services</p>
-            </div>
-            <div class="energy-pulse rounded-xl border border-slate-700 bg-graphite/45 p-6 text-center">
-              <span class="badge-shine inline-flex w-14 h-14 items-center justify-center rounded-full border border-neon/60 text-neon mb-4"><span class="material-icons">hub</span></span>
-              <p class="font-semibold text-white">Terraform Associate</p>
-              <p class="text-sm text-slate-400">HashiCorp</p>
-            </div>
-            <div class="energy-pulse rounded-xl border border-slate-700 bg-graphite/45 p-6 text-center">
-              <span class="badge-shine inline-flex w-14 h-14 items-center justify-center rounded-full border border-neon/60 text-neon mb-4"><span class="material-icons">terminal</span></span>
-              <p class="font-semibold text-white">Python Professional</p>
-              <p class="text-sm text-slate-400">Python Institute</p>
-            </div>
-            <div class="energy-pulse rounded-xl border border-slate-700 bg-graphite/45 p-6 text-center">
-              <span class="badge-shine inline-flex w-14 h-14 items-center justify-center rounded-full border border-neon/60 text-neon mb-4"><span class="material-icons">security</span></span>
-              <p class="font-semibold text-white">CKA - Kubernetes Admin</p>
-              <p class="text-sm text-slate-400">Cloud Native Foundation</p>
-            </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">CCNA Enterprise Networking</h4>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">CCNA Switching, Routing and Wireless Essentials</h4>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">Badge</span>
+              <h4 class="text-white font-semibold">Santander Tech+ BackEnd</h4>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="documentacoes" class="py-24 bg-deep/45 border-y border-slate-800/70">
+      <section id="documentacoes" class="py-24 border-y border-slate-800/70 bg-deep/45">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-4">
-            <h3 class="text-3xl md:text-4xl font-bold text-white">Arquivos Confidenciais</h3>
-            <div class="h-px flex-1 bg-gradient-to-r from-neon/60 to-transparent"></div>
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Projetos & Estudos Técnicos</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
-          <p class="text-slate-400 max-w-3xl mb-10">Protocolos técnicos e frameworks desenvolvidos para manter a estabilidade sob qualquer condição.</p>
+          <p class="text-slate-400 mb-10 max-w-3xl">Projetos práticos e materiais técnicos que reforçam evolução contínua em infraestrutura, automação e arquitetura de ambientes corporativos.</p>
+
           <div class="grid md:grid-cols-2 gap-6">
-            <article class="group energy-pulse rounded-xl border border-slate-700 bg-graphite/35 p-7 relative overflow-hidden">
-              <div class="absolute inset-y-0 left-0 w-1 bg-neon/0 group-hover:bg-neon transition-colors"></div>
-              <span class="material-icons text-neon/90 text-3xl mb-4">auto_awesome</span>
-              <h4 class="text-xl font-semibold text-white mb-2">Framework: Auto-Healer Python</h4>
-              <p class="text-slate-400">Mecanismo de auto-recuperação de EC2 orientado por telemetria e thresholds dinâmicos.</p>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Scripts PowerShell</h4>
+              <p class="text-slate-400">Automação de rotinas administrativas, padronização de tarefas e suporte operacional.</p>
             </article>
-            <article class="group energy-pulse rounded-xl border border-slate-700 bg-graphite/35 p-7 relative overflow-hidden">
-              <div class="absolute inset-y-0 left-0 w-1 bg-neon/0 group-hover:bg-neon transition-colors"></div>
-              <span class="material-icons text-neon/90 text-3xl mb-4">cloud_sync</span>
-              <h4 class="text-xl font-semibold text-white mb-2">Playbook: DR em Ambiente Multi-Cloud</h4>
-              <p class="text-slate-400">Guia de contingência com IaC para recuperação rápida, previsível e auditável.</p>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Projetos em Python</h4>
+              <p class="text-slate-400">Ferramentas para otimização de processos, validação de dados e apoio ao monitoramento.</p>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Laboratórios de Redes</h4>
+              <p class="text-slate-400">Estudos práticos de switching, roteamento e segmentação para cenários corporativos.</p>
+            </article>
+            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <h4 class="text-white font-semibold mb-2">Estudos de Arquitetura & Attano Tech</h4>
+              <p class="text-slate-400">Documentações e protótipos técnicos orientados à estabilidade e organização da infraestrutura.</p>
             </article>
           </div>
         </div>
@@ -285,32 +250,30 @@
       <section id="contatos" class="py-24">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
           <div>
-            <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Canal Seguro</h3>
-            <p class="text-lg text-slate-300 mb-8">Se seu ambiente precisa de estabilidade sob pressão, vamos conversar.</p>
+            <h3 class="text-3xl md:text-4xl text-white font-bold mb-4">Vamos fortalecer sua infraestrutura?</h3>
+            <p class="text-lg text-slate-300 mb-8">Aberto a novos desafios, oportunidades em infraestrutura e projetos de automação.</p>
             <div class="space-y-4 text-slate-300">
               <p><strong>Email:</strong> contato@pedronetto.dev</p>
-              <p><strong>LinkedIn:</strong> /in/pedronetto</p>
-              <p><strong>GitHub:</strong> /pedronetto-cloud</p>
+              <p><strong>LinkedIn:</strong> /in/pedro-henrique-netto</p>
+              <p><strong>GitHub:</strong> /pedrohenriquenetto</p>
             </div>
           </div>
 
-          <div class="rounded-2xl border border-slate-700 bg-graphite/40 p-7 shadow-glow">
-            <form id="secure-form" class="space-y-4">
+          <div class="rounded-2xl border border-slate-700 bg-graphite/45 p-7 shadow-glow">
+            <form class="space-y-4">
               <div>
                 <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Nome</label>
-                <input type="text" placeholder="Seu nome" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-neon focus:ring-neon" />
+                <input type="text" placeholder="Seu nome" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric" />
               </div>
               <div>
                 <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Email</label>
-                <input type="email" placeholder="seu@email.com" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-neon focus:ring-neon" />
+                <input type="email" placeholder="seu@email.com" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric" />
               </div>
               <div>
                 <label class="block text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Mensagem</label>
-                <textarea rows="4" placeholder="Detalhe seu desafio operacional" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-neon focus:ring-neon"></textarea>
+                <textarea rows="4" placeholder="Como posso ajudar seu ambiente?" class="w-full rounded-lg bg-deep/80 border-slate-700 text-slate-100 focus:border-electric focus:ring-electric"></textarea>
               </div>
-              <button id="submit-btn" type="submit" class="w-full energy-pulse rounded-lg border border-neon/60 bg-electric px-4 py-3 text-white font-semibold">
-                Ativar Canal Seguro
-              </button>
+              <button type="submit" class="w-full soft-glow rounded-lg border border-electric/60 bg-electric/90 py-3 text-white font-semibold">Enviar Mensagem</button>
             </form>
           </div>
         </div>
@@ -318,21 +281,7 @@
     </main>
 
     <footer class="py-10 border-t border-slate-800 text-center text-slate-400">
-      <p class="italic">“Alta disponibilidade não é coincidência. É estratégia.”</p>
+      <p class="italic">Infraestrutura estável é resultado de disciplina técnica, monitoramento e melhoria contínua.</p>
     </footer>
-
-    <script>
-      const form = document.getElementById('secure-form');
-      const submitButton = document.getElementById('submit-btn');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        submitButton.classList.add('submit-loading');
-        submitButton.textContent = 'Estabelecendo conexão...';
-        setTimeout(() => {
-          submitButton.classList.remove('submit-loading');
-          submitButton.textContent = 'Canal Ativo ✔';
-        }, 1100);
-      });
-    </script>
   </body>
 </html>
