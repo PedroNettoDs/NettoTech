@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cloud Portfolio | Analyst &amp; Python Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2424eb",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111121",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(17, 17, 33, 0.8);
+            border-bottom: 1px solid rgba(36, 36, 235, 0.2);
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(36, 36, 235, 0.15) 0%, rgba(17, 17, 33, 0) 70%);
+        }
+        .card-hover:hover {
+            border-color: rgba(36, 36, 235, 0.5);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-sm">cloud</span>
+</div>
+<span class="font-bold text-xl tracking-tight dark:text-white uppercase">Cloud<span class="text-primary">Ops</span></span>
+</div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#sobre">Sobre</a>
+<a class="hover:text-primary transition-colors" href="#experiencia">Experiência</a>
+<a class="hover:text-primary transition-colors" href="#certificados">Certificados</a>
+<a class="hover:text-primary transition-colors" href="#documentacoes">Documentações</a>
+<a class="hover:text-primary transition-colors" href="#contatos">Contatos</a>
+</nav>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2">
+<span class="material-icons text-sm">download</span>
+                Baixar CV
+            </button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 overflow-hidden hero-glow" id="sobre">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-6 uppercase tracking-wider">
+<span class="flex h-2 w-2 rounded-full bg-primary"></span>
+                        Disponível para novos projetos
+                    </div>
+<h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
+                        Pedro <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Netto</span>
+</h1>
+<p class="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-lg leading-relaxed">
+                        Analista de Infraestrutura Cloud | DevOps | Python. Especialista em orquestração de ambientes escaláveis e automação de infraestrutura como código.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-white px-8 py-4 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(36,36,235,0.4)] transition-all" href="#experiencia">
+                            Ver experiência
+                        </a>
+<a class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white px-8 py-4 rounded-lg font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" href="#contatos">
+                            Contato
+                        </a>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/30 rounded-full blur-3xl"></div>
+<img alt="Profile Photo" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary shadow-2xl" data-alt="Professional circular portrait of a smiling tech professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6oKWW6wZTdUv4MLDo7lrRJR_42fLqKdThUOAH1Omq1GI61MUq0pVF7XYYyEMuhiBzu3Jhya5m5Ys50grOuZ4QpF_MhLcpe5hst_0jgTSTSHopMMmRFQtWDRcic3w7xAIJxVC-jocPGhGJ8W7AQ2lH-5zQtsNKcWkpeSNmzg8iIJNRQivER63DkyqUQfnjwyTYLwFJIYvOy3v8oH1CfGRn0FFSa9vvkh6WYV8vZZ2AYCaRluRCU5ibmQFVKBeqmIPCMcvP2SFY_w"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-24 bg-background-light/50 dark:bg-background-dark/50" id="experiencia">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="text-3xl font-bold dark:text-white">Experiência Profissional</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="grid gap-8">
+<!-- Exp Item 1 -->
+<div class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 card-hover">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-xl font-bold dark:text-white">Cloud Infrastructure Analyst Senior</h3>
+<p class="text-primary font-medium">TechNova Systems</p>
+</div>
+<span class="text-sm font-medium px-4 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Jan 2021 — Presente</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mb-6 max-w-3xl">
+                            Liderança na migração de on-premise para nuvem AWS. Implementação de pipelines CI/CD resilientes e redução de custos operacionais em 35% através de FinOps e automação com Python.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">AWS</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Terraform</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Kubernetes</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Python</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Docker</span>
+</div>
+</div>
+<!-- Exp Item 2 -->
+<div class="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 card-hover">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-xl font-bold dark:text-white">DevOps Engineer</h3>
+<p class="text-primary font-medium">DataStream Corp</p>
+</div>
+<span class="text-sm font-medium px-4 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Mar 2018 — Dez 2020</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mb-6 max-w-3xl">
+                            Gerenciamento de clusters Azure Kubernetes Service (AKS). Automação de provisionamento de banco de dados e monitoramento em tempo real com Grafana e Prometheus.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Azure</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Ansible</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Jenkins</span>
+<span class="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold">Prometheus</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certificates Section -->
+<section class="py-24" id="certificados">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="text-3xl font-bold dark:text-white">Certificações Profissionais</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Cert 1 -->
+<div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-4">
+<span class="material-icons text-orange-500 text-4xl">cloud_done</span>
+</div>
+<h4 class="font-bold mb-1 dark:text-white">AWS Solutions Architect</h4>
+<p class="text-xs text-slate-500 mb-4">Amazon Web Services • 2023</p>
+<a class="mt-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                            Ver credencial <span class="material-icons text-xs">open_in_new</span>
+</a>
+</div>
+<!-- Cert 2 -->
+<div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-4">
+<span class="material-icons text-blue-500 text-4xl">verified_user</span>
+</div>
+<h4 class="font-bold mb-1 dark:text-white">Azure Fundamentals</h4>
+<p class="text-xs text-slate-500 mb-4">Microsoft • 2022</p>
+<a class="mt-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                            Ver credencial <span class="material-icons text-xs">open_in_new</span>
+</a>
+</div>
+<!-- Cert 3 -->
+<div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-4">
+<span class="material-icons text-purple-500 text-4xl">settings_input_component</span>
+</div>
+<h4 class="font-bold mb-1 dark:text-white">Terraform Associate</h4>
+<p class="text-xs text-slate-500 mb-4">HashiCorp • 2022</p>
+<a class="mt-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                            Ver credencial <span class="material-icons text-xs">open_in_new</span>
+</a>
+</div>
+<!-- Cert 4 -->
+<div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm mb-4">
+<span class="material-icons text-green-500 text-4xl">terminal</span>
+</div>
+<h4 class="font-bold mb-1 dark:text-white">Python Professional</h4>
+<p class="text-xs text-slate-500 mb-4">Python Institute • 2021</p>
+<a class="mt-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                            Ver credencial <span class="material-icons text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Documentation Section -->
+<section class="py-24 bg-background-light/50 dark:bg-background-dark/50" id="documentacoes">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="text-3xl font-bold dark:text-white">Documentações &amp; Scripts</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Doc 1 -->
+<div class="group bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all">
+<div class="flex justify-between mb-4">
+<span class="material-icons text-3xl text-primary">description</span>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-icons">code</span>
+</a>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-primary transition-colors">AWS Lambda Optimization</h4>
+<p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Guia técnico sobre otimização de Cold Starts em funções Lambda e orquestração via Terraform para pipelines de dados em tempo real.
+                        </p>
+<div class="flex items-center gap-4">
+<span class="text-xs text-slate-500 font-mono">github.com/alex-cloud/lambda-opt</span>
+<div class="flex-1 border-t border-slate-100 dark:border-slate-800"></div>
+</div>
+</div>
+<!-- Doc 2 -->
+<div class="group bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all">
+<div class="flex justify-between mb-4">
+<span class="material-icons text-3xl text-primary">auto_fix_high</span>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-icons">code</span>
+</a>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-primary transition-colors">Python Auto-Healer</h4>
+<p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Framework em Python desenvolvido para monitoramento e auto-recuperação de instâncias EC2 com degradação de performance detectada pelo CloudWatch.
+                        </p>
+<div class="flex items-center gap-4">
+<span class="text-xs text-slate-500 font-mono">github.com/alex-cloud/py-healer</span>
+<div class="flex-1 border-t border-slate-100 dark:border-slate-800"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24" id="contatos">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+<div>
+<h2 class="text-4xl font-bold dark:text-white mb-6">Vamos conversar sobre seu projeto</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                        Estou sempre interessado em ouvir sobre novos desafios em arquitetura cloud, migrações complexas e automação de processos.
+                    </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons">alternate_email</span>
+</div>
+<div>
+<p class="text-sm text-slate-500">Email</p>
+<p class="font-bold dark:text-white">contato@alexcloud.dev</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons">share</span>
+</div>
+<div>
+<p class="text-sm text-slate-500">Redes Sociais</p>
+<div class="flex gap-4 mt-1">
+<a class="hover:text-primary transition-colors font-bold uppercase text-xs" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-colors font-bold uppercase text-xs" href="#">GitHub</a>
+<a class="hover:text-primary transition-colors font-bold uppercase text-xs" href="#">Medium</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+<form class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Nome</label>
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="Seu nome" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Email</label>
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="seu@email.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Mensagem</label>
+<textarea class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="Como posso ajudar?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg transition-all" type="submit">
+                            Enviar Mensagem
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+<p class="text-slate-500 italic mb-8 max-w-lg">
+                "Infrastructure as Code: Building the future, one commit at a time. High availability is not just a requirement, it's a culture."
+            </p>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-[10px]">cloud</span>
+</div>
+<span class="font-bold text-sm tracking-tight dark:text-white uppercase">Cloud<span class="text-primary">Ops</span></span>
+</div>
+<p class="text-xs text-slate-500">
+                © 2024 Alexandre Silva Pereira. Todos os direitos reservados. 
+                <span class="mx-2">|</span> 
+                Designed for Cloud Infrastructure Professionals.
+            </p>
+</div>
+</footer>
+</body></html>
