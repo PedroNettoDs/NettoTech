@@ -931,13 +931,15 @@
 		            issuer: 'Amazon Web Services Training and Certification',
 		            issued: '2024-10-15',
 		            kind: 'Training Badge',
+		            imageUrl: 'https://images.credly.com/size/340x340/images/7cf036b0-c609-4378-a7be-9969e1dea7ab/blob',
+		            verifyUrl: 'https://www.credly.com/badges/eaa33ec3-74e7-4784-9e60-d1fd389f5b7f',
 		          },
-		          { id: 2, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado' },
-		          { id: 3, title: 'CCNA: Switching, Routing, and Wireless Essentials', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado' },
-		          { id: 4, title: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', issued: '2023-12-22', kind: 'Certificado' },
-		          { id: 5, title: 'Introduction to Data Science', issuer: 'Cisco', issued: '2024-08-13', kind: 'Certificado' },
-		          { id: 6, title: 'Computer Network', issuer: 'Huawei', issued: '2024-10-14', kind: 'Certificado' },
-		          { id: 7, title: 'IT Essentials', issuer: 'Cisco', issued: '2024-12-04', kind: 'Certificado' },
+		          { id: 2, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/70d71df5-f3dc-4380-9b9d-f22513a70417/CCNAITN__1_.png', verifyUrl: 'https://www.credly.com/badges/3dee7804-554c-4868-ba70-3f0d0a5bfea8' },
+		          { id: 3, title: 'CCNA: Switching, Routing, and Wireless Essentials', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png', verifyUrl: 'https://www.credly.com/badges/a6d10622-e238-4ddc-a47a-ecc6c7c61935' },
+		          { id: 4, title: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', issued: '2023-12-22', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/0a6d331e-8abf-4272-a949-33f754569a76/CCNAENSA__1_.png', verifyUrl: 'https://www.credly.com/badges/883eb270-a7eb-44cb-a0f3-19a1f8cfe019' },
+		          { id: 5, title: 'Introduction to Data Science', issuer: 'Cisco', issued: '2024-08-13', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/image.png', verifyUrl: 'https://www.credly.com/badges/e2078c75-b49e-47db-aa06-f61b25c57006' },
+		          { id: 6, title: 'Computer Network', issuer: 'Huawei', issued: '2024-10-14', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f0486748-58d5-468d-ab92-b7e85bed0517/image.png', verifyUrl: 'https://www.credly.com/badges/ac3bff27-909e-4aa5-8c35-cb0b2fa37a23' },
+		          { id: 7, title: 'IT Essentials', issuer: 'Cisco', issued: '2024-12-04', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/04e8034c-81f5-4f7f-ab23-e8b428c31ce9/ITE.png', verifyUrl: 'https://www.credly.com/badges/866df61a-2ab3-471e-80d3-f864148e6eab' },
 		        ];
 
 		        const formatIssued = (isoDate) => {
@@ -950,10 +952,29 @@
 		          .map(
 		            (c) => `
 		              <article class="snap-center shrink-0 w-[78vw] sm:w-[360px] lg:w-[300px] soft-glow rounded-xl border border-slate-700 bg-graphite/45 p-6">
+		                <div class="flex items-start gap-4">
+		                  <div class="shrink-0 w-14 h-14 rounded-xl overflow-hidden border border-slate-800 bg-deep/60">
+		                    ${
+		                      c.imageUrl
+		                        ? `<img src="${c.imageUrl}" alt="Imagem do certificado" class="w-full h-full object-cover" loading="lazy" decoding="async" />`
+		                        : `<div class="w-full h-full grid place-items-center text-slate-400"><span class="material-icons">verified</span></div>`
+		                    }
+		                  </div>
+		                  <div class="min-w-0 flex-1">
 		                <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">${c.kind}</span>
 		                <h4 class="text-white font-semibold leading-snug">${c.title}</h4>
 		                <p class="mt-2 text-sm text-slate-300">${c.issuer}</p>
 		                <p class="mt-1 text-xs text-slate-500">Emitido em ${formatIssued(c.issued)}</p>
+		                ${
+		                  c.verifyUrl
+		                    ? `<a href="${c.verifyUrl}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 text-sm text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">
+		                        <span class="material-icons text-[18px]">open_in_new</span>
+		                        Verificar certificado
+		                      </a>`
+		                    : `<p class="mt-3 text-xs text-slate-500">Adicione um link de verificação para comprovar.</p>`
+		                }
+		                  </div>
+		                </div>
 		              </article>
 		            `
 		          )
