@@ -78,14 +78,51 @@
         border-color: rgba(37,99,235,.66);
         box-shadow: 0 0 0 1px rgba(37,99,235,.38), 0 0 22px rgba(37,99,235,.22);
       }
+      .timeline {
+        --timeline-x: 0.95rem;
+        --timeline-pad: 2.5rem; /* matches `pl-10` */
+        --stop-size: 12px;
+      }
       .timeline::before {
         content: '';
         position: absolute;
-        left: 0.95rem;
+        left: var(--timeline-x);
         top: .55rem;
         bottom: .55rem;
         width: 2px;
         background: linear-gradient(#1e293b, #2563eb);
+      }
+      .rocket-timeline::before {
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(96,165,250,.95) 0 14px,
+          rgba(96,165,250,.08) 14px 24px
+        );
+        box-shadow: 0 0 0 1px rgba(37,99,235,.25), 0 0 18px rgba(37,99,235,.25);
+      }
+      .rocket-timeline::after {
+        content: 'rocket_launch';
+        font-family: 'Material Icons';
+        position: absolute;
+        left: 0.25rem;
+        top: 0.05rem;
+        font-size: 26px;
+        color: rgba(147,197,253,.95);
+        text-shadow: 0 0 12px rgba(37,99,235,.55);
+        transform: rotate(-10deg);
+      }
+      .rocket-timeline > article { position: relative; }
+      .rocket-timeline > article::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--timeline-x) - var(--timeline-pad) - (var(--stop-size) / 2));
+        top: 1.35rem;
+        width: var(--stop-size);
+        height: var(--stop-size);
+        border-radius: 9999px;
+        background: rgba(11,15,25,.95);
+        border: 2px solid rgba(37,99,235,.85);
+        box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 0 18px rgba(37,99,235,.28);
       }
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -98,6 +135,19 @@
       }
       @media (prefers-reduced-motion: reduce) {
         .floaty { animation: none; }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity .55s ease, transform .55s ease;
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
       }
     </style>
   </head>
@@ -124,7 +174,7 @@
     </header>
 
     <main>
-      <section id="sobre" class="pt-36 pb-24 relative overflow-hidden">
+      <section id="sobre" data-reveal class="pt-36 pb-24 relative overflow-hidden">
         <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
           <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -148,53 +198,158 @@
           </div>
 	      </section>
 
-      <section id="experiencia" class="py-24 border-y border-slate-800/70 bg-deep/50">
+	      <section id="experiencia" data-reveal data-reveal-stagger="reverse" class="py-24 border-y border-slate-800/70 bg-deep/50">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-12">
             <h3 class="text-3xl md:text-4xl text-white font-bold">Experiência Profissional</h3>
             <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
 
-          <div class="relative timeline pl-10 space-y-6">
-            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura II</h4>
-              <p class="text-slate-300 mt-2">Responsável por gestão de incidentes, administração de Active Directory, Microsoft 365, políticas de firewall FortiGate e monitoramento de ambientes corporativos via Grafana e Elastic.</p>
-              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                <li>Administração de usuários, grupos e GPOs.</li>
-                <li>Gerenciamento de serviços Microsoft 365.</li>
-                <li>Acompanhamento de métricas e logs para prevenção de falhas.</li>
-              </ul>
-            </article>
-
-            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <h4 class="text-white font-semibold text-lg">Paschoalotto – Analista de Infraestrutura</h4>
-              <p class="text-slate-300 mt-2">Atuação em rotinas de sustentação, suporte técnico de infraestrutura e automações para ganho de eficiência operacional.</p>
-              <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                <li>Suporte N1/N2 em incidentes e requisições.</li>
-                <li>Execução de scripts PowerShell para padronização de tarefas.</li>
-                <li>Gestão de ativos e documentação técnica do ambiente.</li>
-              </ul>
-            </article>
-
-            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <h4 class="text-white font-semibold text-lg">KS2 – Analista de TI</h4>
-              <p class="text-slate-300 mt-2">Suporte e administração de serviços de TI com foco em disponibilidade dos recursos de rede, sistemas e usuários.</p>
-            </article>
-
-            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <h4 class="text-white font-semibold text-lg">Linx – Analista de Suporte</h4>
-              <p class="text-slate-300 mt-2">Atendimento técnico e resolução de chamados, contribuindo para continuidade operacional e qualidade do suporte.</p>
-            </article>
-
-            <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <h4 class="text-white font-semibold text-lg">Attano Tech – Fundador</h4>
-              <p class="text-slate-300 mt-2">Iniciativas em soluções técnicas e projetos de tecnologia, com foco em aprendizado prático, organização e entrega consistente.</p>
-            </article>
-          </div>
+	          <div class="relative timeline rocket-timeline pl-10 space-y-6">
+		            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+	              <div class="flex flex-col sm:flex-row gap-4">
+		                <div class="shrink-0 w-full sm:w-14">
+	                  <div class="rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+	                    <img
+	                      src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20width%3D'360'%20height%3D'240'%20viewBox%3D'0%200%20360%20240'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20x2%3D'1'%20y1%3D'0'%20y2%3D'1'%3E%3Cstop%20stop-color%3D'%230b0f19'%20offset%3D'0'/%3E%3Cstop%20stop-color%3D'%231e293b'%20offset%3D'0.55'/%3E%3Cstop%20stop-color%3D'%232563eb'%20offset%3D'1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D'360'%20height%3D'240'%20fill%3D'url(%23g)'/%3E%3Ccircle%20cx%3D'290'%20cy%3D'70'%20r%3D'58'%20fill%3D'rgba(96%2C165%2C250%2C0.22)'/%3E%3Cpath%20d%3D'M30%20185h300'%20stroke%3D'rgba(226%2C232%2C240%2C0.18)'%20stroke-width%3D'10'%20stroke-linecap%3D'round'/%3E%3Ctext%20x%3D'22'%20y%3D'78'%20fill%3D'%23e2e8f0'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'22'%20font-weight%3D'700'%3EExperi%C3%AAncia%3C/text%3E%3Ctext%20x%3D'22'%20y%3D'110'%20fill%3D'%2394a3b8'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'14'%3EImagem%20placeholder%3C/text%3E%3C/svg%3E"
+	                      alt="Imagem da experiência"
+		                      class="w-full h-24 sm:h-14 object-cover"
+	                      loading="lazy"
+	                      decoding="async"
+	                    />
+	                  </div>
+	                </div>
+		                <div class="min-w-0 flex-1">
+		                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+		                    <div class="min-w-0">
+		                      <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura II</h4>
+		                      <p class="text-sm text-slate-300">Paschoalotto • Tempo integral</p>
+		                      <p class="text-xs text-slate-500">2024 — Atual • Bauru, SP • Híbrido</p>
+		                    </div>
+		                  </div>
+		                  <p class="text-slate-300 mt-2">Responsável por gestão de incidentes, administração de Active Directory, Microsoft 365, políticas de firewall FortiGate e monitoramento de ambientes corporativos via Grafana e Elastic.</p>
+		                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+		                    <li>Administração de usuários, grupos e GPOs.</li>
+		                    <li>Gerenciamento de serviços Microsoft 365.</li>
+		                    <li>Acompanhamento de métricas e logs para prevenção de falhas.</li>
+		                  </ul>
+		                </div>
+	              </div>
+	            </article>
+	
+		            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+	              <div class="flex flex-col sm:flex-row gap-4">
+		                <div class="shrink-0 w-full sm:w-14">
+	                  <div class="rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+	                    <img
+	                      src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20width%3D'360'%20height%3D'240'%20viewBox%3D'0%200%20360%20240'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20x2%3D'1'%20y1%3D'1'%20y2%3D'0'%3E%3Cstop%20stop-color%3D'%230b0f19'%20offset%3D'0'/%3E%3Cstop%20stop-color%3D'%232563eb'%20offset%3D'0.6'/%3E%3Cstop%20stop-color%3D'%2360a5fa'%20offset%3D'1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D'360'%20height%3D'240'%20fill%3D'url(%23g)'/%3E%3Ccircle%20cx%3D'92'%20cy%3D'74'%20r%3D'56'%20fill%3D'rgba(37%2C99%2C235%2C0.22)'/%3E%3Cpath%20d%3D'M30%20185h300'%20stroke%3D'rgba(226%2C232%2C240%2C0.18)'%20stroke-width%3D'10'%20stroke-linecap%3D'round'/%3E%3Ctext%20x%3D'22'%20y%3D'78'%20fill%3D'%23e2e8f0'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'22'%20font-weight%3D'700'%3EExperi%C3%AAncia%3C/text%3E%3Ctext%20x%3D'22'%20y%3D'110'%20fill%3D'%2394a3b8'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'14'%3EImagem%20placeholder%3C/text%3E%3C/svg%3E"
+	                      alt="Imagem da experiência"
+		                      class="w-full h-24 sm:h-14 object-cover"
+	                      loading="lazy"
+	                      decoding="async"
+	                    />
+	                  </div>
+	                </div>
+		                <div class="min-w-0 flex-1">
+		                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+		                    <div class="min-w-0">
+		                      <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura</h4>
+		                      <p class="text-sm text-slate-300">Paschoalotto • Tempo integral</p>
+		                      <p class="text-xs text-slate-500">2022 — 2024 • Bauru, SP</p>
+		                    </div>
+		                  </div>
+		                  <p class="text-slate-300 mt-2">Atuação em rotinas de sustentação, suporte técnico de infraestrutura e automações para ganho de eficiência operacional.</p>
+		                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+		                    <li>Suporte N1/N2 em incidentes e requisições.</li>
+		                    <li>Execução de scripts PowerShell para padronização de tarefas.</li>
+		                    <li>Gestão de ativos e documentação técnica do ambiente.</li>
+		                  </ul>
+		                </div>
+	              </div>
+	            </article>
+	
+		            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+	              <div class="flex flex-col sm:flex-row gap-4">
+		                <div class="shrink-0 w-full sm:w-14">
+	                  <div class="rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+	                    <img
+	                      src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20width%3D'360'%20height%3D'240'%20viewBox%3D'0%200%20360%20240'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20x2%3D'1'%20y1%3D'0'%20y2%3D'1'%3E%3Cstop%20stop-color%3D'%231f2937'%20offset%3D'0'/%3E%3Cstop%20stop-color%3D'%231e293b'%20offset%3D'0.55'/%3E%3Cstop%20stop-color%3D'%232563eb'%20offset%3D'1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D'360'%20height%3D'240'%20fill%3D'url(%23g)'/%3E%3Ccircle%20cx%3D'285'%20cy%3D'165'%20r%3D'64'%20fill%3D'rgba(96%2C165%2C250%2C0.18)'/%3E%3Ctext%20x%3D'22'%20y%3D'78'%20fill%3D'%23e2e8f0'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'22'%20font-weight%3D'700'%3EExperi%C3%AAncia%3C/text%3E%3Ctext%20x%3D'22'%20y%3D'110'%20fill%3D'%2394a3b8'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'14'%3EImagem%20placeholder%3C/text%3E%3C/svg%3E"
+	                      alt="Imagem da experiência"
+		                      class="w-full h-24 sm:h-14 object-cover"
+	                      loading="lazy"
+	                      decoding="async"
+	                    />
+	                  </div>
+	                </div>
+		                <div class="min-w-0 flex-1">
+		                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+		                    <div class="min-w-0">
+		                      <h4 class="text-white font-semibold text-lg leading-snug">Analista de TI</h4>
+		                      <p class="text-sm text-slate-300">KS2 • Tempo integral</p>
+		                      <p class="text-xs text-slate-500">2021 — 2022</p>
+		                    </div>
+		                  </div>
+		                  <p class="text-slate-300 mt-2">Suporte e administração de serviços de TI com foco em disponibilidade dos recursos de rede, sistemas e usuários.</p>
+		                </div>
+	              </div>
+	            </article>
+	
+		            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+	              <div class="flex flex-col sm:flex-row gap-4">
+		                <div class="shrink-0 w-full sm:w-14">
+	                  <div class="rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+	                    <img
+	                      src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20width%3D'360'%20height%3D'240'%20viewBox%3D'0%200%20360%20240'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20x2%3D'1'%20y1%3D'1'%20y2%3D'0'%3E%3Cstop%20stop-color%3D'%230b0f19'%20offset%3D'0'/%3E%3Cstop%20stop-color%3D'%231e293b'%20offset%3D'0.5'/%3E%3Cstop%20stop-color%3D'%2360a5fa'%20offset%3D'1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D'360'%20height%3D'240'%20fill%3D'url(%23g)'/%3E%3Cpath%20d%3D'M60%20170c40-70%20110-110%20200-110'%20stroke%3D'rgba(226%2C232%2C240%2C0.18)'%20stroke-width%3D'10'%20stroke-linecap%3D'round'/%3E%3Ctext%20x%3D'22'%20y%3D'78'%20fill%3D'%23e2e8f0'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'22'%20font-weight%3D'700'%3EExperi%C3%AAncia%3C/text%3E%3Ctext%20x%3D'22'%20y%3D'110'%20fill%3D'%2394a3b8'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'14'%3EImagem%20placeholder%3C/text%3E%3C/svg%3E"
+	                      alt="Imagem da experiência"
+		                      class="w-full h-24 sm:h-14 object-cover"
+	                      loading="lazy"
+	                      decoding="async"
+	                    />
+	                  </div>
+	                </div>
+		                <div class="min-w-0 flex-1">
+		                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+		                    <div class="min-w-0">
+		                      <h4 class="text-white font-semibold text-lg leading-snug">Analista de Suporte</h4>
+		                      <p class="text-sm text-slate-300">Linx • Tempo integral</p>
+		                      <p class="text-xs text-slate-500">2020 — 2021</p>
+		                    </div>
+		                  </div>
+		                  <p class="text-slate-300 mt-2">Atendimento técnico e resolução de chamados, contribuindo para continuidade operacional e qualidade do suporte.</p>
+		                </div>
+	              </div>
+	            </article>
+	
+		            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+	              <div class="flex flex-col sm:flex-row gap-4">
+		                <div class="shrink-0 w-full sm:w-14">
+	                  <div class="rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+	                    <img
+	                      src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20width%3D'360'%20height%3D'240'%20viewBox%3D'0%200%20360%20240'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20x2%3D'1'%20y1%3D'0'%20y2%3D'1'%3E%3Cstop%20stop-color%3D'%230b0f19'%20offset%3D'0'/%3E%3Cstop%20stop-color%3D'%232563eb'%20offset%3D'0.6'/%3E%3Cstop%20stop-color%3D'%2310b981'%20offset%3D'1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D'360'%20height%3D'240'%20fill%3D'url(%23g)'/%3E%3Ccircle%20cx%3D'120'%20cy%3D'150'%20r%3D'72'%20fill%3D'rgba(16%2C185%2C129%2C0.18)'/%3E%3Ctext%20x%3D'22'%20y%3D'78'%20fill%3D'%23e2e8f0'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'22'%20font-weight%3D'700'%3EExperi%C3%AAncia%3C/text%3E%3Ctext%20x%3D'22'%20y%3D'110'%20fill%3D'%2394a3b8'%20font-family%3D'Inter%2C%20Arial'%20font-size%3D'14'%3EImagem%20placeholder%3C/text%3E%3C/svg%3E"
+	                      alt="Imagem da experiência"
+		                      class="w-full h-24 sm:h-14 object-cover"
+	                      loading="lazy"
+	                      decoding="async"
+	                    />
+	                  </div>
+	                </div>
+		                <div class="min-w-0 flex-1">
+		                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+		                    <div class="min-w-0">
+		                      <h4 class="text-white font-semibold text-lg leading-snug">Fundador</h4>
+		                      <p class="text-sm text-slate-300">Attano Tech • Projeto pessoal</p>
+		                      <p class="text-xs text-slate-500">2019 — Atual</p>
+		                    </div>
+		                  </div>
+		                  <p class="text-slate-300 mt-2">Iniciativas em soluções técnicas e projetos de tecnologia, com foco em aprendizado prático, organização e entrega consistente.</p>
+		                </div>
+	              </div>
+	            </article>
+	          </div>
         </div>
       </section>
 
-      <section id="certificados" class="py-24">
+      <section id="certificados" data-reveal class="py-24">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-12">
             <h3 class="text-3xl md:text-4xl text-white font-bold">Certificados</h3>
@@ -218,7 +373,7 @@
         </div>
       </section>
 
-      <section id="documentacoes" class="py-24 border-y border-slate-800/70 bg-deep/45">
+      <section id="documentacoes" data-reveal class="py-24 border-y border-slate-800/70 bg-deep/45">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-4">
             <h3 class="text-3xl md:text-4xl text-white font-bold">Projetos & Estudos Técnicos</h3>
@@ -293,7 +448,7 @@
         </section>
 
 
-      <section id="contatos" class="py-24">
+      <section id="contatos" data-reveal class="py-24">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
           <div>
             <h3 class="text-3xl md:text-4xl text-white font-bold mb-4">Vamos fortalecer sua infraestrutura?</h3>
@@ -541,6 +696,72 @@
 	          prevBtn?.addEventListener('pointerdown', stop);
 	          nextBtn?.addEventListener('pointerdown', stop);
 	        }
+	      })();
+
+	      (() => {
+	        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+	        if (prefersReducedMotion) return;
+
+	        const revealTargets = Array.from(document.querySelectorAll('[data-reveal]'));
+	        if (!revealTargets.length) return;
+
+	        const timersByEl = new WeakMap();
+	        const clearTimers = (el) => {
+	          const timers = timersByEl.get(el);
+	          if (!timers) return;
+	          timers.forEach((t) => window.clearTimeout(t));
+	          timersByEl.delete(el);
+	        };
+
+	        const resetGroup = (groupEl) => {
+	          clearTimers(groupEl);
+	          groupEl.classList.remove('is-visible');
+	          const items = groupEl.querySelectorAll('[data-reveal-item]');
+	          items.forEach((item) => item.classList.remove('is-visible'));
+	        };
+
+	        const playGroup = (groupEl) => {
+	          groupEl.classList.add('reveal', 'is-visible');
+
+	          const stagger = groupEl.getAttribute('data-reveal-stagger');
+	          if (!stagger) return;
+
+	          clearTimers(groupEl);
+
+	          const items = Array.from(groupEl.querySelectorAll('[data-reveal-item]'));
+	          if (!items.length) return;
+
+	          items.forEach((item) => item.classList.add('reveal'));
+	          items.forEach((item) => item.classList.remove('is-visible'));
+
+	          const ordered = stagger === 'reverse' ? items.slice().reverse() : items;
+	          const timers = ordered.map((item, idx) =>
+	            window.setTimeout(() => item.classList.add('is-visible'), idx * 140)
+	          );
+	          timersByEl.set(groupEl, timers);
+	        };
+
+	        revealTargets.forEach((el) => el.classList.add('reveal'));
+
+	        const observer = new IntersectionObserver(
+	          (entries) => {
+	            entries.forEach((entry) => {
+	              const el = entry.target;
+
+	              if (entry.isIntersecting) {
+	                playGroup(el);
+	                return;
+	              }
+
+	              const vh = window.innerHeight || 0;
+	              const fullyOut = entry.boundingClientRect.bottom < 0 || entry.boundingClientRect.top > vh;
+	              if (fullyOut) resetGroup(el);
+	            });
+	          },
+	          { threshold: 0.18 }
+	        );
+
+	        revealTargets.forEach((el) => observer.observe(el));
 	      })();
 	    </script>
   </body>
