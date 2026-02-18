@@ -156,7 +156,7 @@
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-lg border border-electric/50 bg-graphite/60 flex items-center justify-center shadow-glow">
-            <span class="material-icons text-blue-300">shield</span>
+            <span class="material-icons text-blue-300">cloud</span>
           </div>
           <div>
             <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Pedro Netto</p>
@@ -170,19 +170,28 @@
 	          <a class="neon-link hover:text-blue-300" href="#educacao">Educação</a>
 	          <!-- <a class="neon-link hover:text-blue-300" href="#documentacoes">Projetos</a> -->
 	          <a class="neon-link hover:text-blue-300" href="#contatos">Contato</a>
-	          <a
-	            href="https://wiki.nettotech.com.br/"
-	            target="_blank"
-	            rel="noopener noreferrer"
-	            class="soft-glow inline-flex items-center gap-2 rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-4 py-2 font-semibold"
-	            aria-label="Abrir Wiki em nova aba"
-	          >
-	            <span class="material-icons text-[18px]">auto_stories</span>
-	            Wiki
-	          </a>
-	        </nav>
-      </div>
-    </header>
+		          <a
+		            href="https://wiki.nettotech.com.br/"
+		            target="_blank"
+		            rel="noopener noreferrer"
+		            class="soft-glow inline-flex items-center gap-2 rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-4 py-2 font-semibold"
+		            aria-label="Abrir Wiki em nova aba"
+		          >
+		            <span class="material-icons text-[18px]">auto_stories</span>
+		            Wiki
+		          </a>
+		          <a
+		            href="CV%20-%20Pedro%20H%20Netto.pdf"
+		            download="CV - Pedro H Netto.pdf"
+		            class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 hover:text-blue-200 text-slate-100 px-4 py-2 font-semibold"
+		            aria-label="Baixar Currículo (PDF)"
+		          >
+		            <span class="material-icons text-[18px]">download</span>
+		            Download Curriculo
+		          </a>
+		        </nav>
+	      </div>
+	    </header>
 
     <main>
       <section id="sobre" data-reveal class="pt-36 pb-24 relative overflow-hidden">
@@ -193,7 +202,7 @@
               <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
               <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">Desde cedo a tecnologia é uma parte da minha vida.<br>
   Meu pai sempre disse que o computador seria o meu futuro, e essa é minha missão.<br>
-  Entender de tecnologia é, para mim, é honrar essas palavras.<br>
+  Entender de tecnologia para mim é honrar essas palavras.<br>
   Tenho direcionado minha evolução para Python e desenvolvimento de automações e sistemas.<br>
   Para mim, tecnologia não é profissão... é propósito.</p>
               <p class="text-slate-400 italic mb-9">Now is better than never - Zen of Python .</p>
@@ -1177,8 +1186,11 @@ Também adquiri entendimento sobre segurança na nuvem, princípios de arquitetu
 		        const nextBtn = document.querySelector('[data-certs-next]');
 
 		        const certs = [
+		          { id: 2, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/70d71df5-f3dc-4380-9b9d-f22513a70417/CCNAITN__1_.png', verifyUrl: 'https://www.credly.com/badges/3dee7804-554c-4868-ba70-3f0d0a5bfea8' },
+		          { id: 3, title: 'CCNA: Switching, Routing, and Wireless Essentials', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png', verifyUrl: 'https://www.credly.com/badges/a6d10622-e238-4ddc-a47a-ecc6c7c61935' },
+		          { id: 4, title: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', issued: '2023-12-22', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/0a6d331e-8abf-4272-a949-33f754569a76/CCNAENSA__1_.png', verifyUrl: 'https://www.credly.com/badges/883eb270-a7eb-44cb-a0f3-19a1f8cfe019' },
 		          {
-		            id: 1,
+		            id: 5,
 		            title: 'AWS Knowledge: Cloud Essentials',
 		            issuer: 'Amazon Web Services Training and Certification',
 		            issued: '2024-10-15',
@@ -1186,11 +1198,7 @@ Também adquiri entendimento sobre segurança na nuvem, princípios de arquitetu
 		            imageUrl: 'https://images.credly.com/size/340x340/images/7cf036b0-c609-4378-a7be-9969e1dea7ab/blob',
 		            verifyUrl: 'https://www.credly.com/badges/eaa33ec3-74e7-4784-9e60-d1fd389f5b7f',
 		          },
-		          { id: 2, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/70d71df5-f3dc-4380-9b9d-f22513a70417/CCNAITN__1_.png', verifyUrl: 'https://www.credly.com/badges/3dee7804-554c-4868-ba70-3f0d0a5bfea8' },
-		          { id: 3, title: 'CCNA: Switching, Routing, and Wireless Essentials', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png', verifyUrl: 'https://www.credly.com/badges/a6d10622-e238-4ddc-a47a-ecc6c7c61935' },
-		          { id: 4, title: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', issued: '2023-12-22', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/0a6d331e-8abf-4272-a949-33f754569a76/CCNAENSA__1_.png', verifyUrl: 'https://www.credly.com/badges/883eb270-a7eb-44cb-a0f3-19a1f8cfe019' },
-		          { id: 5, title: 'Introduction to Data Science', issuer: 'Cisco', issued: '2024-08-13', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/image.png', verifyUrl: 'https://www.credly.com/badges/e2078c75-b49e-47db-aa06-f61b25c57006' },
-		          { id: 6, title: 'Computer Network', issuer: 'Huawei', issued: '2024-10-14', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f0486748-58d5-468d-ab92-b7e85bed0517/image.png', verifyUrl: 'https://www.credly.com/badges/ac3bff27-909e-4aa5-8c35-cb0b2fa37a23' },
+				  { id: 6, title: 'Computer Network', issuer: 'Huawei', issued: '2024-10-14', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/f0486748-58d5-468d-ab92-b7e85bed0517/image.png', verifyUrl: 'https://www.credly.com/badges/ac3bff27-909e-4aa5-8c35-cb0b2fa37a23' },
 		          { id: 7, title: 'IT Essentials', issuer: 'Cisco', issued: '2024-12-04', kind: 'Certificado', imageUrl: 'https://images.credly.com/size/340x340/images/04e8034c-81f5-4f7f-ab23-e8b428c31ce9/ITE.png', verifyUrl: 'https://www.credly.com/badges/866df61a-2ab3-471e-80d3-f864148e6eab' },
 		        ];
 
