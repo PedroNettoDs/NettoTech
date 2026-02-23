@@ -1,4 +1,4 @@
-name: Deploy para VPS
+name: Deploy to VPS
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Deploy via SSH
-      - uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -20,4 +20,3 @@ jobs:
           script: |
             cd /home/pedro.netto/NettoTech
             git pull origin main
-            # Comandos adicionais para reiniciar serviços, etc.
