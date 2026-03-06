@@ -5,6 +5,18 @@ const prefersReducedMotion = () => window.matchMedia?.('(prefers-reduced-motion:
 
 const splitClasses = (value) => String(value || '').trim().split(/\s+/).filter(Boolean);
 
+async function loadIncludes() {
+  const includes = $$('[data-include]');
+  await Promise.all(
+    includes.map(async (el) => {
+      const res = await fetch(el.dataset.include);
+      const html = await res.text();
+      el.insertAdjacentHTML('afterend', html);
+      el.remove();
+    })
+  );
+}
+
 function createCarousel(root, { getCards } = {}) {
   const rail = $('[data-carousel-rail]', root);
   if (!rail) return null;
@@ -34,7 +46,6 @@ function createCarousel(root, { getCards } = {}) {
     if (!cards.length || (!activeClass.length && !inactiveClass.length)) return;
     cards.forEach((card, index) => {
       const isActive = index === activeIndex;
-
       inactiveClass.forEach((cls) => card.classList.toggle(cls, !isActive));
       activeClass.forEach((cls) => card.classList.toggle(cls, isActive));
     });
@@ -267,7 +278,7 @@ function renderStories() {
   const rail = $('[data-carousel-rail]', root);
   if (!rail) return;
 
-  const stories = Array.from({ length: 12 }, (_, i) => ({ id: i + 1, coverUrl: `img/storys${i + 1}.png`, href: '#' }));
+  const stories = Array.from({ length: 15 }, (_, i) => ({ id: i + 1, coverUrl: `img/storys${i + 1}.png`, href: '#' }));
 
   const baseCardClass =
     'group snap-center shrink-0 w-[68vw] sm:w-[220px] lg:w-[170px] aspect-[9/16] rounded-2xl overflow-hidden border bg-graphite/35 transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:scale-[1.02]';
@@ -306,20 +317,53 @@ function renderCerts() {
 
   const certs = [
     {
-      id: 1,
+      title: 'CCNA: Introduction to Networks',
+      issuer: 'Cisco',
+      issued: '2023-12-18',
+      kind: 'Certificado',
+      imageUrl: 'https://images.credly.com/size/340x340/images/70d71df5-f3dc-4380-9b9d-f22513a70417/CCNAITN__1_.png',
+      verifyUrl: 'https://www.credly.com/badges/3dee7804-554c-4868-ba70-3f0d0a5bfea8',
+    },
+    {
+      title: 'CCNA: Switching, Routing, and Wireless Essentials',
+      issuer: 'Cisco',
+      issued: '2023-12-18',
+      kind: 'Certificado',
+      imageUrl: 'https://images.credly.com/size/340x340/images/f4ccdba9-dd65-4349-baad-8f05df116443/CCNASRWE__1_.png',
+      verifyUrl: 'https://www.credly.com/badges/a6d10622-e238-4ddc-a47a-ecc6c7c61935',
+    },
+    {
+      title: 'CCNA: Enterprise Networking, Security, and Automation',
+      issuer: 'Cisco',
+      issued: '2023-12-22',
+      kind: 'Certificado',
+      imageUrl: 'https://images.credly.com/size/340x340/images/0a6d331e-8abf-4272-a949-33f754569a76/CCNAENSA__1_.png',
+      verifyUrl: 'https://www.credly.com/badges/883eb270-a7eb-44cb-a0f3-19a1f8cfe019',
+    },
+    {
       title: 'AWS Knowledge: Cloud Essentials',
       issuer: 'Amazon Web Services Training and Certification',
       issued: '2024-10-15',
       kind: 'Training Badge',
-      imageUrl: '',
-      verifyUrl: '',
+      imageUrl: 'https://images.credly.com/size/340x340/images/7cf036b0-c609-4378-a7be-9969e1dea7ab/blob',
+      verifyUrl: 'https://www.credly.com/badges/eaa33ec3-74e7-4784-9e60-d1fd389f5b7f',
     },
-    { id: 2, title: 'CCNA: Introduction to Networks', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
-    { id: 3, title: 'CCNA: Switching, Routing, and Wireless Essentials', issuer: 'Cisco', issued: '2023-12-18', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
-    { id: 4, title: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', issued: '2023-12-22', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
-    { id: 5, title: 'Introduction to Data Science', issuer: 'Cisco', issued: '2024-08-13', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
-    { id: 6, title: 'Computer Network', issuer: 'Huawei', issued: '2024-10-14', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
-    { id: 7, title: 'IT Essentials', issuer: 'Cisco', issued: '2024-12-04', kind: 'Certificado', imageUrl: '', verifyUrl: '' },
+    {
+      title: 'Computer Network',
+      issuer: 'Huawei',
+      issued: '2024-10-14',
+      kind: 'Certificado',
+      imageUrl: 'https://images.credly.com/size/340x340/images/f0486748-58d5-468d-ab92-b7e85bed0517/image.png',
+      verifyUrl: 'https://www.credly.com/badges/ac3bff27-909e-4aa5-8c35-cb0b2fa37a23',
+    },
+    {
+      title: 'IT Essentials',
+      issuer: 'Cisco',
+      issued: '2024-12-04',
+      kind: 'Certificado',
+      imageUrl: 'https://images.credly.com/size/340x340/images/04e8034c-81f5-4f7f-ab23-e8b428c31ce9/ITE.png',
+      verifyUrl: 'https://www.credly.com/badges/866df61a-2ab3-471e-80d3-f864148e6eab',
+    },
   ];
 
   const formatIssued = (isoDate) => {
@@ -351,7 +395,7 @@ function renderCerts() {
                       <span class="material-icons text-[18px]">open_in_new</span>
                       Verificar certificado
                     </a>`
-                  : `<p class="mt-3 text-xs text-slate-500">Adicione um link de verificação para comprovar.</p>`
+                  : ''
               }
             </div>
           </div>
@@ -363,11 +407,92 @@ function renderCerts() {
   createCarousel(root);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initKeywordRain() {
+  const canvas = document.getElementById('keyword-rain');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const keywords = [
+    'Linux', 'Python', 'Cloud', 'CI/CD', 'LLMs', 'Agents de IA',
+    'Automações', 'Gestão de projetos', 'GitHub Actions', 'Docker',
+    'Scrum', 'Backup', 'Git', 'GitHub', 'Active Directory',
+    'Microsoft 365', 'Governança', 'Grafana', 'FortiGate', 'Elastic',
+    'ARIA', 'ERP', 'PDV', 'Banco de dados', 'ITIL', 'ServiceNow',
+  ];
+
+  let drops = [];
+
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const count = Math.max(18, Math.floor(canvas.width / 100));
+    drops = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      word: keywords[Math.floor(Math.random() * keywords.length)],
+      speed: 0.25 + Math.random() * 0.45,
+      opacity: 0.035 + Math.random() * 0.07,
+      size: 10 + Math.floor(Math.random() * 5),
+    }));
+  };
+
+  const draw = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drops.forEach((drop) => {
+      ctx.font = `${drop.size}px Inter, sans-serif`;
+      ctx.fillStyle = `rgba(96, 165, 250, ${drop.opacity})`;
+      ctx.fillText(drop.word, drop.x, drop.y);
+      drop.y += drop.speed;
+      if (drop.y > canvas.height + 20) {
+        drop.y = -20;
+        drop.x = Math.random() * canvas.width;
+        drop.word = keywords[Math.floor(Math.random() * keywords.length)];
+      }
+    });
+    requestAnimationFrame(draw);
+  };
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  if (!prefersReducedMotion()) draw();
+}
+
+function initMobileMenu() {
+  const toggleBtn = $('[data-mobile-menu-toggle]');
+  const menu = $('[data-mobile-menu]');
+  const icon = $('[data-mobile-menu-icon]');
+  if (!toggleBtn || !menu) return;
+
+  const close = () => {
+    menu.classList.add('hidden');
+    if (icon) icon.textContent = 'menu';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', 'Abrir menu');
+  };
+
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    if (isOpen) {
+      close();
+    } else {
+      menu.classList.remove('hidden');
+      if (icon) icon.textContent = 'close';
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      toggleBtn.setAttribute('aria-label', 'Fechar menu');
+    }
+  });
+
+  $$('[data-mobile-menu-link]').forEach((link) => link.addEventListener('click', close));
+}
+
+initKeywordRain();
+
+loadIncludes().then(() => {
   initImageModal();
   initReveal();
   initExperienceToggle();
-
+  initMobileMenu();
   renderStories();
   renderCerts();
 });

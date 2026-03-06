@@ -1,0 +1,25 @@
+<section id="certificados" data-reveal class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center gap-4 mb-12">
+      <h3 class="text-3xl md:text-4xl text-white font-bold">Certificados</h3>
+      <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+    </div>
+    <div
+      data-carousel-root="certs"
+      data-carousel-auto-ms="3600"
+    >
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <p class="text-sm text-slate-400">Deslize para ver todos os certificados</p>
+        <div class="flex items-center gap-2">
+          <button type="button" data-carousel-prev class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Certificados anteriores">
+            <span class="material-icons text-[20px]">chevron_left</span>
+          </button>
+          <button type="button" data-carousel-next class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Próximos certificados">
+            <span class="material-icons text-[20px]">chevron_right</span>
+          </button>
+        </div>
+      </div>
+      <div data-carousel-rail class="no-scrollbar flex gap-4 overflow-x-auto py-2 snap-x snap-mandatory scroll-smooth w-full max-w-full pr-6"></div>
+    </div>
+  </div>
+</section>

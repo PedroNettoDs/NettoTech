@@ -1,0 +1,46 @@
+<section id="storys" class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Pequenos storys de trajetória</p>
+
+      <div
+        data-carousel-root="stories"
+        data-carousel-auto-ms="3200"
+        data-carousel-active-class="opacity-100 scale-100 border-electric/60 shadow-glow"
+        data-carousel-inactive-class="opacity-70 scale-[0.92] border-slate-800 shadow-none"
+        class="space-y-4"
+      >
+        <div class="flex items-center gap-2">
+          <button type="button" data-carousel-prev class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Stories anteriores">
+            <span class="material-icons text-[20px]">chevron_left</span>
+          </button>
+          <button type="button" data-carousel-next class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Próximas stories">
+            <span class="material-icons text-[20px]">chevron_right</span>
+          </button>
+        </div>
+        <div data-carousel-rail class="no-scrollbar flex items-stretch gap-4 overflow-x-auto py-3 snap-x snap-mandatory scroll-smooth w-full max-w-full pr-10"></div>
+      </div>
+
+      <!-- Modal de imagem -->
+      <div data-stories-modal class="fixed inset-0 z-[60] hidden items-center justify-center px-6" aria-hidden="true">
+        <button type="button" data-stories-close class="absolute inset-0 w-full h-full bg-black/70 backdrop-blur-sm" aria-label="Fechar story"></button>
+        <div class="relative w-full max-w-5xl rounded-2xl border border-electric/35 bg-deep/90 p-5 shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div data-stories-meta>
+              <p data-stories-title class="text-white font-semibold text-lg leading-snug"></p>
+              <p class="text-xs text-slate-400">Clique fora ou pressione Esc para fechar</p>
+            </div>
+            <button type="button" data-stories-close class="soft-glow inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Fechar">
+              <span class="material-icons text-[20px]">close</span>
+            </button>
+          </div>
+          <div class="mt-4 rounded-xl overflow-hidden border border-slate-800 bg-graphite/35">
+            <img data-stories-img alt="" class="w-full max-h-[78vh] object-contain bg-deep/40" loading="lazy" decoding="async" />
+          </div>
+          <p data-stories-body class="mt-4 text-sm text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
