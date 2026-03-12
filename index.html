@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pedro Netto | Analista de Infraestrutura</title>
+    <!-- Anti-FOUC: apply saved theme before first paint -->
+    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,25 +32,710 @@
         },
       };
     </script>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="font-sans antialiased">
 
     <canvas id="keyword-rain" aria-hidden="true"></canvas>
 
-    <div data-include="components/header.html"></div>
+    <!-- ═══════════════════════════════════════════════════════════
+         HEADER
+    ═══════════════════════════════════════════════════════════ -->
+    <header class="fixed inset-x-0 top-0 z-50 glass">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg border border-electric/50 bg-graphite/60 flex items-center justify-center shadow-glow">
+            <span class="material-icons text-blue-300">cloud</span>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Pedro Netto</p>
+            <p class="text-white font-semibold">Infraestrutura & Automação</p>
+          </div>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300 font-medium">
+          <a class="neon-link hover:text-blue-300" href="#sobre"        data-nav-link>Sobre</a>
+          <a class="neon-link hover:text-blue-300" href="#projetos"     data-nav-link>Projetos</a>
+          <a class="neon-link hover:text-blue-300" href="#experiencia"  data-nav-link>Experiência</a>
+          <a class="neon-link hover:text-blue-300" href="#certificados" data-nav-link>Certificados</a>
+          <a class="neon-link hover:text-blue-300" href="#educacao"     data-nav-link>Educação</a>
+          <a class="neon-link hover:text-blue-300" href="#contatos"     data-nav-link>Contato</a>
+          <!-- Theme toggle -->
+          <button
+            type="button"
+            data-theme-toggle
+            aria-label="Ativar tema claro"
+            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-blue-300 hover:border-electric/50"
+          >
+            <span class="material-icons text-[18px]">light_mode</span>
+          </button>
+        </nav>
+
+        <!-- Right controls (theme + hamburger, mobile only) -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            data-theme-toggle
+            aria-label="Ativar tema claro"
+            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-blue-300"
+          >
+            <span class="material-icons text-[18px]">light_mode</span>
+          </button>
+          <button
+            type="button"
+            data-mobile-menu-toggle
+            aria-expanded="false"
+            aria-label="Abrir menu"
+            class="soft-glow inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white"
+          >
+            <span class="material-icons" data-mobile-menu-icon>menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu panel -->
+      <div data-mobile-menu class="hidden md:hidden border-t border-slate-800/70 bg-deep/95 backdrop-blur-sm">
+        <nav class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-1 text-sm font-medium text-slate-300">
+          <a href="#sobre"        data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Sobre</a>
+          <a href="#experiencia"  data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Experiência</a>
+          <a href="#certificados" data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Certificados</a>
+          <a href="#educacao"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Educação</a>
+          <a href="#contatos"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Contato</a>
+        </nav>
+      </div>
+
+      <!-- Section progress bar -->
+      <div data-progress-wrap aria-hidden="true">
+        <div data-progress-fill></div>
+        <span data-section-label></span>
+      </div>
+    </header>
 
     <main>
-      <div data-include="components/sobre.html"></div>
-      <div data-include="components/experiencia.html"></div>
-      <div data-include="components/certificados.html"></div>
-      <div data-include="components/educacao.html"></div>
-      <div data-include="components/storys.html"></div>
-      <div data-include="components/contatos.html"></div>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           SOBRE
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="sobre" data-reveal class="pt-24 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
+        <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Netto</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
+            <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">
+              Desde cedo a tecnologia é uma parte da minha vida. Meu pai dizia que o computador seria
+              meu futuro, e essa é minha missão: honrar essas palavras.<br><br>
+              Usuário de <strong>Linux</strong> (Pop_Os! com KDE Plasma). sim, sou aquele que reclama do Windows toda vez que precisa usá-lo.<br><br>
+              Tenho direcionado minha evolução para <strong>Python</strong>, <strong>Cloud</strong>, <strong>CI/CD</strong>, <strong>LLMs</strong>, <strong>Agents de IA</strong>,
+              <strong>Automações</strong> e <strong>Gestão de projetos</strong>. Para mim, tecnologia não é profissão… é propósito.
+            </p>
+            <p class="text-slate-400 italic mb-9">Now is better than never - Zen of Python .</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="https://wiki.nettotech.com.br/" target="_blank" rel="noopener noreferrer" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold" aria-label="Abrir Wiki em nova aba">
+                <span class="material-icons text-[18px]">auto_stories</span>
+                Wiki
+              </a>
+              <a href="CV%20-%20Pedro%20H%20Netto.pdf" download="CV - Pedro H Netto.pdf" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 hover:text-blue-200 text-slate-100 px-7 py-3 font-semibold" aria-label="Baixar Currículo (PDF)">
+                <span class="material-icons text-[18px]">download</span>
+                Currículo
+              </a>
+            </div>
+          </div>
+          <div>
+            <img
+              src="img/profile.jpeg"
+              alt="Foto de perfil de Pedro Netto"
+              class="w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 rounded-2xl border border-slate-700 bg-graphite/40 shadow-glow floaty"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           PROJETOS
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="projetos" data-reveal data-reveal-stagger class="py-16 md:py-24 border-y border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-4">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Projetos</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+          <p class="text-slate-400 mb-12 max-w-3xl">Projetos autorais com foco em automação, infraestrutura e documentação técnica.</p>
+
+          <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- XML-to-XLSX -->
+            <a
+              href="https://github.com/PedroNettoDs/XML-to-XLSX"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Ver projeto XML-to-XLSX no GitHub"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-blue-300">description</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Automação</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">Automação XML-to-XLSX</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Converte arquivos XML (notas fiscais, relatórios) em planilhas XLSX estruturadas, eliminando retrabalho manual e acelerando o processamento de dados.
+              </p>
+              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+                <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                Ver no GitHub
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- Arquivo Morto -->
+            <a
+              href="https://github.com/PedroNettoDs/Arquivo-Morto"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Ver projeto Arquivo Morto no GitHub"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-blue-300">archive</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Automação</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">Automação Arquivo Morto</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Configura políticas de retenção no Exchange Online de forma automatizada, garantindo conformidade e arquivamento correto de e-mails corporativos.
+              </p>
+              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+                <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                Ver no GitHub
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- Wiki -->
+            <a
+              href="https://wiki.nettotech.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Abrir Wiki NettoTech"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-blue-300">auto_stories</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Documentação</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">Wiki NettoTech</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Base de conhecimento pessoal com anotações, tutoriais e referências sobre Linux, redes, cloud e infraestrutura — escrita no dia a dia do aprendizado.
+              </p>
+              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+                <span class="material-icons text-[16px]">language</span>
+                Acessar Wiki
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           EXPERIÊNCIA PROFISSIONAL
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="experiencia" data-reveal data-reveal-stagger="reverse" class="py-16 md:py-24 border-y border-slate-800/70 bg-deep/50">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-12">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Experiência Profissional</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+
+          <div class="relative timeline rocket-timeline pl-10 space-y-6">
+
+            <!-- AttanoTech -->
+            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_attanotech.jpeg" alt="Logo da Attano Tech" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Fundador e Gestor de Projetos</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/109381442" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">AttanoTech</a>
+                    • Projeto pessoal
+                  </p>
+                  <p class="text-xs text-slate-500">mar de 2025 — Atual</p>
+                  <p class="text-slate-300 mt-2">
+                    Iniciativa autoral voltada ao desenvolvimento e gestão de projetos de tecnologia, com foco em automação, infraestrutura cloud e entrega contínua. Adoção de práticas ITIL e metodologia Scrum para organização e governança dos projetos.
+                  </p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Gestão de pipelines de CI/CD com GitHub Actions, automatizando builds, testes e deploys.</li>
+                    <li>Conteinerização de ambientes com Docker em infraestrutura Cloud.</li>
+                    <li>Adoção de práticas ITIL e metodologia Scrum na gestão e execução dos projetos.</li>
+                    <li>Desenvolvimento de automações em Python para monitoramento, relatórios e backup.</li>
+                    <li>Gestão de repositórios, code review e controle de versões com Git/GitHub.</li>
+                  </ul>
+                  <div class="mt-4 flex gap-3">
+                    <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_attanotech.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
+                      <img src="img/ex_attanotech.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Paschoalotto -->
+            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_paschoalotto.jpeg" alt="Logo da Paschoalotto" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura II</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/paschoalotto/" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">Paschoalotto</a>
+                    • Tempo integral
+                  </p>
+                  <p class="text-xs text-slate-500">2025 — Atual • Bauru, SP • Híbrido</p>
+                  <p class="text-slate-300 mt-2">
+                    Promoção para atuação estratégica na sustentação e evolução dos serviços de TI, alinhado às práticas ITIL, com responsabilidade em gestão de incidentes, requisições e execução de mudanças (CHG). Administração de ambientes Active Directory e Microsoft 365, garantindo governança de acessos e conformidade corporativa.
+                  </p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Gestão de incidentes e requisições via ServiceNow, com estruturação de fluxos operacionais e documentação técnica.</li>
+                    <li>Administração de Active Directory e Microsoft 365, garantindo governança de acessos e conformidade corporativa.</li>
+                    <li>Troubleshooting avançado com análise de logs e métricas em FortiGate, Elastic, ARIA e Grafana.</li>
+                    <li>Planejamento e execução de Pedidos de Mudança (CHG) para melhorias e manutenções estruturais.</li>
+                    <li>Atuação como ponto focal em incidentes críticos, com interação direta com stakeholders e diretoria.</li>
+                  </ul>
+                  <div class="mt-5 relative">
+                    <div class="absolute left-[-2.5rem] top-0 bottom-0 w-px bg-slate-700/70"></div>
+                    <div class="space-y-6">
+                      <div class="relative">
+                        <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                        <h5 class="text-white font-semibold leading-snug">Analista de Infraestrutura</h5>
+                        <p class="text-xs text-slate-500">Abr de 2025 — nov de 2025 • Bauru, SP</p>
+                        <p class="text-slate-300 mt-2">
+                          Atuação na gestão de incidentes e requisições via ServiceNow, com estruturação de fluxos operacionais, documentação técnica e foco em melhoria contínua. Administração de ambientes Active Directory e Microsoft 365, garantindo governança de acessos e conformidade com políticas corporativas. Troubleshooting avançado por meio da análise de logs e métricas em FortiGate, Elastic, ARIA e Grafana, assegurando estabilidade e mitigação de riscos.
+                        </p>
+                        <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                          <li>Gestão e resolução de incidentes N1/N2 com análise de impacto e identificação de causa raiz (RCA).</li>
+                          <li>Administração de usuários, grupos, UOs e GPOs no Active Directory, com controle de permissões e segurança.</li>
+                          <li>Gerenciamento de contas, licenciamento e recursos no Microsoft 365 e Exchange.</li>
+                          <li>Monitoramento contínuo de métricas e logs para prevenção de falhas e redução de recorrências.</li>
+                          <li>Padronização e documentação de processos técnicos, promovendo eficiência e rastreabilidade operacional.</li>
+                        </ul>
+                        <div class="mt-4 flex gap-3">
+                          <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_paschoalotto.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
+                            <img src="img/ex_paschoalotto.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Ver mais toggle -->
+            <div class="pl-2">
+              <button type="button" data-exp-toggle aria-expanded="false" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-graphite/35 px-4 py-2 text-sm font-semibold text-slate-100 hover:border-electric/60">
+                <span data-exp-toggle-label>Ver mais</span>
+                <span class="material-icons text-[18px] text-blue-300">expand_more</span>
+              </button>
+            </div>
+
+            <!-- Linx (extra) -->
+            <article data-reveal-item data-exp-extra class="hidden soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_linx.jpeg" alt="Logo da Linx" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Suporte Junior</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/223829/" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">Linx</a>
+                    • Tempo integral
+                  </p>
+                  <p class="text-xs text-slate-500">set de 2023 — abr de 2025</p>
+                  <p class="text-slate-300 mt-2">
+                    Suporte técnico especializado a sistemas integrados de ERP e PDV, com foco em análise técnica, configuração de sistemas e manutenção de banco de dados, garantindo continuidade operacional. Atendimento omnichannel com foco em SLA e experiência do cliente.
+                  </p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Suporte técnico especializado aos sistemas ERP e PDV (Degust, Taste, Menew, Payhub).</li>
+                    <li>Análise técnica, configuração de sistemas e manutenção de bancos de dados Firebase e MongoDB.</li>
+                    <li>Atendimento omnichannel via Salesforce, com foco em SLA e experiência do cliente.</li>
+                    <li>Suporte remoto utilizando Rescue LogMeIn e TeamViewer Tensor.</li>
+                    <li>Configuração de ambiente cliente/servidor, assegurando comunicação e compartilhamento em rede.</li>
+                  </ul>
+                  <div class="mt-4 flex gap-3">
+                    <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_linx.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
+                      <img src="img/ex_linx.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- KS2 (extra) -->
+            <article data-reveal-item data-exp-extra class="hidden soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_ks2.jpeg" alt="Logo da KS2" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de TI</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/ks2solucoes" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">KS2</a>
+                    • Tempo integral
+                  </p>
+                  <p class="text-xs text-slate-500">set de 2022 — set de 2023</p>
+                  <p class="text-slate-300 mt-2">
+                    Atuação em suporte e administração de ambiente corporativo, com responsabilidade pela sustentação de infraestrutura, gestão de ativos de TI e atendimento a usuários finais. Foco em estabilidade operacional, organização de processos e suporte técnico de primeiro e segundo nível.
+                  </p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Gestão de chamados N1/N2 via GLPI, realizando diagnóstico e resolução de incidentes.</li>
+                    <li>Administração de usuários, grupos e permissões em Active Directory (Windows Server).</li>
+                    <li>Gestão de ativos de TI (hardware, software, servidores e rede), garantindo controle e organização do ambiente.</li>
+                    <li>Manutenção preventiva e corretiva de estações, redes e dispositivos de armazenamento.</li>
+                    <li>Monitoramento de infraestrutura via Grafana para identificação proativa de falhas.</li>
+                    <li>Administração de contas no Microsoft 365 e execução de backups PST.</li>
+                    <li>Orientação e treinamento técnico a usuários sobre sistemas e boas práticas.</li>
+                  </ul>
+                  <div class="mt-4 flex gap-3">
+                    <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_ks2.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
+                      <img src="img/ex_ks2.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           CERTIFICADOS
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="certificados" data-reveal class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-12">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Certificados</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+          <div data-carousel-root="certs" data-carousel-auto-ms="3600">
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <p class="text-sm text-slate-400">Deslize para ver todos os certificados</p>
+              <div class="flex items-center gap-2">
+                <button type="button" data-carousel-prev class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Certificados anteriores">
+                  <span class="material-icons text-[20px]">chevron_left</span>
+                </button>
+                <button type="button" data-carousel-next class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Próximos certificados">
+                  <span class="material-icons text-[20px]">chevron_right</span>
+                </button>
+              </div>
+            </div>
+            <div data-carousel-rail class="no-scrollbar flex gap-4 overflow-x-auto py-2 snap-x snap-mandatory scroll-smooth w-full max-w-full pr-6"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           EDUCAÇÃO
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="educacao" data-reveal data-reveal-stagger class="py-16 md:py-24 border-y border-slate-800/70 bg-deep/45">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-4 mb-4">
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Educação</h3>
+            <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
+          </div>
+          <p class="text-slate-400 mb-14 max-w-3xl">Formação acadêmica, perfis em plataformas de ensino e cursos complementares com foco em redes, cloud e infraestrutura.</p>
+
+          <!-- 1. Educação Formal -->
+          <div class="mb-14" data-reveal-item>
+            <div class="flex items-center gap-4 mb-6">
+              <h4 class="text-white font-semibold text-lg shrink-0">Educação formal</h4>
+              <div class="h-px flex-1 bg-gradient-to-r from-electric/30 to-transparent"></div>
+            </div>
+            <div class="relative timeline rocket-timeline pl-10">
+              <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+                <div class="flex gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
+                    <span class="material-icons text-blue-300">school</span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h5 class="text-white font-semibold leading-snug">Faculdade de Tecnologia de Bauru</h5>
+                    <p class="text-xs text-slate-500">Tecnólogo em Redes de Computadores • 2024 - o momento</p>
+                    <p class="text-slate-300 mt-2">
+                      Formação ampla em infraestrutura e tecnologia, com fundamentos de redes, sistemas operacionais e organização de computadores.<br>
+                      Inclui projetos práticos com servidores, Active Directory, programação e automação, além de noções de Administração e Inglês técnico para preparação profissional.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- 2. Plataformas de Aprendizado -->
+          <div class="mb-14" data-reveal-item>
+            <div class="flex items-center gap-4 mb-6">
+              <h4 class="text-white font-semibold text-lg shrink-0">Plataformas de aprendizado</h4>
+              <div class="h-px flex-1 bg-gradient-to-r from-electric/30 to-transparent"></div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <!-- Alura -->
+              <a href="https://cursos.alura.com.br/user/mrpedronetto" target="_blank" rel="noopener noreferrer" class="soft-glow flex flex-col items-center gap-3 rounded-xl border border-slate-700 bg-graphite/40 p-5 text-center group" aria-label="Perfil na Alura">
+                <div class="w-12 h-12 rounded-xl border border-slate-800 bg-deep/60 grid place-items-center">
+                  <span class="material-icons text-blue-300">auto_stories</span>
+                </div>
+                <div>
+                  <p class="text-white font-semibold text-sm">Alura</p>
+                  <p class="text-slate-500 text-xs">Escola de Tecnologia</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs text-blue-300 group-hover:text-blue-200 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
+              </a>
+
+              <!-- Udemy -->
+              <a href="https://www.udemy.com/user/pedro-henrique-netto-dos-santos-2/" target="_blank" rel="noopener noreferrer" class="soft-glow flex flex-col items-center gap-3 rounded-xl border border-slate-700 bg-graphite/40 p-5 text-center group" aria-label="Perfil na Udemy">
+                <div class="w-12 h-12 rounded-xl border border-slate-800 bg-deep/60 grid place-items-center">
+                  <span class="material-icons text-blue-300">play_lesson</span>
+                </div>
+                <div>
+                  <p class="text-white font-semibold text-sm">Udemy</p>
+                  <p class="text-slate-500 text-xs">Online Courses</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs text-blue-300 group-hover:text-blue-200 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
+              </a>
+
+            </div>
+          </div>
+
+          <!-- 3. Cursos Complementares -->
+          <div data-reveal-item>
+            <div class="flex items-center gap-4 mb-6">
+              <h4 class="text-white font-semibold text-lg shrink-0">Cursos complementares</h4>
+              <div class="h-px flex-1 bg-gradient-to-r from-electric/30 to-transparent"></div>
+            </div>
+            <div class="relative timeline rocket-timeline pl-10 space-y-6">
+
+              <!-- CCNA -->
+              <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+                <div class="flex gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
+                    <span class="material-icons text-blue-300">router</span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h5 class="text-white font-semibold leading-snug">Trilha CCNA (Cisco)</h5>
+                    <p class="text-xs text-slate-500">Dez de 2023</p>
+                    <div class="mt-5 relative">
+                      <div class="absolute left-[-2.5rem] top-0 bottom-0 w-px bg-slate-700/70"></div>
+                      <div class="space-y-5">
+                        <div class="relative">
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <h6 class="text-white font-semibold leading-snug">Introduction to Networks</h6>
+                          <p class="text-xs text-slate-500">Cisco • 18/12/2023</p>
+                        </div>
+                        <div class="relative">
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <h6 class="text-white font-semibold leading-snug">Switching, Routing, and Wireless Essentials</h6>
+                          <p class="text-xs text-slate-500">Cisco • 18/12/2023</p>
+                        </div>
+                        <div class="relative">
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <h6 class="text-white font-semibold leading-snug">Enterprise Networking, Security, and Automation</h6>
+                          <p class="text-xs text-slate-500">Cisco • 22/12/2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- AWS -->
+              <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+                <div class="flex gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
+                    <span class="material-icons text-blue-300">cloud</span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h5 class="text-white font-semibold leading-snug">AWS Knowledge: Cloud Essentials</h5>
+                    <p class="text-xs text-slate-500">Amazon Web Services • 15/10/2024</p>
+                    <p class="text-slate-300 mt-2">
+                      Conquistei esta badge após desenvolver conhecimentos fundamentais sobre os principais conceitos de Cloud Computing na AWS.<br>
+                      Durante o treinamento, aprofundei minha compreensão dos serviços essenciais de Computação, Armazenamento, Redes e Bancos de Dados.<br>
+                      Também adquiri entendimento sobre segurança na nuvem, princípios de arquitetura AWS, modelos de precificação e planos de suporte, fortalecendo minha base técnica para atuar em ambientes cloud.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           TRAJETÓRIA (STORYS)
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="storys" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6">
+          <aside class="rounded-2xl border border-electric/35 bg-deep/70 p-7 shadow-glow">
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400 mb-5">Pequenos storys de trajetória</p>
+
+            <div
+              data-carousel-root="stories"
+              data-carousel-auto-ms="3200"
+              data-carousel-active-class="opacity-100 scale-100 border-electric/60 shadow-glow"
+              data-carousel-inactive-class="opacity-70 scale-[0.92] border-slate-800 shadow-none"
+              class="space-y-4"
+            >
+              <div class="flex items-center gap-2">
+                <button type="button" data-carousel-prev class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Stories anteriores">
+                  <span class="material-icons text-[20px]">chevron_left</span>
+                </button>
+                <button type="button" data-carousel-next class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Próximas stories">
+                  <span class="material-icons text-[20px]">chevron_right</span>
+                </button>
+              </div>
+              <div data-carousel-rail class="no-scrollbar flex items-stretch gap-4 overflow-x-auto py-3 snap-x snap-mandatory scroll-smooth w-full max-w-full pr-10"></div>
+            </div>
+
+            <!-- Modal de imagem -->
+            <div data-stories-modal class="fixed inset-0 z-[60] hidden items-center justify-center px-6" aria-hidden="true">
+              <button type="button" data-stories-close class="absolute inset-0 w-full h-full bg-black/70 backdrop-blur-sm" aria-label="Fechar story"></button>
+              <div class="relative w-full max-w-5xl rounded-2xl border border-electric/35 bg-deep/90 p-5 shadow-glow">
+                <div class="flex items-start justify-between gap-4">
+                  <div data-stories-meta>
+                    <p data-stories-title class="text-white font-semibold text-lg leading-snug"></p>
+                    <p class="text-xs text-slate-400">Clique fora ou pressione Esc para fechar</p>
+                  </div>
+                  <button type="button" data-stories-close class="soft-glow inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-graphite/40 text-slate-200 hover:text-white" aria-label="Fechar">
+                    <span class="material-icons text-[20px]">close</span>
+                  </button>
+                </div>
+                <div class="mt-4 rounded-xl overflow-hidden border border-slate-800 bg-graphite/35">
+                  <img data-stories-img alt="" class="w-full max-h-[78vh] object-contain bg-deep/40" loading="lazy" decoding="async" />
+                </div>
+                <p data-stories-body class="mt-4 text-sm text-slate-300 leading-relaxed"></p>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           CONTATOS
+      ═══════════════════════════════════════════════════════════ -->
+      <section id="contatos" data-reveal class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="rounded-2xl border border-slate-700 bg-graphite/45 p-8 md:p-10 shadow-glow">
+            <div class="flex items-start justify-between gap-4 mb-6">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Links rápidos</p>
+                <h4 class="text-white font-semibold text-2xl md:text-3xl leading-tight mt-2">Escolha o melhor canal</h4>
+              </div>
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300">Contato</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+
+              <!-- WhatsApp -->
+              <a href="https://wa.me/5514996807057?text=Ol%C3%A1%20Pedro%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" class="soft-glow group relative overflow-hidden rounded-xl border border-slate-700 bg-deep/50 p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:border-electric/60 hover:bg-graphite/45" aria-label="Abrir WhatsApp em nova aba">
+                <div class="flex items-center gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl border border-slate-800 bg-graphite/35 grid place-items-center">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#25D366]" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.66 15.01L2 22l5.12-1.34A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.04.8.81-2.96-.2-.31A8.2 8.2 0 1 1 12 20.2Zm4.72-6.1c-.26-.13-1.52-.75-1.75-.83-.24-.09-.41-.13-.58.13-.17.26-.67.83-.82 1-.15.18-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.28-.78-.7-1.31-1.56-1.47-1.82-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.45-.06-.13-.58-1.4-.8-1.92-.2-.5-.41-.43-.58-.44h-.49c-.17 0-.45.06-.68.33-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.81 2.76 4.38 3.87.61.26 1.08.42 1.44.54.6.19 1.15.16 1.58.1.48-.07 1.52-.62 1.73-1.22.22-.6.22-1.12.15-1.22-.06-.1-.24-.16-.5-.29Z"/></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-white font-semibold leading-snug">WhatsApp</p>
+                    <p class="text-xs text-slate-400">Mensagem direta</p>
+                  </div>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                </div>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/pedronettods" target="_blank" rel="noopener noreferrer" class="soft-glow group relative overflow-hidden rounded-xl border border-slate-700 bg-deep/50 p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:border-electric/60 hover:bg-graphite/45" aria-label="Abrir LinkedIn em nova aba">
+                <div class="flex items-center gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl border border-slate-800 bg-graphite/35 grid place-items-center">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#0A66C2]" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 21h4V9H3v12Zm7 0h4v-6.5c0-1.76.33-3.47 2.5-3.47 2.14 0 2.15 2 2.15 3.58V21h4V13.8c0-3.53-.76-6.24-4.88-6.24-1.98 0-3.3 1.09-3.84 2.12h-.05V9H10v12Z"/></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-white font-semibold leading-snug">LinkedIn</p>
+                    <p class="text-xs text-slate-400">Conexões & carreira</p>
+                  </div>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                </div>
+              </a>
+
+              <!-- Facebook -->
+              <a href="https://facebook.com/PedroNettoDs" target="_blank" rel="noopener noreferrer" class="soft-glow group relative overflow-hidden rounded-xl border border-slate-700 bg-deep/50 p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:border-electric/60 hover:bg-graphite/45" aria-label="Abrir Facebook em nova aba">
+                <div class="flex items-center gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl border border-slate-800 bg-graphite/35 grid place-items-center">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#1877F2]" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H17V4.7c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.2V11H7.7v3h2.6v8h3.2Z"/></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-white font-semibold leading-snug">Facebook</p>
+                    <p class="text-xs text-slate-400">Página / perfil</p>
+                  </div>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                </div>
+              </a>
+
+              <!-- YouTube -->
+              <a href="https://youtube.com/@MrNetto" target="_blank" rel="noopener noreferrer" class="soft-glow group relative overflow-hidden rounded-xl border border-slate-700 bg-deep/50 p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:border-electric/60 hover:bg-graphite/45" aria-label="Abrir YouTube em nova aba">
+                <div class="flex items-center gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl border border-slate-800 bg-graphite/35 grid place-items-center">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#FF0000]" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31.4 31.4 0 0 0 2 12c0 1.6.2 3.2.4 4.8a3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1c.2-1.6.4-3.2.4-4.8 0-1.6-.2-3.2-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-white font-semibold leading-snug">YouTube</p>
+                    <p class="text-xs text-slate-400">Conteúdos & labs</p>
+                  </div>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                </div>
+              </a>
+
+              <!-- Instagram -->
+              <a href="https://instagram.com/mrpedronetto" target="_blank" rel="noopener noreferrer" class="soft-glow group relative overflow-hidden rounded-xl border border-slate-700 bg-deep/50 p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric/70 hover:border-electric/60 hover:bg-graphite/45 sm:col-span-2" aria-label="Abrir Instagram em nova aba">
+                <div class="flex items-center gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl border border-slate-800 bg-graphite/35 grid place-items-center">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-pink-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7a4.7 4.7 0 0 0 0-9.4Zm0 7.7A3 3 0 1 1 12 9a3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1ZM20 8.2c0-1.1-.3-2.1-1.1-3C18.1 4.4 17.1 4 16 4H8c-1.1 0-2.1.4-2.9 1.2C4.3 6.1 4 7.1 4 8.2v7.6c0 1.1.3 2.1 1.1 3 .8.8 1.8 1.2 2.9 1.2h8c1.1 0 2.1-.4 2.9-1.2.8-.9 1.1-1.9 1.1-3V8.2Zm-2.1 9.2c-.4.4-.9.6-1.5.6H7.6c-.6 0-1.1-.2-1.5-.6-.4-.4-.6-.9-.6-1.5V8.1c0-.6.2-1.1.6-1.5.4-.4.9-.6 1.5-.6h8.8c.6 0 1.1.2 1.5.6.4.4.6.9.6 1.5v7.8c0 .6-.2 1.1-.6 1.5Z"/></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-white font-semibold leading-snug">Instagram</p>
+                    <p class="text-xs text-slate-400">Bastidores & atualizações</p>
+                  </div>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    <div data-include="components/footer.html"></div>
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════════ -->
+    <footer class="py-10 border-t border-slate-800 text-center text-slate-400">
+      <p class="italic">Now is better than never - Zen of Python .</p>
+    </footer>
 
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -5,17 +5,6 @@ const prefersReducedMotion = () => window.matchMedia?.('(prefers-reduced-motion:
 
 const splitClasses = (value) => String(value || '').trim().split(/\s+/).filter(Boolean);
 
-async function loadIncludes() {
-  const includes = $$('[data-include]');
-  await Promise.all(
-    includes.map(async (el) => {
-      const res = await fetch(el.dataset.include);
-      const html = await res.text();
-      el.insertAdjacentHTML('afterend', html);
-      el.remove();
-    })
-  );
-}
 
 function createCarousel(root, { getCards } = {}) {
   const rail = $('[data-carousel-rail]', root);
@@ -458,6 +447,89 @@ function initKeywordRain() {
   if (!prefersReducedMotion()) draw();
 }
 
+function initThemeToggle() {
+  const html = document.documentElement;
+  const toggleBtns = $$('[data-theme-toggle]');
+  if (!toggleBtns.length) return;
+
+  // Restore persisted preference (anti-FOUC script already applied it to html)
+  if (localStorage.getItem('theme') === 'light') {
+    html.classList.remove('dark');
+  }
+
+  const updateIcons = () => {
+    const isDark = html.classList.contains('dark');
+    toggleBtns.forEach((btn) => {
+      const icon = $('.material-icons', btn);
+      if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      btn.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+    });
+  };
+
+  const toggle = () => {
+    html.classList.add('theme-transitioning');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    updateIcons();
+    window.setTimeout(() => html.classList.remove('theme-transitioning'), 420);
+  };
+
+  toggleBtns.forEach((btn) => btn.addEventListener('click', toggle));
+  updateIcons();
+}
+
+function initScrollSpy() {
+  const progressFill = $('[data-progress-fill]');
+  const sectionLabel = $('[data-section-label]');
+  const navLinks = $$('[data-nav-link]');
+
+  const sectionMap = {
+    sobre:        'Sobre',
+    projetos:     'Projetos',
+    experiencia:  'Experiência',
+    certificados: 'Certificados',
+    educacao:     'Educação',
+    storys:       'Trajetória',
+    contatos:     'Contato',
+  };
+  const sectionIds = Object.keys(sectionMap);
+
+  const getSectionEls = () =>
+    sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+  const setActive = (id) => {
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('is-nav-active', isActive);
+    });
+    if (sectionLabel) {
+      const label = sectionMap[id] || '';
+      sectionLabel.textContent = label;
+      sectionLabel.classList.toggle('visible', Boolean(label));
+    }
+  };
+
+  const HEADER_H = 88;
+
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = maxScroll > 0 ? Math.min(100, (scrollY / maxScroll) * 100) : 0;
+    if (progressFill) progressFill.style.width = pct + '%';
+
+    const sectionEls = getSectionEls();
+    let current = sectionIds[0];
+    for (const el of sectionEls) {
+      if (el.getBoundingClientRect().top <= HEADER_H + 24) current = el.id;
+    }
+    setActive(current);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Delay initial call so components are painted
+  window.requestAnimationFrame(onScroll);
+}
+
 function initMobileMenu() {
   const toggleBtn = $('[data-mobile-menu-toggle]');
   const menu = $('[data-mobile-menu]');
@@ -487,12 +559,11 @@ function initMobileMenu() {
 }
 
 initKeywordRain();
-
-loadIncludes().then(() => {
-  initImageModal();
-  initReveal();
-  initExperienceToggle();
-  initMobileMenu();
-  renderStories();
-  renderCerts();
-});
+initThemeToggle();
+initScrollSpy();
+initImageModal();
+initReveal();
+initExperienceToggle();
+initMobileMenu();
+renderStories();
+renderCerts();
