@@ -567,3 +567,4 @@ initExperienceToggle();
 initMobileMenu();
 renderStories();
 renderCerts();
+initRocketTimelines();
