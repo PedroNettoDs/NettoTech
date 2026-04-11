@@ -374,13 +374,13 @@ function renderCerts() {
               }
             </div>
             <div class="min-w-0 flex-1">
-              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300 mb-4">${c.kind}</span>
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-orange-400 mb-4">${c.kind}</span>
               <h4 class="text-white font-semibold leading-snug">${c.title}</h4>
               <p class="mt-2 text-sm text-slate-300">${c.issuer}</p>
               <p class="mt-1 text-xs text-slate-500">Emitido em ${formatIssued(c.issued)}</p>
               ${
                 c.verifyUrl
-                  ? `<a href="${c.verifyUrl}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 text-sm text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">
+                  ? `<a href="${c.verifyUrl}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 text-sm text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">
                       <span class="material-icons text-[18px]">open_in_new</span>
                       Verificar certificado
                     </a>`
@@ -429,7 +429,7 @@ function initKeywordRain() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drops.forEach((drop) => {
       ctx.font = `${drop.size}px Inter, sans-serif`;
-      ctx.fillStyle = `rgba(96, 165, 250, ${drop.opacity})`;
+      ctx.fillStyle = `rgba(251, 146, 60, ${drop.opacity})`;
       ctx.fillText(drop.word, drop.x, drop.y);
       drop.y += drop.speed;
       if (drop.y > canvas.height + 20) {
@@ -558,12 +558,147 @@ function initMobileMenu() {
   $$('[data-mobile-menu-link]').forEach((link) => link.addEventListener('click', close));
 }
 
+function initProjectsToggle() {
+  const toggleBtn = $('[data-projects-toggle]');
+  const extras = $$('[data-project-extra]');
+  const label = $('[data-projects-toggle-label]');
+  if (!toggleBtn || !extras.length) return;
+
+  const isMobile = () => window.innerWidth < 768;
+
+  const setExpanded = (expanded) => {
+    toggleBtn.setAttribute('aria-expanded', String(expanded));
+    if (label) label.textContent = expanded ? 'Exibir menos' : 'Exibir mais';
+
+    const icon = $('.material-icons', toggleBtn);
+    if (icon) icon.textContent = expanded ? 'expand_less' : 'expand_more';
+    toggleBtn.setAttribute('aria-label', expanded ? 'Exibir menos projetos' : 'Exibir mais projetos');
+
+    extras.forEach((el, idx) => {
+      if (!isMobile()) {
+        el.classList.remove('hidden');
+        return;
+      }
+      el.classList.toggle('hidden', !expanded);
+      if (expanded) {
+        el.classList.add('reveal');
+        el.classList.remove('is-visible');
+        window.setTimeout(() => el.classList.add('is-visible'), idx * 120);
+      } else {
+        el.classList.remove('is-visible');
+      }
+    });
+  };
+
+  setExpanded(false);
+  toggleBtn.addEventListener('click', () => {
+    const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    setExpanded(!expanded);
+  });
+
+  // Ao passar para desktop, garantir que todos os cards apareçam
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      extras.forEach((el) => el.classList.remove('hidden'));
+    } else {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      extras.forEach((el) => el.classList.toggle('hidden', !expanded));
+    }
+  });
+}
+
+function initTimelineProgress() {
+  const timelines = $$('[data-timeline]');
+  if (!timelines.length) return;
+
+  const update = () => {
+    const vh = window.innerHeight;
+    timelines.forEach((tl) => {
+      const fill = $('[data-timeline-fill]', tl);
+      if (!fill) return;
+      const rect = tl.getBoundingClientRect();
+      const total = rect.height + vh;
+      const progress = Math.min(1, Math.max(0, rect.bottom / total));
+      fill.style.height = `${progress * 100}%`;
+    });
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
+function initAboutToggle() {
+  const panels = $$('[data-about-panel]');
+  const tabs   = $$('[data-about-tab]');
+  const donut  = $('[data-about-donut]');
+  const icon   = $('[data-about-icon]');
+  if (!panels.length || !tabs.length || !donut) return;
+
+  const DURATION = 30000;
+  const CIRC     = 113.1;
+  const order    = ['personal', 'professional'];
+  const iconMap  = { personal: 'person', professional: 'work' };
+
+  let currentIndex = 0;
+  let startTs = null;
+
+  const activatePanel = (name) => {
+    panels.forEach((p) => {
+      const active = p.dataset.aboutPanel === name;
+      p.classList.toggle('hidden', !active);
+      if (active) {
+        p.classList.add('about-panel-enter');
+        window.setTimeout(() => p.classList.remove('about-panel-enter'), 350);
+      }
+    });
+    tabs.forEach((t) => {
+      const active = t.dataset.aboutTab === name;
+      t.className = [
+        'px-3 py-1.5 rounded-md text-xs font-medium transition-colors',
+        active ? 'text-orange-400 bg-electric/15' : 'text-slate-400 hover:text-slate-200',
+      ].join(' ');
+    });
+    if (icon) icon.textContent = iconMap[name] || 'person';
+  };
+
+  const tick = (ts) => {
+    if (startTs === null) startTs = ts;
+    const progress = Math.min(1, (ts - startTs) / DURATION);
+    donut.style.strokeDashoffset = String(progress * CIRC);
+
+    if (progress >= 1) {
+      currentIndex = (currentIndex + 1) % order.length;
+      activatePanel(order[currentIndex]);
+      startTs = null;
+    }
+
+    requestAnimationFrame(tick);
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const idx = order.indexOf(tab.dataset.aboutTab);
+      if (idx === -1 || idx === currentIndex) return;
+      currentIndex = idx;
+      activatePanel(order[currentIndex]);
+      startTs = null;
+    });
+  });
+
+  activatePanel(order[0]);
+  requestAnimationFrame(tick);
+}
+
 initKeywordRain();
 initThemeToggle();
 initScrollSpy();
 initImageModal();
 initReveal();
 initExperienceToggle();
+initProjectsToggle();
+initTimelineProgress();
+initAboutToggle();
 initMobileMenu();
 renderStories();
 renderCerts();

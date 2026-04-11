@@ -3,7 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pedro Netto | Analista de Infraestrutura</title>
+    <title>Pedro Netto | Analista de Infraestrutura & Automação</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Pedro Netto — Analista de Infraestrutura, DevOps e Automação. Especialista em Python, Cloud, CI/CD, LLMs e Agentes de IA. Portfólio com 6+ projetos técnicos." />
+    <meta name="keywords" content="infraestrutura, devops, python, automação, linux, cloud, ci/cd, github actions, docker, llm, agentes ia" />
+    <meta name="author" content="Pedro Henrique Netto dos Santos" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pedro Netto — Analista de Infraestrutura & Automação" />
+    <meta property="og:description" content="Especialista em infraestrutura, DevOps, Python e automação. Portfólio com 6+ projetos técnicos — automação, IaC, SaaS e IA." />
+    <meta property="og:image" content="https://nettotech.com.br/img/profile.jpeg" />
+    <meta property="og:url" content="https://nettotech.com.br" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pedro Netto — Analista de Infraestrutura & Automação" />
+    <meta name="twitter:description" content="Especialista em infraestrutura, DevOps, Python e automação." />
+    <meta name="twitter:image" content="https://nettotech.com.br/img/profile.jpeg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#0b0f19" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Pedro Henrique Netto dos Santos",
+      "url": "https://nettotech.com.br",
+      "image": "https://nettotech.com.br/img/profile.jpeg",
+      "description": "Analista de Infraestrutura, DevOps e Automação",
+      "jobTitle": "Analista de Infraestrutura II",
+      "email": "contato@nettotech.com.br",
+      "sameAs": [
+        "https://linkedin.com/in/pedronettods",
+        "https://github.com/PedroNettoDs",
+        "https://wiki.nettotech.com.br"
+      ],
+      "knowsAbout": [
+        "Python", "Linux", "Docker", "AWS", "CI/CD",
+        "GitHub Actions", "Infrastructure as Code", "DevOps",
+        "Cloud Computing", "LLMs", "Automação"
+      ],
+      "workLocation": {
+        "@type": "Place",
+        "name": "Bauru, SP, Brasil"
+      }
+    }
+    </script>
+
     <!-- Anti-FOUC: apply saved theme before first paint -->
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
@@ -19,14 +71,14 @@
             colors: {
               deep: '#0b0f19',
               slateBlue: '#1e293b',
-              electric: '#2563eb',
+              electric: '#f97316',
               graphite: '#1f2937',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
             },
             boxShadow: {
-              glow: '0 0 0 1px rgba(37,99,235,.42), 0 0 24px rgba(37,99,235,.22)',
+              glow: '0 0 0 1px rgba(249,115,22,.42), 0 0 24px rgba(249,115,22,.22)',
             },
           },
         },
@@ -47,7 +99,7 @@
         <!-- Brand -->
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-lg border border-electric/50 bg-graphite/60 flex items-center justify-center shadow-glow">
-            <span class="material-icons text-blue-300">cloud</span>
+            <span class="material-icons text-orange-400">cloud</span>
           </div>
           <div>
             <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Pedro Netto</p>
@@ -57,18 +109,18 @@
 
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300 font-medium">
-          <a class="neon-link hover:text-blue-300" href="#sobre"        data-nav-link>Sobre</a>
-          <a class="neon-link hover:text-blue-300" href="#projetos"     data-nav-link>Projetos</a>
-          <a class="neon-link hover:text-blue-300" href="#experiencia"  data-nav-link>Experiência</a>
-          <a class="neon-link hover:text-blue-300" href="#certificados" data-nav-link>Certificados</a>
-          <a class="neon-link hover:text-blue-300" href="#educacao"     data-nav-link>Educação</a>
-          <a class="neon-link hover:text-blue-300" href="#contatos"     data-nav-link>Contato</a>
+          <a class="neon-link hover:text-orange-400" href="#sobre"        data-nav-link>Sobre</a>
+          <a class="neon-link hover:text-orange-400" href="#projetos"     data-nav-link>Projetos</a>
+          <a class="neon-link hover:text-orange-400" href="#experiencia"  data-nav-link>Experiência</a>
+          <a class="neon-link hover:text-orange-400" href="#certificados" data-nav-link>Certificados</a>
+          <a class="neon-link hover:text-orange-400" href="#educacao"     data-nav-link>Educação</a>
+          <a class="neon-link hover:text-orange-400" href="#contatos"     data-nav-link>Contato</a>
           <!-- Theme toggle -->
           <button
             type="button"
             data-theme-toggle
             aria-label="Ativar tema claro"
-            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-blue-300 hover:border-electric/50"
+            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-orange-400 hover:border-electric/50"
           >
             <span class="material-icons text-[18px]">light_mode</span>
           </button>
@@ -80,7 +132,7 @@
             type="button"
             data-theme-toggle
             aria-label="Ativar tema claro"
-            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-blue-300"
+            class="soft-glow inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 bg-graphite/40 text-slate-300 hover:text-orange-400"
           >
             <span class="material-icons text-[18px]">light_mode</span>
           </button>
@@ -99,11 +151,11 @@
       <!-- Mobile menu panel -->
       <div data-mobile-menu class="hidden md:hidden border-t border-slate-800/70 bg-deep/95 backdrop-blur-sm">
         <nav class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-1 text-sm font-medium text-slate-300">
-          <a href="#sobre"        data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Sobre</a>
-          <a href="#experiencia"  data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Experiência</a>
-          <a href="#certificados" data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Certificados</a>
-          <a href="#educacao"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Educação</a>
-          <a href="#contatos"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-blue-300">Contato</a>
+          <a href="#sobre"        data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-orange-400">Sobre</a>
+          <a href="#experiencia"  data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-orange-400">Experiência</a>
+          <a href="#certificados" data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-orange-400">Certificados</a>
+          <a href="#educacao"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-orange-400">Educação</a>
+          <a href="#contatos"     data-mobile-menu-link data-nav-link class="px-3 py-2.5 rounded-lg hover:bg-graphite/50 hover:text-orange-400">Contato</a>
         </nav>
       </div>
 
@@ -121,37 +173,72 @@
       ═══════════════════════════════════════════════════════════ -->
       <section id="sobre" data-reveal class="pt-24 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <div class="absolute -right-16 top-6 w-72 h-72 rounded-full bg-electric/20 blur-3xl"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Netto</h1>
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-300 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
-            <p class="text-slate-300 leading-relaxed mb-4 max-w-2xl">
-              Desde cedo a tecnologia é uma parte da minha vida. Meu pai dizia que o computador seria
-              meu futuro, e essa é minha missão: honrar essas palavras.<br><br>
-              Usuário de <strong>Linux</strong> (Pop_Os! com KDE Plasma). sim, sou aquele que reclama do Windows toda vez que precisa usá-lo.<br><br>
-              Tenho direcionado minha evolução para <strong>Python</strong>, <strong>Cloud</strong>, <strong>CI/CD</strong>, <strong>LLMs</strong>, <strong>Agents de IA</strong>,
-              <strong>Automações</strong> e <strong>Gestão de projetos</strong>. Para mim, tecnologia não é profissão… é propósito.
-            </p>
-            <p class="text-slate-400 italic mb-9">Now is better than never - Zen of Python .</p>
-            <div class="flex flex-wrap gap-4">
-              <a href="https://wiki.nettotech.com.br/" target="_blank" rel="noopener noreferrer" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold" aria-label="Abrir Wiki em nova aba">
-                <span class="material-icons text-[18px]">auto_stories</span>
-                Wiki
-              </a>
-              <a href="CV%20-%20Pedro%20H%20Netto.pdf" download="CV - Pedro H Netto.pdf" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 hover:text-blue-200 text-slate-100 px-7 py-3 font-semibold" aria-label="Baixar Currículo (PDF)">
-                <span class="material-icons text-[18px]">download</span>
-                Currículo
-              </a>
+        <div class="max-w-3xl mx-auto px-6">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4">Pedro Netto</h1>
+          <h2 class="text-xl md:text-2xl font-semibold text-orange-400 mb-6">Analista de Infraestrutura | Linux | Cloud | Python</h2>
+          <!-- Toggle header: donut + tab buttons -->
+          <div class="flex items-center gap-3 mb-5">
+            <!-- Donut countdown -->
+            <div class="relative w-10 h-10 shrink-0" aria-hidden="true">
+              <svg class="w-10 h-10 -rotate-90" viewBox="0 0 44 44">
+                <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(249,115,22,0.12)" stroke-width="3"/>
+                <circle data-about-donut cx="22" cy="22" r="18" fill="none" stroke="#f97316" stroke-width="3"
+                  stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="0"/>
+              </svg>
+              <span class="absolute inset-0 flex items-center justify-center material-icons text-[13px] text-orange-400" data-about-icon>person</span>
+            </div>
+            <!-- Tabs -->
+            <div class="flex gap-1 rounded-lg border border-slate-700/60 bg-graphite/30 p-1">
+              <button data-about-tab="personal" type="button"
+                class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-orange-400 bg-electric/15">
+                Sobre mim
+              </button>
+              <button data-about-tab="professional" type="button"
+                class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-slate-400 hover:text-slate-200">
+                Resumo Profissional
+              </button>
             </div>
           </div>
-          <div>
-            <img
-              src="img/profile.jpeg"
-              alt="Foto de perfil de Pedro Netto"
-              class="w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 rounded-2xl border border-slate-700 bg-graphite/40 shadow-glow floaty"
-              loading="lazy"
-              decoding="async"
-            />
+
+          <!-- Panel: Sobre mim -->
+          <div data-about-panel="personal">
+            <p class="text-slate-300 leading-relaxed mb-4">
+              Desde cedo a tecnologia é uma parte da minha vida. Meu pai dizia que o computador seria
+              meu futuro, e essa é minha missão. Sou usuário de <strong>Linux</strong> (Kubuntu) e sim,
+              vou reclamar do Windows em toda oportunidade.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              Tenho direcionado minha mira para <strong>CI/CD</strong>, <strong>LLMs</strong> e <strong>Agents</strong>,
+              <strong>Automações com Python</strong>, <strong>Cloud</strong> e <strong>Gestão de projetos</strong>.
+              Para mim, tecnologia não é profissão — é propósito.
+            </p>
+            <p class="text-slate-400 italic mb-9">Now is better than never — Zen of Python.</p>
+          </div>
+
+          <!-- Panel: Resumo Profissional -->
+          <div data-about-panel="professional" class="hidden">
+            <p class="text-slate-300 leading-relaxed mb-3">
+              Analista de Infraestrutura com <strong>+3 anos de experiência</strong> em ambientes Linux,
+              Active Directory, Microsoft 365 e monitoramento (Grafana, Elastic, FortiGate).
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-3">
+              Experiência prática em automação com <strong>Python</strong>, <strong>Bash</strong> e <strong>PowerShell</strong>,
+              conteinerização com <strong>Docker</strong> e pipelines CI/CD no <strong>GitHub Actions</strong>.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-9">
+              Certificado <strong>AWS Cloud Practitioner</strong> e <strong>CCNAv7</strong>, cursando Tecnologia em Redes
+              na FATEC Bauru. Foco em infraestrutura como código, observabilidade, ITIL e cultura DevOps.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://wiki.nettotech.com.br/" target="_blank" rel="noopener noreferrer" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-electric/60 bg-electric/85 hover:bg-electric text-white px-7 py-3 font-semibold" aria-label="Abrir Wiki em nova aba">
+              <span class="material-icons text-[18px]">auto_stories</span>
+              Wiki
+            </a>
+            <a href="CV%20-%20Pedro%20H%20Netto.pdf" download="CV - Pedro H Netto.pdf" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-600 bg-graphite/55 hover:border-electric/60 hover:text-orange-300 text-slate-100 px-7 py-3 font-semibold" aria-label="Baixar Currículo (PDF)">
+              <span class="material-icons text-[18px]">download</span>
+              Currículo
+            </a>
           </div>
         </div>
       </section>
@@ -169,78 +256,229 @@
 
           <div class="grid md:grid-cols-3 gap-6">
 
-            <!-- XML-to-XLSX -->
+            <!-- Alfred-Pennyworth -->
             <a
-              href="https://github.com/PedroNettoDs/XML-to-XLSX"
+              href="https://github.com/PedroNettoDs/Alfred-Pennyworth"
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-item
               class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
-              aria-label="Ver projeto XML-to-XLSX no GitHub"
+              aria-label="Ver projeto Alfred-Pennyworth no GitHub"
             >
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
-                  <span class="material-icons text-blue-300">description</span>
+                  <span class="material-icons text-orange-400">smart_toy</span>
                 </div>
-                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Automação</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">IA / LLM</span>
               </div>
-              <h4 class="text-white font-semibold leading-snug mb-2">Automação XML-to-XLSX</h4>
+              <h4 class="text-white font-semibold leading-snug mb-2">Alfred-Pennyworth</h4>
               <p class="text-slate-400 text-sm leading-relaxed flex-1">
-                Converte arquivos XML (notas fiscais, relatórios) em planilhas XLSX estruturadas, eliminando retrabalho manual e acelerando o processamento de dados.
+                Assistente pessoal local com LLMs via Ollama, execução de comandos no host, pesquisa web autônoma e RAG via Knowledge Base. Integra vault Obsidian para memória persistente, eliminando dependência de APIs externas. Totalmente offline e privado.
               </p>
-              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Python</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Ollama</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Docker</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">RAG</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
                 <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                 Ver no GitHub
                 <span class="material-icons text-[14px]">open_in_new</span>
               </div>
             </a>
 
-            <!-- Arquivo Morto -->
+            <!-- Briefing de Notícias - LLM -->
             <a
-              href="https://github.com/PedroNettoDs/Arquivo-Morto"
+              href="https://github.com/PedroNettoDs/Briefing-LLM"
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-item
               class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
-              aria-label="Ver projeto Arquivo Morto no GitHub"
+              aria-label="Ver projeto Briefing de Notícias no GitHub"
             >
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
-                  <span class="material-icons text-blue-300">archive</span>
+                  <span class="material-icons text-orange-400">newspaper</span>
                 </div>
-                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Automação</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">IA / LLM</span>
               </div>
-              <h4 class="text-white font-semibold leading-snug mb-2">Automação Arquivo Morto</h4>
+              <h4 class="text-white font-semibold leading-snug mb-2">Briefing de Notícias - LLM</h4>
               <p class="text-slate-400 text-sm leading-relaxed flex-1">
-                Configura políticas de retenção no Exchange Online de forma automatizada, garantindo conformidade e arquivamento correto de e-mails corporativos.
+                Automatiza a curação diária de notícias em Markdown e áudio. Coleta de feeds RSS e SearXNG, agrupa por tema via clustering semântico, sintetiza com Ollama para gerar relatório estruturado e podcast. Economiza tempo no consumo de informações relevantes.
               </p>
-              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Python</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Ollama</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Docker</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">NLP</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
                 <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                 Ver no GitHub
                 <span class="material-icons text-[14px]">open_in_new</span>
               </div>
             </a>
 
-            <!-- Wiki -->
+            <!-- NF-e Consolidator -->
+            <a
+              href="https://github.com/PedroNettoDs/NF-e-Consolidator"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Ver projeto NF-e Consolidator no GitHub"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-orange-400">description</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">Automação</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">NF-e Consolidator</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Processa arquivos XML de NF-e em lote e gera planilhas consolidadas com extração automatizada de dados (chave, datas, CNPJ/CPF, valores). Reduz 80% do tempo de processamento manual, suportando até 100+ XMLs por execução.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Python</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">XML</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Tkinter</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Automation</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
+                <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                Ver no GitHub
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- SubMAX -->
+            <a
+              href="https://www.submax.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              data-project-extra
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Acessar aplicação SubMAX"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-orange-400">fitness_center</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">SaaS</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">SubMAX</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Plataforma SaaS multi-tenant de gerenciamento fitness com portais dedicados para personal trainer e aluno. Backend REST API com autenticação JWT isolada, integração WhatsApp, editor visual de rotinas com drag-and-drop, avaliações com 26 métricas antropométricas e execução de treino em tempo real. Hospedado em cloud com CI/CD automatizado.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Django</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">React</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">TypeScript</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">PostgreSQL</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">CI/CD</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
+                <span class="material-icons text-[16px]">language</span>
+                Acessar aplicação
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- IaC de Fileserver -->
+            <a
+              href="https://github.com/PedroNettoDs/IaC-Fileserver"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              data-project-extra
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Ver projeto IaC de Fileserver no GitHub"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-orange-400">storage</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">Infraestrutura</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">IaC de Fileserver</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Infrastructure as Code para provisionamento automatizado de fileserver institucional. Reduz tempo de setup de 2 horas para 15 minutos, garante padronização, rastreabilidade e reprodutibilidade completa do ambiente. Desenvolvido para FATEC Bauru com Bash, Samba e GPO.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Bash</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Samba</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">GPO</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">IaC</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
+                <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                Ver no GitHub
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- Exchange Retention Manager -->
+            <a
+              href="https://github.com/PedroNettoDs/Exchange-Retention-Manager"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal-item
+              data-project-extra
+              class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
+              aria-label="Ver projeto Exchange Retention Manager no GitHub"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
+                  <span class="material-icons text-orange-400">archive</span>
+                </div>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">Automação</span>
+              </div>
+              <h4 class="text-white font-semibold leading-snug mb-2">Exchange Retention Manager</h4>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Automatiza políticas de retenção no Exchange Online com autenticação OAuth, validação de permissões e logs estruturados. Interface intuitiva com execução em menos de 15 minutos por caixa de correio. Garante conformidade e rastreabilidade em ambientes corporativos.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Python</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Exchange Online</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">PowerShell</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Automation</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
+                <svg viewBox="0 0 16 16" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                Ver no GitHub
+                <span class="material-icons text-[14px]">open_in_new</span>
+              </div>
+            </a>
+
+            <!-- Wiki NettoTech -->
             <a
               href="https://wiki.nettotech.com.br/"
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-item
+              data-project-extra
               class="soft-glow group flex flex-col rounded-xl border border-slate-700 bg-graphite/40 p-6 hover:border-electric/60"
               aria-label="Abrir Wiki NettoTech"
             >
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-11 h-11 rounded-lg border border-slate-800 bg-deep/60 grid place-items-center shrink-0">
-                  <span class="material-icons text-blue-300">auto_stories</span>
+                  <span class="material-icons text-orange-400">auto_stories</span>
                 </div>
-                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-blue-300">Documentação</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-orange-400">Documentação</span>
               </div>
               <h4 class="text-white font-semibold leading-snug mb-2">Wiki NettoTech</h4>
               <p class="text-slate-400 text-sm leading-relaxed flex-1">
                 Base de conhecimento pessoal com anotações, tutoriais e referências sobre Linux, redes, cloud e infraestrutura — escrita no dia a dia do aprendizado.
               </p>
-              <div class="mt-5 flex items-center gap-2 text-sm text-blue-300 group-hover:text-blue-200">
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Linux</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Redes</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Cloud</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[10px] font-medium text-orange-400">Infraestrutura</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm text-orange-400 group-hover:text-orange-300">
                 <span class="material-icons text-[16px]">language</span>
                 Acessar Wiki
                 <span class="material-icons text-[14px]">open_in_new</span>
@@ -248,6 +486,21 @@
             </a>
 
           </div>
+
+          <!-- Botão "Exibir mais" — apenas mobile -->
+          <div class="mt-8 flex justify-center md:hidden">
+            <button
+              type="button"
+              data-projects-toggle
+              aria-expanded="false"
+              aria-label="Exibir mais projetos"
+              class="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-graphite/40 px-5 py-2.5 text-sm font-medium text-orange-400 hover:border-electric/60 hover:text-orange-300 transition-colors"
+            >
+              <span data-projects-toggle-label>Exibir mais</span>
+              <span class="material-icons text-[18px]">expand_more</span>
+            </button>
+          </div>
+
         </div>
       </section>
 
@@ -257,103 +510,131 @@
       <section id="dominios" data-reveal class="py-16 md:py-24 bg-deep/40">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex items-center gap-4 mb-4">
-            <h3 class="text-3xl md:text-4xl text-white font-bold">Domínios</h3>
+            <h3 class="text-3xl md:text-4xl text-white font-bold">Competências Técnicas</h3>
             <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
           <p class="text-slate-400 mb-10 max-w-3xl">Tecnologias, práticas e ferramentas com as quais trabalho no dia a dia.</p>
- 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
- 
-            <!-- Infraestrutura & Cloud -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">dns</span>
-                <h4 class="text-white font-semibold">Infraestrutura & Cloud</h4>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <!-- Sistemas Operacionais -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">computer</span>
+                <h4 class="text-white font-semibold text-sm">Sistemas Operacionais</h4>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Linux</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Cloud (AWS)</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Docker</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Active Directory</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Microsoft 365</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">FortiGate</span>
-              </div>
-            </div>
- 
-            <!-- DevOps & Automação -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">terminal</span>
-                <h4 class="text-white font-semibold">DevOps & Automação</h4>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">CI/CD</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">GitHub Actions</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Python</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Git / GitHub</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Automações</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Bash</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Linux</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Ubuntu</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Kubuntu</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Debian</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Windows Server</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Active Directory</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">GPOs</span>
               </div>
             </div>
- 
-            <!-- Observabilidade & Monitoramento -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">monitor_heart</span>
-                <h4 class="text-white font-semibold">Observabilidade</h4>
+
+            <!-- Containers & IaC -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">inventory_2</span>
+                <h4 class="text-white font-semibold text-sm">Containers & IaC</h4>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Grafana</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Elastic</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">ARIA</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Logs & Métricas</span>
-              </div>
-            </div>
- 
-            <!-- IA & Tecnologias Emergentes -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">psychology</span>
-                <h4 class="text-white font-semibold">IA & Tecnologias Emergentes</h4>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">LLMs</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Agents de IA</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Prompt Engineering</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Claude / OpenAI</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Docker</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Kubernetes</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">IaC</span>
               </div>
             </div>
- 
-            <!-- Gestão & Processos -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">manage_accounts</span>
-                <h4 class="text-white font-semibold">Gestão & Processos</h4>
+
+            <!-- DevOps & CI/CD -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">sync_alt</span>
+                <h4 class="text-white font-semibold text-sm">DevOps & CI/CD</h4>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Scrum</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">ITIL</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Jira</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">ServiceNow</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Gestão de Projetos</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">GitHub Actions</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Git / GitHub</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Build / Test</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Deploy</span>
               </div>
             </div>
- 
+
+            <!-- Automação -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">smart_button</span>
+                <h4 class="text-white font-semibold text-sm">Automação</h4>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Python</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Bash</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">PowerShell</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Monitoramento</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Backup</span>
+              </div>
+            </div>
+
+            <!-- Observabilidade -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">monitor_heart</span>
+                <h4 class="text-white font-semibold text-sm">Observabilidade</h4>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Grafana</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Elastic</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">ARIA</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Logs & Métricas</span>
+              </div>
+            </div>
+
             <!-- Redes & Segurança -->
-            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="material-icons text-blue-300">security</span>
-                <h4 class="text-white font-semibold">Redes & Segurança</h4>
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">security</span>
+                <h4 class="text-white font-semibold text-sm">Redes & Segurança</h4>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">TCP/IP</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">CCNA</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">VPN</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Firewall</span>
-                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-3 py-1 text-xs text-blue-300">Governança de Acessos</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">TCP/IP</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">CCNA</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">VPN</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">FortiGate</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Firewall</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Governança de Acessos</span>
               </div>
             </div>
- 
+
+            <!-- ITSM & Processos -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">assignment</span>
+                <h4 class="text-white font-semibold text-sm">ITSM & Processos</h4>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">ITIL v4</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Scrum</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Jira</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">ServiceNow</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">CHG</span>
+              </div>
+            </div>
+
+            <!-- LLM / IA Aplicada -->
+            <div class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-icons text-orange-400 text-[20px]">psychology</span>
+                <h4 class="text-white font-semibold text-sm">LLM / IA Aplicada</h4>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Ollama</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Automações com IA</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">Agentes de IA</span>
+                <span class="inline-flex items-center rounded-full border border-electric/40 bg-electric/10 px-2.5 py-0.5 text-[11px] text-orange-400">RAG</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -368,7 +649,59 @@
             <div class="h-px flex-1 bg-gradient-to-r from-electric/70 to-transparent"></div>
           </div>
 
-          <div class="relative timeline rocket-timeline pl-10 space-y-6">
+          <div data-timeline class="relative timeline pl-10 space-y-6">
+            <div data-timeline-fill></div>
+
+            <!-- Paschoalotto - Analista de Infraestrutura II -->
+            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_paschoalotto.jpeg" alt="Logo da Paschoalotto" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura II</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/paschoalotto/" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">Paschoalotto</a>
+                    • Tempo integral
+                  </p>
+                  <p class="text-xs text-slate-500">nov de 2025 — Atual • Bauru, SP • Híbrido</p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Lido em incidentes críticos via ServiceNow, coordenando comunicação entre times técnicos e diretoria em ambientes de alta disponibilidade.</li>
+                    <li>Conduzo Pedidos de Mudança (CHG) seguindo ITIL v4, programação de atualizações em massa via Checkpoint, plano de rollback, elevando a estabilidade do ambiente.</li>
+                    <li>Realizo troubleshooting avançado correlacionando logs e métricas em FortiGate, Elastic, ARIA e Grafana.</li>
+                    <li>Implementei automações em PowerShell e Python para provisionamento de usuários no AD e rotinas administrativas, economizando horas semanais de trabalho manual.</li>
+                  </ul>
+                  <div class="mt-4 flex gap-3">
+                    <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_paschoalotto.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
+                      <img src="img/ex_paschoalotto.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Paschoalotto - Analista de Infraestrutura -->
+            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
+              <div class="flex gap-4">
+                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
+                  <img src="img/logo_paschoalotto.jpeg" alt="Logo da Paschoalotto" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura</h4>
+                  <p class="text-sm text-slate-300">
+                    <a href="https://www.linkedin.com/company/paschoalotto/" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">Paschoalotto</a>
+                    • Tempo integral
+                  </p>
+                  <p class="text-xs text-slate-500">abr de 2025 — nov de 2025 • Bauru, SP</p>
+                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
+                    <li>Gerenciei incidentes e requisições N1/N2 via ServiceNow, mantendo aderência ao SLA e satisfação do usuário final.</li>
+                    <li>Administrei Active Directory (usuários, grupos, GPOs, UOs) e Microsoft 365 (licenças, Exchange, Centro de Administração).</li>
+                    <li>Apoiei a gestão de políticas de FortiGate e o monitoramento de infraestrutura em Grafana, Elastic e ARIA.</li>
+                    <li>Capacitei usuários internos em ferramentas e processos, reduzindo recorrência de chamados.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
 
             <!-- AttanoTech -->
             <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
@@ -377,21 +710,16 @@
                   <img src="img/logo_attanotech.jpeg" alt="Logo da Attano Tech" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </div>
                 <div class="min-w-0 flex-1">
-                  <h4 class="text-white font-semibold text-lg leading-snug">Fundador e Gestor de Projetos</h4>
+                  <h4 class="text-white font-semibold text-lg leading-snug">Fundador & Gestor de Projetos</h4>
                   <p class="text-sm text-slate-300">
-                    <a href="https:attano.tech" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">AttanoTech</a>
+                    <a href="https://attano.tech" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">AttanoTech</a>
                     • Projeto pessoal
                   </p>
                   <p class="text-xs text-slate-500">mar de 2025 — Atual</p>
-                  <p class="text-slate-300 mt-2">
-                    Iniciativa autoral voltada ao desenvolvimento e gestão de projetos de tecnologia, com foco em automação, infraestrutura cloud e entrega contínua. Adoção de práticas ITIL e metodologia Scrum para organização e governança dos projetos.
-                  </p>
                   <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                    <li>Gestão de pipelines de CI/CD com GitHub Actions, automatizando builds, testes e deploys.</li>
-                    <li>Conteinerização de ambientes com Docker em infraestrutura Cloud.</li>
-                    <li>Adoção de práticas ITIL e metodologia Scrum na gestão e execução dos projetos.</li>
-                    <li>Desenvolvimento de automações em Python para monitoramento, relatórios e backup.</li>
-                    <li>Gestão de repositórios, code review e controle de versões com Git/GitHub.</li>
+                    <li>Construí pipelines de CI/CD no GitHub Actions automatizando build, testes e deploy de aplicações em ambientes Docker.</li>
+                    <li>Desenvolvi automações em Python para monitoramento, geração de relatórios e rotinas de backup.</li>
+                    <li>Apliquei práticas ITIL e metodologia Scrum na gestão dos projetos, com versionamento e code review via Git/GitHub.</li>
                   </ul>
                   <div class="mt-4 flex gap-3">
                     <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_attanotech.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
@@ -402,63 +730,11 @@
               </div>
             </article>
 
-            <!-- Paschoalotto -->
-            <article data-reveal-item class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
-              <div class="flex gap-4">
-                <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60">
-                  <img src="img/logo_paschoalotto.jpeg" alt="Logo da Paschoalotto" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-                </div>
-                <div class="min-w-0 flex-1">
-                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Infraestrutura II</h4>
-                  <p class="text-sm text-slate-300">
-                    <a href="https://www.linkedin.com/company/paschoalotto/" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">Paschoalotto</a>
-                    • Tempo integral
-                  </p>
-                  <p class="text-xs text-slate-500">2025 — Atual • Bauru, SP • Híbrido</p>
-                  <p class="text-slate-300 mt-2">
-                    Promoção para atuação estratégica na sustentação e evolução dos serviços de TI, alinhado às práticas ITIL, com responsabilidade em gestão de incidentes, requisições e execução de mudanças (CHG). Administração de ambientes Active Directory e Microsoft 365, garantindo governança de acessos e conformidade corporativa.
-                  </p>
-                  <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                    <li>Gestão de incidentes e requisições via ServiceNow, com estruturação de fluxos operacionais e documentação técnica.</li>
-                    <li>Administração de Active Directory e Microsoft 365, garantindo governança de acessos e conformidade corporativa.</li>
-                    <li>Troubleshooting avançado com análise de logs e métricas em FortiGate, Elastic, ARIA e Grafana.</li>
-                    <li>Planejamento e execução de Pedidos de Mudança (CHG) para melhorias e manutenções estruturais.</li>
-                    <li>Atuação como ponto focal em incidentes críticos, com interação direta com stakeholders e diretoria.</li>
-                  </ul>
-                  <div class="mt-5 relative">
-                    <div class="absolute left-[-2.5rem] top-0 bottom-0 w-px bg-slate-700/70"></div>
-                    <div class="space-y-6">
-                      <div class="relative">
-                        <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
-                        <h5 class="text-white font-semibold leading-snug">Analista de Infraestrutura</h5>
-                        <p class="text-xs text-slate-500">Abr de 2025 — nov de 2025 • Bauru, SP</p>
-                        <p class="text-slate-300 mt-2">
-                          Atuação na gestão de incidentes e requisições via ServiceNow, com estruturação de fluxos operacionais, documentação técnica e foco em melhoria contínua. Administração de ambientes Active Directory e Microsoft 365, garantindo governança de acessos e conformidade com políticas corporativas. Troubleshooting avançado por meio da análise de logs e métricas em FortiGate, Elastic, ARIA e Grafana, assegurando estabilidade e mitigação de riscos.
-                        </p>
-                        <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                          <li>Gestão e resolução de incidentes N1/N2 com análise de impacto e identificação de causa raiz (RCA).</li>
-                          <li>Administração de usuários, grupos, UOs e GPOs no Active Directory, com controle de permissões e segurança.</li>
-                          <li>Gerenciamento de contas, licenciamento e recursos no Microsoft 365 e Exchange.</li>
-                          <li>Monitoramento contínuo de métricas e logs para prevenção de falhas e redução de recorrências.</li>
-                          <li>Padronização e documentação de processos técnicos, promovendo eficiência e rastreabilidade operacional.</li>
-                        </ul>
-                        <div class="mt-4 flex gap-3">
-                          <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_paschoalotto.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
-                            <img src="img/ex_paschoalotto.jpeg" alt="Imagem da experiência" class="w-32 h-20 object-cover" loading="lazy" decoding="async" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
             <!-- Ver mais toggle -->
             <div class="pl-2">
               <button type="button" data-exp-toggle aria-expanded="false" class="soft-glow inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-graphite/35 px-4 py-2 text-sm font-semibold text-slate-100 hover:border-electric/60">
                 <span data-exp-toggle-label>Ver mais</span>
-                <span class="material-icons text-[18px] text-blue-300">expand_more</span>
+                <span class="material-icons text-[18px] text-orange-400">expand_more</span>
               </button>
             </div>
 
@@ -469,21 +745,16 @@
                   <img src="img/logo_linx.jpeg" alt="Logo da Linx" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </div>
                 <div class="min-w-0 flex-1">
-                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Suporte Junior</h4>
+                  <h4 class="text-white font-semibold text-lg leading-snug">Analista de Suporte Júnior</h4>
                   <p class="text-sm text-slate-300">
-                    <a href="https://www.linkedin.com/company/223829/" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">Linx</a>
+                    <a href="https://www.linkedin.com/company/223829/" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">Linx Sistemas</a>
                     • Tempo integral
                   </p>
-                  <p class="text-xs text-slate-500">set de 2023 — abr de 2025</p>
-                  <p class="text-slate-300 mt-2">
-                    Suporte técnico especializado a sistemas integrados de ERP e PDV, com foco em análise técnica, configuração de sistemas e manutenção de banco de dados, garantindo continuidade operacional. Atendimento omnichannel com foco em SLA e experiência do cliente.
-                  </p>
+                  <p class="text-xs text-slate-500">set de 2023 — abr de 2025 • Bauru, SP</p>
                   <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                    <li>Suporte técnico especializado aos sistemas ERP e PDV (Degust, Taste, Menew, Payhub).</li>
-                    <li>Análise técnica, configuração de sistemas e manutenção de bancos de dados Firebase e MongoDB.</li>
-                    <li>Atendimento omnichannel via Salesforce, com foco em SLA e experiência do cliente.</li>
-                    <li>Suporte remoto utilizando Rescue LogMeIn e TeamViewer Tensor.</li>
-                    <li>Configuração de ambiente cliente/servidor, assegurando comunicação e compartilhamento em rede.</li>
+                    <li>Prestei suporte técnico especializado a sistemas ERP/PDV (Degust, Taste, Menew, Payhub) via Salesforce, com foco em SLA e atendimento omnichannel.</li>
+                    <li>Realizei diagnósticos e manutenções diretas em bancos Firebase e MongoDB, incluindo coleta e análise de logs.</li>
+                    <li>Configurei ambientes cliente/servidor e acesso remoto via LogMeIn Rescue e TeamViewer Tensor.</li>
                   </ul>
                   <div class="mt-4 flex gap-3">
                     <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_linx.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
@@ -503,21 +774,15 @@
                 <div class="min-w-0 flex-1">
                   <h4 class="text-white font-semibold text-lg leading-snug">Analista de TI</h4>
                   <p class="text-sm text-slate-300">
-                    <a href="https://www.linkedin.com/company/ks2solucoes" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 underline decoration-electric/60 underline-offset-4">KS2</a>
+                    <a href="https://www.linkedin.com/company/ks2solucoes" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 underline decoration-electric/60 underline-offset-4">KS2 Soluções Empresariais</a>
                     • Tempo integral
                   </p>
-                  <p class="text-xs text-slate-500">set de 2022 — set de 2023</p>
-                  <p class="text-slate-300 mt-2">
-                    Atuação em suporte e administração de ambiente corporativo, com responsabilidade pela sustentação de infraestrutura, gestão de ativos de TI e atendimento a usuários finais. Foco em estabilidade operacional, organização de processos e suporte técnico de primeiro e segundo nível.
-                  </p>
+                  <p class="text-xs text-slate-500">jan de 2023 — set de 2023 • Bauru, SP</p>
                   <ul class="mt-3 text-slate-400 text-sm space-y-1 list-disc list-inside">
-                    <li>Gestão de chamados N1/N2 via GLPI, realizando diagnóstico e resolução de incidentes.</li>
-                    <li>Administração de usuários, grupos e permissões em Active Directory (Windows Server).</li>
-                    <li>Gestão de ativos de TI (hardware, software, servidores e rede), garantindo controle e organização do ambiente.</li>
-                    <li>Manutenção preventiva e corretiva de estações, redes e dispositivos de armazenamento.</li>
-                    <li>Monitoramento de infraestrutura via Grafana para identificação proativa de falhas.</li>
-                    <li>Administração de contas no Microsoft 365 e execução de backups PST.</li>
-                    <li>Orientação e treinamento técnico a usuários sobre sistemas e boas práticas.</li>
+                    <li>Administrei usuários, grupos e permissões em Windows Server / Active Directory, além de gestão de ativos de TI.</li>
+                    <li>Atuei em suporte N1/N2 via GLPI, incluindo manutenção preventiva e corretiva de estações e rede.</li>
+                    <li>Gerenciei contas Microsoft 365 e backups PST via Veeam, garantindo continuidade operacional.</li>
+                    <li>Monitorei ativos e disponibilidade com Grafana, identificando prontamente falhas de hardware e software.</li>
                   </ul>
                   <div class="mt-4 flex gap-3">
                     <button type="button" data-story data-modal="image-only" data-title="Imagem da experiência" data-img="img/ex_ks2.jpeg" class="soft-glow rounded-xl border border-slate-800 bg-deep/60 overflow-hidden" aria-label="Ampliar imagem da experiência">
@@ -575,11 +840,12 @@
               <h4 class="text-white font-semibold text-lg shrink-0">Educação formal</h4>
               <div class="h-px flex-1 bg-gradient-to-r from-electric/30 to-transparent"></div>
             </div>
-            <div class="relative timeline rocket-timeline pl-10">
+            <div data-timeline class="relative timeline pl-10">
+              <div data-timeline-fill></div>
               <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
                 <div class="flex gap-4">
                   <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
-                    <span class="material-icons text-blue-300">school</span>
+                    <span class="material-icons text-orange-400">school</span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h5 class="text-white font-semibold leading-snug">Faculdade de Tecnologia de Bauru</h5>
@@ -604,25 +870,25 @@
               <!-- Alura -->
               <a href="https://cursos.alura.com.br/user/mrpedronetto" target="_blank" rel="noopener noreferrer" class="soft-glow flex flex-col items-center gap-3 rounded-xl border border-slate-700 bg-graphite/40 p-5 text-center group" aria-label="Perfil na Alura">
                 <div class="w-12 h-12 rounded-xl border border-slate-800 bg-deep/60 grid place-items-center">
-                  <span class="material-icons text-blue-300">auto_stories</span>
+                  <span class="material-icons text-orange-400">auto_stories</span>
                 </div>
                 <div>
                   <p class="text-white font-semibold text-sm">Alura</p>
                   <p class="text-slate-500 text-xs">Escola de Tecnologia</p>
                 </div>
-                <span class="inline-flex items-center gap-1 text-xs text-blue-300 group-hover:text-blue-200 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
+                <span class="inline-flex items-center gap-1 text-xs text-orange-400 group-hover:text-orange-300 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
               </a>
 
               <!-- Udemy -->
               <a href="https://www.udemy.com/user/pedro-henrique-netto-dos-santos-2/" target="_blank" rel="noopener noreferrer" class="soft-glow flex flex-col items-center gap-3 rounded-xl border border-slate-700 bg-graphite/40 p-5 text-center group" aria-label="Perfil na Udemy">
                 <div class="w-12 h-12 rounded-xl border border-slate-800 bg-deep/60 grid place-items-center">
-                  <span class="material-icons text-blue-300">play_lesson</span>
+                  <span class="material-icons text-orange-400">play_lesson</span>
                 </div>
                 <div>
                   <p class="text-white font-semibold text-sm">Udemy</p>
                   <p class="text-slate-500 text-xs">Online Courses</p>
                 </div>
-                <span class="inline-flex items-center gap-1 text-xs text-blue-300 group-hover:text-blue-200 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
+                <span class="inline-flex items-center gap-1 text-xs text-orange-400 group-hover:text-orange-300 mt-auto">Ver perfil <span class="material-icons text-[13px]">open_in_new</span></span>
               </a>
 
             </div>
@@ -634,13 +900,14 @@
               <h4 class="text-white font-semibold text-lg shrink-0">Cursos complementares</h4>
               <div class="h-px flex-1 bg-gradient-to-r from-electric/30 to-transparent"></div>
             </div>
-            <div class="relative timeline rocket-timeline pl-10 space-y-6">
+            <div data-timeline class="relative timeline pl-10 space-y-6">
+              <div data-timeline-fill></div>
 
               <!-- CCNA -->
               <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
                 <div class="flex gap-4">
                   <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
-                    <span class="material-icons text-blue-300">router</span>
+                    <span class="material-icons text-orange-400">router</span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h5 class="text-white font-semibold leading-snug">Trilha CCNA (Cisco)</h5>
@@ -649,17 +916,17 @@
                       <div class="absolute left-[-2.5rem] top-0 bottom-0 w-px bg-slate-700/70"></div>
                       <div class="space-y-5">
                         <div class="relative">
-                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(249,115,22,.14)]"></span>
                           <h6 class="text-white font-semibold leading-snug">Introduction to Networks</h6>
                           <p class="text-xs text-slate-500">Cisco • 18/12/2023</p>
                         </div>
                         <div class="relative">
-                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(249,115,22,.14)]"></span>
                           <h6 class="text-white font-semibold leading-snug">Switching, Routing, and Wireless Essentials</h6>
                           <p class="text-xs text-slate-500">Cisco • 18/12/2023</p>
                         </div>
                         <div class="relative">
-                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(37,99,235,.14)]"></span>
+                          <span class="absolute left-[-2.875rem] top-2 w-3 h-3 rounded-full border-2 border-electric bg-deep shadow-[0_0_0_4px_rgba(249,115,22,.14)]"></span>
                           <h6 class="text-white font-semibold leading-snug">Enterprise Networking, Security, and Automation</h6>
                           <p class="text-xs text-slate-500">Cisco • 22/12/2023</p>
                         </div>
@@ -673,7 +940,7 @@
               <article class="soft-glow rounded-xl border border-slate-700 bg-graphite/40 p-6">
                 <div class="flex gap-4">
                   <div class="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-slate-800 bg-deep/60 grid place-items-center">
-                    <span class="material-icons text-blue-300">cloud</span>
+                    <span class="material-icons text-orange-400">cloud</span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h5 class="text-white font-semibold leading-snug">AWS Knowledge: Cloud Essentials</h5>
@@ -749,12 +1016,21 @@
       <section id="contatos" data-reveal class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-6">
           <div class="rounded-2xl border border-slate-700 bg-graphite/45 p-8 md:p-10 shadow-glow">
-            <div class="flex items-start justify-between gap-4 mb-6">
+            <div class="flex items-start justify-between gap-4 mb-4">
               <div>
                 <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Links rápidos</p>
                 <h4 class="text-white font-semibold text-2xl md:text-3xl leading-tight mt-2">Escolha o melhor canal</h4>
               </div>
-              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-300">Contato</span>
+              <span class="inline-flex items-center rounded-full border border-electric/60 px-3 py-1 text-xs uppercase tracking-[0.18em] text-orange-400">Contato</span>
+            </div>
+
+            <div class="mb-8 border-l-2 border-electric/50 pl-4">
+              <p class="text-slate-300 leading-relaxed mb-2">
+                Quer saber como posso ser mais do que um funcionário e virar um <strong class="text-white">investimento</strong> para a sua empresa? Então é só marcar uma conversa.
+              </p>
+              <p class="text-slate-400 leading-relaxed">
+                Mas só vale a pena se a sua empresa realmente <strong class="text-orange-400">exalar tecnologia</strong> — porque é isso que eu respiro.
+              </p>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4">
@@ -769,7 +1045,7 @@
                     <p class="text-white font-semibold leading-snug">WhatsApp</p>
                     <p class="text-xs text-slate-400">Mensagem direta</p>
                   </div>
-                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-orange-400">open_in_new</span>
                 </div>
               </a>
 
@@ -783,7 +1059,7 @@
                     <p class="text-white font-semibold leading-snug">LinkedIn</p>
                     <p class="text-xs text-slate-400">Conexões & carreira</p>
                   </div>
-                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-orange-400">open_in_new</span>
                 </div>
               </a>
 
@@ -797,7 +1073,7 @@
                     <p class="text-white font-semibold leading-snug">Facebook</p>
                     <p class="text-xs text-slate-400">Página / perfil</p>
                   </div>
-                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-orange-400">open_in_new</span>
                 </div>
               </a>
 
@@ -811,7 +1087,7 @@
                     <p class="text-white font-semibold leading-snug">YouTube</p>
                     <p class="text-xs text-slate-400">Conteúdos & labs</p>
                   </div>
-                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-orange-400">open_in_new</span>
                 </div>
               </a>
 
@@ -825,7 +1101,7 @@
                     <p class="text-white font-semibold leading-snug">Instagram</p>
                     <p class="text-xs text-slate-400">Bastidores & atualizações</p>
                   </div>
-                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-blue-300">open_in_new</span>
+                  <span class="ml-auto material-icons text-[18px] text-slate-400 group-hover:text-orange-400">open_in_new</span>
                 </div>
               </a>
 
