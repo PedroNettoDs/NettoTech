@@ -490,6 +490,7 @@ function initScrollSpy() {
     certificados: 'Certificados',
     educacao:     'Educação',
     storys:       'Trajetória',
+    matchnetto:   'Compatibilidade',
     contatos:     'Contato',
   };
   const sectionIds = Object.keys(sectionMap);
@@ -690,6 +691,265 @@ function initAboutToggle() {
   requestAnimationFrame(tick);
 }
 
+function initMatchNetto() {
+  const WORKER_URL  = 'https://matchnetto-proxy.mrpedronetinhu.workers.dev/check';
+  const STORAGE_KEY = 'matchnetto_session_id';
+  const EXPIRY_KEY  = 'matchnetto_session_expiry';
+  const SESSION_TTL = 24 * 60 * 60 * 1000;
+  const CIRC        = 213.6;
+
+  const modal     = $('[data-matchnetto-modal]');
+  const input     = $('[data-matchnetto-input]');
+  const charCount = $('[data-matchnetto-charcount]');
+  const submitBtn = $('[data-matchnetto-submit]');
+  const errorEl   = $('[data-matchnetto-error]');
+  const widgetEl  = modal ? $('.cf-turnstile', modal) : null;
+  if (!modal || !input || !submitBtn) return;
+
+  let widgetId = null;
+
+  const getSessionId = () => {
+    const now = Date.now();
+    const expiry = parseInt(localStorage.getItem(EXPIRY_KEY) || '0', 10);
+    let id = localStorage.getItem(STORAGE_KEY);
+    if (!id || !expiry || now > expiry) {
+      id = (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : 'sess-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(STORAGE_KEY, id);
+      localStorage.setItem(EXPIRY_KEY, String(now + SESSION_TTL));
+    }
+    return id;
+  };
+
+  const showStep = (step) => {
+    $$('[data-matchnetto-step]', modal).forEach((el) => {
+      el.classList.toggle('hidden', el.dataset.matchnettoStep !== step);
+    });
+  };
+
+  const showError = (msg) => {
+    if (!errorEl) return;
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
+  };
+  const hideError = () => errorEl && errorEl.classList.add('hidden');
+
+  const renderTurnstile = () => {
+    if (!widgetEl || !window.turnstile) return;
+    if (widgetId !== null) {
+      try { window.turnstile.reset(widgetId); } catch (_) {}
+      return;
+    }
+    try {
+      widgetId = window.turnstile.render(widgetEl, {
+        sitekey: widgetEl.dataset.sitekey,
+        theme: 'dark',
+      });
+    } catch (_) { /* script may still be loading */ }
+  };
+  const resetTurnstile = () => {
+    if (window.turnstile && widgetId !== null) {
+      try { window.turnstile.reset(widgetId); } catch (_) {}
+    }
+  };
+  const getTurnstileToken = () => {
+    if (!window.turnstile || widgetId === null) return '';
+    try { return window.turnstile.getResponse(widgetId) || ''; } catch (_) { return ''; }
+  };
+
+  const openModal = () => {
+    hideError();
+    showStep('form');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Render after modal is visible (allow iframe sizing).
+    // Retry a couple of times in case the Turnstile script hasn't loaded yet.
+    window.setTimeout(renderTurnstile, 50);
+    window.setTimeout(renderTurnstile, 400);
+    window.setTimeout(renderTurnstile, 1200);
+  };
+
+  const closeModal = () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (input) {
+      input.value = '';
+      if (charCount) charCount.textContent = '0';
+    }
+    resetTurnstile();
+  };
+
+  // Live character counter
+  input.addEventListener('input', () => {
+    if (charCount) charCount.textContent = String(input.value.length);
+  });
+
+  // Open / close / esc
+  $$('[data-matchnetto-open]').forEach((btn) => btn.addEventListener('click', openModal));
+  document.addEventListener('click', (event) => {
+    const closeBtn = event.target.closest('[data-matchnetto-close]');
+    if (closeBtn && modal.contains(closeBtn)) closeModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+
+  // Result helpers
+  const fillList = (ul, items) => {
+    if (!ul) return;
+    ul.innerHTML = '';
+    if (!items || !items.length) {
+      const li = document.createElement('li');
+      li.className = 'italic text-slate-500 list-none';
+      li.textContent = '(nenhum identificado)';
+      ul.appendChild(li);
+      return;
+    }
+    items.forEach((text) => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      ul.appendChild(li);
+    });
+  };
+
+  const animateScore = (target) => {
+    const scoreEl = $('[data-matchnetto-score]', modal);
+    const ring    = $('[data-matchnetto-score-ring]', modal);
+    const clamped = Math.max(0, Math.min(100, Number(target) || 0));
+
+    if (ring) {
+      ring.style.strokeDashoffset = String(CIRC);
+      window.requestAnimationFrame(() => {
+        ring.style.strokeDashoffset = String(CIRC * (1 - clamped / 100));
+      });
+    }
+    if (!scoreEl) return;
+
+    let current = 0;
+    const step = Math.max(1, Math.ceil(clamped / 30));
+    const iv = window.setInterval(() => {
+      current = Math.min(clamped, current + step);
+      scoreEl.textContent = String(current);
+      if (current >= clamped) window.clearInterval(iv);
+    }, 30);
+  };
+
+  const renderGhSection = (label, items, colorClass) => {
+    if (!items || !items.length) return null;
+    const wrap = document.createElement('div');
+    const h = document.createElement('p');
+    h.className = 'text-xs uppercase tracking-[0.18em] font-semibold mb-1.5 ' + colorClass;
+    h.textContent = label;
+    const ul = document.createElement('ul');
+    ul.className = 'space-y-1 text-sm text-slate-300 list-disc list-inside';
+    items.forEach((txt) => {
+      const li = document.createElement('li');
+      li.textContent = txt;
+      ul.appendChild(li);
+    });
+    wrap.appendChild(h);
+    wrap.appendChild(ul);
+    return wrap;
+  };
+
+  const renderResult = (data) => {
+    const a = data.analysis || {};
+    animateScore(a.score);
+
+    const recoMap = {
+      'aplicar': '✅ Recomendado aplicar',
+      'aplicar com ressalvas': '⚠️ Aplicar com ressalvas',
+      'nao recomendado': '❌ Não recomendado',
+    };
+    const recoEl = $('[data-matchnetto-recommendation]', modal);
+    if (recoEl) recoEl.textContent = recoMap[a.recommendation] || (a.recommendation || '—');
+
+    const summaryEl = $('[data-matchnetto-summary]', modal);
+    if (summaryEl) summaryEl.textContent = a.summary || '(sem resumo disponível)';
+
+    fillList($('[data-matchnetto-strengths]', modal), a.strengths);
+    fillList($('[data-matchnetto-gaps]',      modal), a.gaps);
+    fillList($('[data-matchnetto-tips]',      modal), a.tips);
+
+    const ghBlock   = $('[data-matchnetto-github-block]', modal);
+    const ghContent = $('[data-matchnetto-github-content]', modal);
+    if (ghBlock && ghContent) {
+      ghContent.innerHTML = '';
+      const gh = a.github_evidence || {};
+      const sections = [
+        renderGhSection('Confirma o CV',              gh.confirms,         'text-emerald-400'),
+        renderGhSection('Contradições / ausências',   gh.contradictions,   'text-amber-400'),
+        renderGhSection('Projetos notáveis',          gh.notable_projects, 'text-orange-400'),
+      ].filter(Boolean);
+
+      if (!sections.length) {
+        ghBlock.classList.add('hidden');
+      } else {
+        ghBlock.classList.remove('hidden');
+        sections.forEach((s) => ghContent.appendChild(s));
+      }
+    }
+
+    const quotaEl = $('[data-matchnetto-quota]', modal);
+    if (quotaEl && data.quota) {
+      const used  = data.quota.used  != null ? data.quota.used  : 0;
+      const limit = data.quota.limit != null ? data.quota.limit : 3;
+      quotaEl.textContent = `Análise ${used} de ${limit} nesta sessão`;
+    }
+  };
+
+  // Submit
+  submitBtn.addEventListener('click', async () => {
+    hideError();
+    const job = (input.value || '').trim();
+    if (job.length < 20) {
+      showError('Descrição da vaga muito curta. Mínimo 20 caracteres.');
+      return;
+    }
+    const token = getTurnstileToken();
+    if (!token) {
+      showError('Complete a verificação anti-bot antes de enviar.');
+      return;
+    }
+
+    showStep('loading');
+
+    try {
+      const resp = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          job_description: job,
+          turnstile_token: token,
+          session_id: getSessionId(),
+        }),
+      });
+
+      let data = {};
+      try { data = await resp.json(); } catch (_) { data = {}; }
+
+      if (!resp.ok || !data.success || !data.analysis) {
+        showStep('form');
+        resetTurnstile();
+        showError(data.error || 'Falha ao analisar. Tente novamente.');
+        return;
+      }
+
+      renderResult(data);
+      showStep('result');
+    } catch (err) {
+      showStep('form');
+      resetTurnstile();
+      showError('Erro de conexão. Verifique sua internet e tente novamente.');
+    }
+  });
+}
+
 initKeywordRain();
 initThemeToggle();
 initScrollSpy();
@@ -699,6 +959,7 @@ initExperienceToggle();
 initProjectsToggle();
 initTimelineProgress();
 initAboutToggle();
+initMatchNetto();
 initMobileMenu();
 renderStories();
 renderCerts();
