@@ -799,24 +799,6 @@ function initMatchNetto() {
     if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
   });
 
-  // Result helpers
-  const fillList = (ul, items) => {
-    if (!ul) return;
-    ul.innerHTML = '';
-    if (!items || !items.length) {
-      const li = document.createElement('li');
-      li.className = 'italic text-slate-500 list-none';
-      li.textContent = '(nenhum identificado)';
-      ul.appendChild(li);
-      return;
-    }
-    items.forEach((text) => {
-      const li = document.createElement('li');
-      li.textContent = text;
-      ul.appendChild(li);
-    });
-  };
-
   const animateScore = (target) => {
     const scoreEl = $('[data-matchnetto-score]', modal);
     const ring    = $('[data-matchnetto-score-ring]', modal);
@@ -839,22 +821,43 @@ function initMatchNetto() {
     }, 30);
   };
 
-  const renderGhSection = (label, items, colorClass) => {
-    if (!items || !items.length) return null;
-    const wrap = document.createElement('div');
-    const h = document.createElement('p');
-    h.className = 'text-xs uppercase tracking-[0.18em] font-semibold mb-1.5 ' + colorClass;
-    h.textContent = label;
-    const ul = document.createElement('ul');
-    ul.className = 'space-y-1 text-sm text-slate-300 list-disc list-inside';
-    items.forEach((txt) => {
-      const li = document.createElement('li');
-      li.textContent = txt;
-      ul.appendChild(li);
-    });
-    wrap.appendChild(h);
-    wrap.appendChild(ul);
-    return wrap;
+  const joinList = (items) => {
+    if (!Array.isArray(items)) return '';
+    const clean = items.map((s) => String(s || '').trim()).filter(Boolean);
+    if (!clean.length) return '';
+    if (clean.length === 1) return clean[0] + '.';
+    if (clean.length === 2) return clean.join(' e ') + '.';
+    return clean.slice(0, -1).join('; ') + ' e ' + clean[clean.length - 1] + '.';
+  };
+
+  const synthesizeSummary = (a) => {
+    const parts = [];
+    const recoText = {
+      'aplicar': 'O perfil tem fit significativo com a vaga e a aplicação é recomendada.',
+      'aplicar com ressalvas': 'O perfil apresenta fit parcial com a vaga; a aplicação pode fazer sentido com ressalvas.',
+      'nao recomendado': 'O perfil não apresenta fit suficiente com a vaga nesta análise.',
+    };
+    if (recoText[a.recommendation]) parts.push(recoText[a.recommendation]);
+
+    const strengths = joinList(a.strengths);
+    if (strengths) parts.push('Entre os pontos fortes identificados: ' + strengths.replace(/\.$/, '') + '.');
+
+    const gaps = joinList(a.gaps);
+    if (gaps) parts.push('Como gaps principais, destacam-se: ' + gaps.replace(/\.$/, '') + '.');
+
+    const gh = a.github_evidence || {};
+    const confirms = joinList(gh.confirms);
+    if (confirms) parts.push('No GitHub, há evidências que confirmam o currículo: ' + confirms.replace(/\.$/, '') + '.');
+    const contradictions = joinList(gh.contradictions);
+    if (contradictions) parts.push('Pontos de ausência ou contradição no GitHub: ' + contradictions.replace(/\.$/, '') + '.');
+    const notable = joinList(gh.notable_projects);
+    if (notable) parts.push('Projetos notáveis no repositório público: ' + notable.replace(/\.$/, '') + '.');
+
+    const tips = joinList(a.tips);
+    if (tips) parts.push('Recomendações de ajuste: ' + tips.replace(/\.$/, '') + '.');
+
+    if (!parts.length) parts.push('Análise concluída, porém sem dados suficientes para um resumo detalhado.');
+    return parts;
   };
 
   const renderResult = (data) => {
@@ -862,37 +865,27 @@ function initMatchNetto() {
     animateScore(a.score);
 
     const recoMap = {
-      'aplicar': '✅ Recomendado aplicar',
-      'aplicar com ressalvas': '⚠️ Aplicar com ressalvas',
-      'nao recomendado': '❌ Não recomendado',
+      'aplicar': 'Recomendado aplicar',
+      'aplicar com ressalvas': 'Aplicar com ressalvas',
+      'nao recomendado': 'Não recomendado',
     };
     const recoEl = $('[data-matchnetto-recommendation]', modal);
     if (recoEl) recoEl.textContent = recoMap[a.recommendation] || (a.recommendation || '—');
 
     const summaryEl = $('[data-matchnetto-summary]', modal);
-    if (summaryEl) summaryEl.textContent = a.summary || '(sem resumo disponível)';
-
-    fillList($('[data-matchnetto-strengths]', modal), a.strengths);
-    fillList($('[data-matchnetto-gaps]',      modal), a.gaps);
-    fillList($('[data-matchnetto-tips]',      modal), a.tips);
-
-    const ghBlock   = $('[data-matchnetto-github-block]', modal);
-    const ghContent = $('[data-matchnetto-github-content]', modal);
-    if (ghBlock && ghContent) {
-      ghContent.innerHTML = '';
-      const gh = a.github_evidence || {};
-      const sections = [
-        renderGhSection('Confirma o CV',              gh.confirms,         'text-emerald-400'),
-        renderGhSection('Contradições / ausências',   gh.contradictions,   'text-amber-400'),
-        renderGhSection('Projetos notáveis',          gh.notable_projects, 'text-orange-400'),
-      ].filter(Boolean);
-
-      if (!sections.length) {
-        ghBlock.classList.add('hidden');
+    if (summaryEl) {
+      summaryEl.innerHTML = '';
+      let paragraphs;
+      if (typeof a.summary === 'string' && a.summary.trim().length >= 40) {
+        paragraphs = [a.summary.trim()].concat(synthesizeSummary(a).slice(1));
       } else {
-        ghBlock.classList.remove('hidden');
-        sections.forEach((s) => ghContent.appendChild(s));
+        paragraphs = synthesizeSummary(a);
       }
+      paragraphs.forEach((text) => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        summaryEl.appendChild(p);
+      });
     }
 
     const quotaEl = $('[data-matchnetto-quota]', modal);
