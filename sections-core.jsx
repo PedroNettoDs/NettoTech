@@ -1,65 +1,313 @@
-/* global React, Icon, Reveal */
+/* global React, ReactDOM, Icon, Reveal */
 const { useState, useEffect, useRef } = React;
 
 // =====================================================
-// PROJETOS — 7 cards (6 projetos técnicos + Wiki)
-// "Exibir mais" no mobile (< 960px) após os 3 primeiros
+// PROJETOS
+// Dados ricos: cada projeto tem `shortDesc` (no card) +
+// campos opcionais `longDesc` / `features` / `metrics` / `media`
+// preenchidos depois para alimentar o modal.
 // =====================================================
 const PROJECTS = [
   {
-    icon: "brain", tag: "IA / LLM", name: "Alfred-Pennyworth",
-    desc: "Assistente pessoal local com LLMs via Ollama, execução de comandos no host, pesquisa web autônoma e RAG via Knowledge Base. Integra vault Obsidian para memória persistente, eliminando dependência de APIs externas. Totalmente offline e privado.",
+    id: "alfred-pennyworth",
+    icon: "brain",
+    tag: "IA / LLM",
+    name: "Alfred-Pennyworth",
+    shortDesc: "Assistente pessoal local com LLMs via Ollama, execução de comandos no host, pesquisa web autônoma e RAG via Knowledge Base. Integra vault Obsidian para memória persistente, eliminando dependência de APIs externas. Totalmente offline e privado.",
     chips: ["Python", "Ollama", "Docker", "RAG"],
-    link: "https://github.com/PedroNettoDs/Alfred-Pennyworth",
-    linkLabel: "Ver no GitHub", linkIcon: "github"
+    // TODO — descrição detalhada (2-3 parágrafos sobre arquitetura, motivação, como funciona)
+    longDesc: "",
+    // TODO — bullets de capacidades
+    features: [],
+    // TODO — métricas de impacto, ex.: { value: "100%", label: "Offline" }
+    metrics: [],
+    // TODO — GIFs/screenshots em img/projects/alfred-*.webm|png
+    media: [],
+    links: [
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/Alfred-Pennyworth", icon: "github", primary: true }
+    ]
   },
   {
-    icon: "clipboard", tag: "IA / LLM", name: "Briefing de Notícias — LLM",
-    desc: "Automatiza a curação diária de notícias em Markdown e áudio. Coleta de feeds RSS e SearXNG, agrupa por tema via clustering semântico, sintetiza com Ollama para gerar relatório estruturado e podcast. Economiza tempo no consumo de informações relevantes.",
+    id: "briefing-llm",
+    icon: "clipboard",
+    tag: "IA / LLM",
+    name: "Briefing de Notícias — LLM",
+    shortDesc: "Automatiza a curação diária de notícias em Markdown e áudio. Coleta de feeds RSS e SearXNG, agrupa por tema via clustering semântico, sintetiza com Ollama para gerar relatório estruturado e podcast. Economiza tempo no consumo de informações relevantes.",
     chips: ["Python", "Ollama", "Docker", "NLP"],
-    link: "https://github.com/PedroNettoDs/Briefing-LLM",
-    linkLabel: "Ver no GitHub", linkIcon: "github"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/Briefing-LLM", icon: "github", primary: true }
+    ]
   },
   {
-    icon: "file", tag: "Automação", name: "NF-e Consolidator",
-    desc: "Processa arquivos XML de NF-e em lote e gera planilhas consolidadas com extração automatizada de dados (chave, datas, CNPJ/CPF, valores). Reduz 80% do tempo de processamento manual, suportando até 100+ XMLs por execução.",
+    id: "nfe-consolidator",
+    icon: "file",
+    tag: "Automação",
+    name: "NF-e Consolidator",
+    shortDesc: "Processa arquivos XML de NF-e em lote e gera planilhas consolidadas com extração automatizada de dados (chave, datas, CNPJ/CPF, valores). Reduz 80% do tempo de processamento manual, suportando até 100+ XMLs por execução.",
     chips: ["Python", "XML", "Tkinter", "Automation"],
-    link: "https://github.com/PedroNettoDs/NF-e-Consolidator",
-    linkLabel: "Ver no GitHub", linkIcon: "github"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/NF-e-Consolidator", icon: "github", primary: true }
+    ]
   },
   {
-    icon: "zap", tag: "SaaS", name: "SubMAX",
-    desc: "Plataforma SaaS multi-tenant de gerenciamento fitness com portais dedicados para personal trainer e aluno. Backend REST API com autenticação JWT isolada, integração WhatsApp, editor visual de rotinas com drag-and-drop, avaliações com 26 métricas antropométricas e execução de treino em tempo real. Hospedado em cloud com CI/CD automatizado.",
+    id: "submax",
+    icon: "zap",
+    tag: "SaaS",
+    name: "SubMAX",
+    shortDesc: "Plataforma SaaS multi-tenant de gerenciamento fitness com portais dedicados para personal trainer e aluno. Backend REST API com autenticação JWT isolada, integração WhatsApp, editor visual de rotinas com drag-and-drop, avaliações com 26 métricas antropométricas e execução de treino em tempo real. Hospedado em cloud com CI/CD automatizado.",
     chips: ["Django", "React", "TypeScript", "PostgreSQL", "CI/CD"],
-    link: "https://www.submax.com.br",
-    linkLabel: "Acessar aplicação", linkIcon: "external"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Acessar aplicação", url: "https://www.submax.com.br", icon: "external", primary: true }
+    ]
   },
   {
-    icon: "network", tag: "Infraestrutura", name: "IaC de Fileserver",
-    desc: "Infrastructure as Code para provisionamento automatizado de fileserver institucional. Reduz tempo de setup de 2 horas para 15 minutos, garante padronização, rastreabilidade e reprodutibilidade completa do ambiente. Desenvolvido para FATEC Bauru com Bash, Samba e GPO.",
+    id: "iac-fileserver",
+    icon: "network",
+    tag: "Infraestrutura",
+    name: "IaC de Fileserver",
+    shortDesc: "Infrastructure as Code para provisionamento automatizado de fileserver institucional. Reduz tempo de setup de 2 horas para 15 minutos, garante padronização, rastreabilidade e reprodutibilidade completa do ambiente. Desenvolvido para FATEC Bauru com Bash, Samba e GPO.",
     chips: ["Bash", "Samba", "GPO", "IaC"],
-    link: "https://github.com/PedroNettoDs/IaC-Fileserver",
-    linkLabel: "Ver no GitHub", linkIcon: "github"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/IaC-Fileserver", icon: "github", primary: true }
+    ]
   },
   {
-    icon: "cloud", tag: "Automação", name: "Exchange Retention Manager",
-    desc: "Automatiza políticas de retenção no Exchange Online com autenticação OAuth, validação de permissões e logs estruturados. Interface intuitiva com execução em menos de 15 minutos por caixa de correio. Garante conformidade e rastreabilidade em ambientes corporativos.",
+    id: "exchange-retention",
+    icon: "cloud",
+    tag: "Automação",
+    name: "Exchange Retention Manager",
+    shortDesc: "Automatiza políticas de retenção no Exchange Online com autenticação OAuth, validação de permissões e logs estruturados. Interface intuitiva com execução em menos de 15 minutos por caixa de correio. Garante conformidade e rastreabilidade em ambientes corporativos.",
     chips: ["Python", "Exchange Online", "PowerShell", "Automation"],
-    link: "https://github.com/PedroNettoDs/Exchange-Retention-Manager",
-    linkLabel: "Ver no GitHub", linkIcon: "github"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/Exchange-Retention-Manager", icon: "github", primary: true }
+    ]
   },
   {
-    icon: "book", tag: "Documentação", name: "Wiki NettoTech",
-    desc: "Base de conhecimento pessoal com anotações, tutoriais e referências sobre Linux, redes, cloud e infraestrutura — escrita no dia a dia do aprendizado.",
+    id: "wiki",
+    icon: "book",
+    tag: "Documentação",
+    name: "Wiki NettoTech",
+    shortDesc: "Base de conhecimento pessoal com anotações, tutoriais e referências sobre Linux, redes, cloud e infraestrutura — escrita no dia a dia do aprendizado.",
     chips: ["Linux", "Redes", "Cloud", "Infraestrutura"],
-    link: "https://wiki.nettotech.com.br/",
-    linkLabel: "Acessar Wiki", linkIcon: "external"
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [],
+    links: [
+      { label: "Acessar Wiki", url: "https://wiki.nettotech.com.br/", icon: "external", primary: true }
+    ]
   }
 ];
 
+// -----------------------------------------------------
+// ProjectCard — clique no corpo abre modal,
+// rodapé "Ver no GitHub/Acessar…" continua funcional (stopPropagation)
+// -----------------------------------------------------
+const ProjectCard = ({ project, onOpen }) => {
+  const primary = project.links.find((l) => l.primary) || project.links[0];
+  const handleKey = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onOpen(project);
+    }
+  };
+  return (
+    <article
+      className="project-card"
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(project)}
+      onKeyDown={handleKey}
+      aria-label={`Abrir detalhes de ${project.name}`}
+    >
+      <div className="project-head">
+        <div className="project-icon"><Icon name={project.icon} size={18} /></div>
+        <span className="tag">{project.tag}</span>
+      </div>
+      <h3 className="project-name">{project.name}</h3>
+      <p className="project-desc">{project.shortDesc}</p>
+      <div className="chip-row">
+        {project.chips.map((c, j) => <span key={j} className="chip">{c}</span>)}
+      </div>
+      {primary && (
+        <a
+          href={primary.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-link"
+          onClick={(e) => e.stopPropagation()}
+          aria-label={`${primary.label} (abre em nova aba)`}
+        >
+          <Icon name={primary.icon} size={13} /> {primary.label} <Icon name="external" size={11} />
+        </a>
+      )}
+    </article>
+  );
+};
+
+// -----------------------------------------------------
+// ProjectModal — exibição rica com placeholders elegantes
+// para campos ainda não preenchidos.
+// -----------------------------------------------------
+const ProjectModal = ({ project, onClose }) => {
+  // Bloqueia scroll do body e escucha Esc enquanto aberto
+  useEffect(() => {
+    if (!project) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [project, onClose]);
+
+  if (!project) return null;
+
+  const hasLong    = !!(project.longDesc && project.longDesc.trim());
+  const hasMedia   = Array.isArray(project.media)   && project.media.length > 0;
+  const hasFeat    = Array.isArray(project.features)&& project.features.length > 0;
+  const hasMetrics = Array.isArray(project.metrics) && project.metrics.length > 0;
+
+  // Portal: renderiza no <body> pra escapar de qualquer ancestral com transform
+  // (ex.: .reveal aplica translateY que quebraria position:fixed)
+
+  const renderMedia = (m, i) => {
+    const isVideo = /\.(webm|mp4)$/i.test(m.src);
+    return (
+      <figure key={i} className="pm-media-item">
+        {isVideo ? (
+          <video src={m.src} autoPlay loop muted playsInline />
+        ) : (
+          <img src={m.src} alt={m.caption || `Mídia ${i + 1}`} loading="lazy" />
+        )}
+        {m.caption && <figcaption>{m.caption}</figcaption>}
+      </figure>
+    );
+  };
+
+  const modalContent = (
+    <div className="pm-modal open" aria-hidden="false" role="dialog" aria-modal="true">
+      <button type="button" className="pm-overlay" onClick={onClose} aria-label="Fechar detalhes"></button>
+
+      <div className="pm-dialog">
+        <div className="pm-header">
+          <div className="pm-header-left">
+            <div className="project-icon"><Icon name={project.icon} size={18} /></div>
+            <div>
+              <span className="tag">{project.tag}</span>
+              <h3 className="pm-title">{project.name}</h3>
+            </div>
+          </div>
+          <button type="button" className="mn-close-btn" onClick={onClose} aria-label="Fechar">
+            <Icon name="close" size={18} />
+          </button>
+        </div>
+
+        {/* MÉTRICAS */}
+        {hasMetrics && (
+          <div className="pm-metrics">
+            {project.metrics.map((m, i) => (
+              <div key={i} className="pm-metric">
+                <span className="pm-metric-value">{m.value}</span>
+                <span className="pm-metric-label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* MÍDIA — hero + galeria */}
+        <div className="pm-section">
+          <div className="pm-subhead">— Demonstrações</div>
+          {hasMedia ? (
+            <div className="pm-media-grid">
+              {project.media.map(renderMedia)}
+            </div>
+          ) : (
+            /* Convenção: mídias ficam em img/projects/{project.id}-*.webm|png|mp4 */
+            <div className="pm-media-placeholder" aria-hidden="true">
+              <div className="pm-placeholder-icon"><Icon name="sparkles" size={28} /></div>
+              <p>Screenshots e GIFs em breve</p>
+            </div>
+          )}
+        </div>
+
+        {/* SOBRE */}
+        <div className="pm-section">
+          <div className="pm-subhead">— Sobre o projeto</div>
+          {hasLong ? (
+            project.longDesc.split(/\n+/).map((p, i) => <p key={i} className="pm-text">{p}</p>)
+          ) : (
+            <p className="pm-text">{project.shortDesc}</p>
+          )}
+        </div>
+
+        {/* DESTAQUES */}
+        {hasFeat && (
+          <div className="pm-section">
+            <div className="pm-subhead">— Destaques</div>
+            <ul className="exp-bullets">
+              {project.features.map((f, i) => <li key={i}>{f}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {/* STACK */}
+        <div className="pm-section">
+          <div className="pm-subhead">— Stack</div>
+          <div className="chip-row">
+            {project.chips.map((c, i) => <span key={i} className="tag">{c}</span>)}
+          </div>
+        </div>
+
+        {/* LINKS / CTAs */}
+        {project.links && project.links.length > 0 && (
+          <div className="pm-actions">
+            {project.links.map((l, i) => (
+              <a
+                key={i}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn ${l.primary ? "btn-primary" : "btn-ghost"}`}
+              >
+                <Icon name={l.icon || "external"} size={15} />
+                {l.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return ReactDOM.createPortal(modalContent, document.body);
+};
+
 const Projects = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [expanded, setExpanded] = useState(false);
+  const [isMobile, setIsMobile]   = useState(false);
+  const [expanded, setExpanded]   = useState(false);
+  const [active, setActive]       = useState(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 960px)");
@@ -82,31 +330,11 @@ const Projects = () => {
           <div className="section-rule"></div>
         </div>
         <p className="section-subtitle">
-          Projetos autorais com foco em automação, infraestrutura e documentação técnica.
+          Projetos autorais com foco em automação, infraestrutura e documentação técnica. Clique em um card para ver detalhes.
         </p>
         <div className="projects-grid">
-          {visible.map((p, i) => (
-            <a
-              key={i}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-card"
-              aria-label={`${p.linkLabel}: ${p.name}`}
-            >
-              <div className="project-head">
-                <div className="project-icon"><Icon name={p.icon} size={18} /></div>
-                <span className="tag">{p.tag}</span>
-              </div>
-              <h3 className="project-name">{p.name}</h3>
-              <p className="project-desc">{p.desc}</p>
-              <div className="chip-row">
-                {p.chips.map((c, j) => <span key={j} className="chip">{c}</span>)}
-              </div>
-              <span className="project-link">
-                <Icon name={p.linkIcon} size={13} /> {p.linkLabel} <Icon name="external" size={11} />
-              </span>
-            </a>
+          {visible.map((p) => (
+            <ProjectCard key={p.id} project={p} onOpen={setActive} />
           ))}
         </div>
         {isMobile && PROJECTS.length > 3 && (
@@ -120,6 +348,8 @@ const Projects = () => {
           </button>
         )}
       </div>
+
+      <ProjectModal project={active} onClose={() => setActive(null)} />
     </Reveal>
   );
 };
@@ -236,7 +466,6 @@ const EXPERIENCES = [
   }
 ];
 
-// Timeline fill: 100% ao entrar pelo fundo, 0% ao sair pelo topo
 const useTimelineProgress = (ref, fillRef) => {
   useEffect(() => {
     const update = () => {
@@ -259,7 +488,6 @@ const useTimelineProgress = (ref, fillRef) => {
   }, [ref, fillRef]);
 };
 
-// Opens the image modal (defined in sections-extra)
 const openImageModal = (src, title) => {
   if (window.__openImageModal) window.__openImageModal(src, title);
 };
@@ -327,4 +555,4 @@ const Experience = () => {
   );
 };
 
-Object.assign(window, { Projects, Skills, Experience });
+Object.assign(window, { Projects, Skills, Experience, ProjectCard, ProjectModal });
