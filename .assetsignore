@@ -11,3 +11,4 @@ package.json
 package-lock.json
 plan.md
 .assetsignore
+assets/favicon.zip

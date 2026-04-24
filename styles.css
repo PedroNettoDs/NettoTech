@@ -1682,12 +1682,18 @@ body {
 }
 
 .pm-media-item img,
-.pm-media-item video {
+.pm-media-item video,
+.pm-media-item iframe {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
   background: var(--marble-2);
+}
+
+.pm-media-item iframe {
+  aspect-ratio: 16 / 9;
+  border: 0;
 }
 
 .pm-media-item figcaption {

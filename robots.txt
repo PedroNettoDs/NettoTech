@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /assets/favicon.zip
+Disallow: /plan.md
+Disallow: /wrangler.jsonc
+Disallow: /package.json
+Disallow: /package-lock.json
+
+Sitemap: https://nettotech.com.br/sitemap.xml

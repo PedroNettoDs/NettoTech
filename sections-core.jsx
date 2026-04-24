@@ -9,6 +9,25 @@ const { useState, useEffect, useRef } = React;
 // =====================================================
 const PROJECTS = [
   {
+    id: "matchnetto",
+    icon: "psychology",
+    tag: "IA / LLM",
+    name: "MatchNetto",
+    shortDesc: "Analisador de compatibilidade vaga × candidato com IA. Recrutador cola a descrição da vaga e o sistema cruza currículo + evidências reais do GitHub via Claude, retornando score, pontos fortes, gaps e recomendação. Rodando em Cloudflare Worker com anti-bot via Turnstile.",
+    chips: ["React", "Claude API", "Cloudflare Workers", "N8N", "Turnstile"],
+    longDesc: "",
+    features: [],
+    metrics: [],
+    media: [
+      { src: "https://youtu.be/c0k6STmCDbI", caption: "Demonstração do MatchNetto" },
+      { src: "https://raw.githubusercontent.com/PedroNettoDs/MatchNetto/main/exemplo-matchnetto.png", caption: "Fluxo de orquestração no N8N" }
+    ],
+    links: [
+      { label: "Analisar uma vaga", url: "#matchnetto", icon: "auto_awesome", primary: true },
+      { label: "Ver no GitHub", url: "https://github.com/PedroNettoDs/MatchNetto", icon: "github" }
+    ]
+  },
+  {
     id: "alfred-pennyworth",
     icon: "brain",
     tag: "IA / LLM",
@@ -193,10 +212,20 @@ const ProjectModal = ({ project, onClose }) => {
   // (ex.: .reveal aplica translateY que quebraria position:fixed)
 
   const renderMedia = (m, i) => {
+    const ytMatch = m.src.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
     const isVideo = /\.(webm|mp4)$/i.test(m.src);
     return (
       <figure key={i} className="pm-media-item">
-        {isVideo ? (
+        {ytMatch ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${ytMatch[1]}`}
+            title={m.caption || `Vídeo ${i + 1}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : isVideo ? (
           <video src={m.src} autoPlay loop muted playsInline />
         ) : (
           <img src={m.src} alt={m.caption || `Mídia ${i + 1}`} loading="lazy" />
@@ -359,13 +388,13 @@ const Projects = () => {
 // =====================================================
 const SKILLS = [
   { icon: "terminal",  title: "Sistemas Operacionais", items: ["Linux", "Ubuntu", "Kubuntu", "Debian", "Windows Server", "Active Directory", "GPOs"] },
-  { icon: "box",       title: "Containers & IaC",      items: ["Docker", "Kubernetes", "IaC"] },
+  { icon: "cpu",       title: "Infraestrutura e VM",   items: ["HyperV", "VPS", "Cloud", "SSH", "FTP", "Docker", "Kubernetes", "IaC"] },
+  { icon: "brain",     title: "LLM / IA Aplicada",     items: ["Ollama", "Automações com IA", "Agentes de IA", "RAG"] },
   { icon: "git",       title: "DevOps & CI/CD",        items: ["GitHub Actions", "Git / GitHub", "Build / Test", "Deploy"] },
   { icon: "zap",       title: "Automação",             items: ["Python", "Bash", "PowerShell", "Monitoramento", "Backup"] },
   { icon: "activity",  title: "Observabilidade",       items: ["Grafana", "Elastic", "ARIA", "Logs & Métricas"] },
   { icon: "shield",    title: "Redes & Segurança",     items: ["TCP/IP", "CCNA", "VPN", "FortiGate", "Firewall", "Governança de Acessos"] },
-  { icon: "clipboard", title: "ITSM & Processos",      items: ["ITIL v4", "Scrum", "Jira", "ServiceNow", "CHG"] },
-  { icon: "brain",     title: "LLM / IA Aplicada",     items: ["Ollama", "Automações com IA", "Agentes de IA", "RAG"] }
+  { icon: "clipboard", title: "ITSM & Processos",      items: ["ITIL v4", "Scrum", "Jira", "ServiceNow", "CHG"] }
 ];
 
 const Skills = () => (
