@@ -120,7 +120,9 @@ const Nav = ({ dark, onToggleTheme }) => {
     <nav className="nav">
       <div className="nav-inner">
         <a href="#sobre" className="brand" onClick={() => setMenuOpen(false)}>
-          <div className="brand-mark">Π</div>
+          <div className="brand-mark">
+            <img src="/assets/favicon/favicon-96x96.png" alt="NettoTech" />
+          </div>
           <div className="brand-text">
             <span className="eyebrow">Pedro Netto</span>
             <span className="name">Infraestrutura · Automação</span>

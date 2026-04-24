@@ -123,24 +123,6 @@ const Education = () => (
       </div>
 
       <div className="edu-block">
-        <div className="edu-subhead">— Plataformas de aprendizado</div>
-        <div className="platforms-grid">
-          <a href="https://cursos.alura.com.br/user/pedronettods" target="_blank" rel="noopener noreferrer" className="platform-card">
-            <div className="platform-ico"><Icon name="book" size={22} /></div>
-            <h4 style={{ margin: "0 0 2px 0", fontSize: 15, fontFamily: "var(--font-display)", fontWeight: 600 }}>Alura</h4>
-            <div style={{ fontSize: 11.5, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Escola de Tecnologia</div>
-            <div style={{ marginTop: 10, fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--orange)" }}>Ver perfil →</div>
-          </a>
-          <a href="https://www.udemy.com/user/pedro-henrique-netto-dos-santos/" target="_blank" rel="noopener noreferrer" className="platform-card">
-            <div className="platform-ico"><Icon name="play" size={22} /></div>
-            <h4 style={{ margin: "0 0 2px 0", fontSize: 15, fontFamily: "var(--font-display)", fontWeight: 600 }}>Udemy</h4>
-            <div style={{ fontSize: 11.5, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Online Courses</div>
-            <div style={{ marginTop: 10, fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--orange)" }}>Ver perfil →</div>
-          </a>
-        </div>
-      </div>
-
-      <div className="edu-block">
         <div className="edu-subhead">— Cursos complementares</div>
         <div className="timeline">
           <div className="exp-card">

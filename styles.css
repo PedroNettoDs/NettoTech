@@ -164,24 +164,14 @@ body {
 .brand-mark {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: var(--marble-1);
-  border: 1px solid var(--marble-3);
-  position: relative;
-  overflow: hidden;
   display: grid;
   place-items: center;
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--orange);
 }
 
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 60%);
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-text {
